@@ -17,6 +17,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 public class MyApplication extends Application {
     private int i;
     private String name;
+    private String name1;
 
     @Override
     public void onCreate() {
