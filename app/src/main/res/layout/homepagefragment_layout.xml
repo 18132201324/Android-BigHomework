@@ -41,7 +41,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/down"/>
                 <LinearLayout
-                    android:id="@+id/ed_search"
+                    android:id="@+id/first_search"
                     android:layout_width="250dp"
                     android:layout_height="25dp"
                     android:layout_centerInParent="true"

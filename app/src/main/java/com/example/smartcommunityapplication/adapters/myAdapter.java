@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcommunityapplication.R;
-import com.example.smartcommunityapplication.entities.recyclerinfoBean;
+import com.example.smartcommunityapplication.entities.RecyclerinfoBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +19,11 @@ import java.util.List;
 
 public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder>{
     private final Context context;
-    List<recyclerinfoBean> data = new ArrayList<recyclerinfoBean>();
+    List<RecyclerinfoBean> data = new ArrayList<RecyclerinfoBean>();
     /*
     自定义的构造方法 ，传入上下文对象context 和data数据
      */
-    public myAdapter(Context context, List<recyclerinfoBean> data){
+    public myAdapter(Context context, List<RecyclerinfoBean> data){
         this.context = context;
         this.data = data;
     }
@@ -41,7 +41,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder>{
      */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        final recyclerinfoBean bean = data.get(position);
+        final RecyclerinfoBean bean = data.get(position);
         holder.picture.setImageResource(bean.getPicture());
         holder.title.setText(bean.getTitle());
 

@@ -1,12 +1,12 @@
 package com.example.smartcommunityapplication.entities;
 
-public class runorder {
+public class Runorder {
     private String  picture;
     private String theme;
     private String content;
     private String time;
 
-    public runorder(String picture, String theme, String content, String time) {
+    public Runorder(String picture, String theme, String content, String time) {
         this.picture = picture;
         this.theme = theme;
         this.content = content;

@@ -1,12 +1,12 @@
 package com.example.smartcommunityapplication.entities;
 
-public class runorderinfoBean {
+public class RunorderinfoBean {
     private int picture;
     private String time;
     private String content;
     private String price;
 
-    public runorderinfoBean(int picture, String time, String content, String price) {
+    public RunorderinfoBean(int picture, String time, String content, String price) {
         this.picture = picture;
         this.time = time;
         this.content = content;

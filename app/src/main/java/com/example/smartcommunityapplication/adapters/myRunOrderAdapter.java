@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.activities.RunOrderdetailsActivity;
-import com.example.smartcommunityapplication.entities.runorderinfoBean;
+import com.example.smartcommunityapplication.entities.RunorderinfoBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +20,11 @@ import java.util.List;
 
 public class myRunOrderAdapter extends RecyclerView.Adapter<myRunOrderAdapter.MyViewHolder> {
     private final Context context;
-   List<runorderinfoBean> data = new ArrayList<>();
+   List<RunorderinfoBean> data = new ArrayList<>();
     /*
     自定义的构造方法 ，传入上下文对象context 和data数据
      */
-    public myRunOrderAdapter(Context context, List<runorderinfoBean> data) {
+    public myRunOrderAdapter(Context context, List<RunorderinfoBean> data) {
         this.context = context;
         this.data = data;
     }
@@ -38,7 +38,7 @@ public class myRunOrderAdapter extends RecyclerView.Adapter<myRunOrderAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        runorderinfoBean bean = data.get(position);
+        RunorderinfoBean bean = data.get(position);
         holder.imageView.setImageResource(bean.getPicture());
         holder.time.setText(bean.getTime());
         holder.content.setText(bean.getContent());
