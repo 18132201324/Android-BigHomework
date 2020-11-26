@@ -16,8 +16,14 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 public class MyApplication extends Application {
     private int i;
+    private int num;
     private int id;
     private String name;
+    private String name11;
+    private String des;
+
+
+    private String na;
 
     @Override
     public void onCreate() {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/runOrderList_Img"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@color/colorBlack"/>
+    <TextView
+        android:id="@+id/runOrderList_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="有偿家教"
+        android:textSize="20sp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/runOrderList_Img"/>
+    <TextView
+        android:id="@+id/runOrderList_Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发布于2020-11-25"
+        android:textColor="@color/colorBlack"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:id="@+id/runOrderList_Content"
+        android:layout_toRightOf="@+id/runOrderList_Img"
+        android:layout_below="@+id/runOrderList_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="本人在石家庄居住，我儿子上5年级，现在需要一位家教老师，有意愿者联系。联系方式......"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"/>
+</RelativeLayout>
