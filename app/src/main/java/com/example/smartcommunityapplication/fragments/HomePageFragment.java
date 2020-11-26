@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,9 +21,9 @@ import com.example.smartcommunityapplication.adapters.mBannerAdapter;
 import com.example.smartcommunityapplication.adapters.mTextBannerAdapter;
 import com.example.smartcommunityapplication.adapters.myAdapter;
 import com.example.smartcommunityapplication.adapters.myRunOrderAdapter;
-import com.example.smartcommunityapplication.entities.infoBean;
-import com.example.smartcommunityapplication.entities.recyclerinfoBean;
-import com.example.smartcommunityapplication.entities.runorderinfoBean;
+import com.example.smartcommunityapplication.entities.InfoBean;
+import com.example.smartcommunityapplication.entities.RecyclerinfoBean;
+import com.example.smartcommunityapplication.entities.RunorderinfoBean;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
 
@@ -32,14 +33,15 @@ import java.util.List;
 public class HomePageFragment extends Fragment {
     private View view;
     private TextView getMoreOrder;
+    private LinearLayout linearLayoutSearch;
     private RecyclerView mrecycler;
     private RecyclerView mrunoder;
     private Banner mbanner;
     private Banner mTextbanner;
-    private List<infoBean> Imgbannerdata = new ArrayList<>();
-    private List<infoBean> Textbannerdata = new ArrayList<>();
-    private List<recyclerinfoBean> recyclerdata = new ArrayList<>();
-    private List<runorderinfoBean> runorderdata = new ArrayList<>();
+    private List<InfoBean> Imgbannerdata = new ArrayList<>();
+    private List<InfoBean> Textbannerdata = new ArrayList<>();
+    private List<RecyclerinfoBean> recyclerdata = new ArrayList<>();
+    private List<RunorderinfoBean> runorderdata = new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class HomePageFragment extends Fragment {
             recyclerdata = new ArrayList<>();
             runorderdata = new ArrayList<>();
             initDate();
+            linearLayoutSearch = view.findViewById(R.id.first_search);
             mTextbanner = view.findViewById(R.id.first_textbanner);
             mbanner = view.findViewById(R.id.banner);
             //设置mbanner设配器
@@ -92,32 +95,37 @@ public class HomePageFragment extends Fragment {
                     startActivity(intent);
                 }
             });
+            linearLayoutSearch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                }
+            });
             return view;
 
 
     }
     private void initDate() {
-        Imgbannerdata.add(new infoBean(R.drawable.a));
-        Imgbannerdata.add(new infoBean(R.drawable.b));
-        Imgbannerdata.add(new infoBean(R.drawable.c));
-        Imgbannerdata.add(new infoBean(R.drawable.d));
-        Textbannerdata.add(new infoBean("招商公告"));
-        Textbannerdata.add(new infoBean("外卖配送"));
-        Textbannerdata.add(new infoBean("社区管理"));
-        recyclerdata.add(new recyclerinfoBean(R.drawable.ditu,"社区服务"));
-        recyclerdata.add(new recyclerinfoBean(R.drawable.fuwu,"上门维修"));
-        recyclerdata.add(new recyclerinfoBean(R.drawable.shebei,"安装设备"));
-        recyclerdata.add(new recyclerinfoBean(R.drawable.weixiu,"设备维修"));
-        recyclerdata.add(new recyclerinfoBean(R.drawable.anzhuang,"设备回收"));
-        recyclerdata.add(new recyclerinfoBean(R.drawable.xiaoxi,"限时秒杀"));
-        recyclerdata.add(new recyclerinfoBean(R.drawable.kehu,"跑腿代购"));
-        recyclerdata.add(new recyclerinfoBean(R.drawable.tongji,"商家服务"));
-        recyclerdata.add(new recyclerinfoBean(R.drawable.qiyong,"同区信息"));
-        recyclerdata.add(new recyclerinfoBean(R.drawable.more,"全部"));
-        runorderdata.add(new runorderinfoBean(R.drawable.f,"2020-11-13","接孩子","20"));
-        runorderdata.add(new runorderinfoBean(R.drawable.g,"2020-11-13","接孩子","20"));
-        runorderdata.add(new runorderinfoBean(R.drawable.h,"2020-11-13","接孩子","20"));
-        runorderdata.add(new runorderinfoBean(R.drawable.i,"2020-11-13","接孩子","20"));
+        Imgbannerdata.add(new InfoBean(R.drawable.a));
+        Imgbannerdata.add(new InfoBean(R.drawable.b));
+        Imgbannerdata.add(new InfoBean(R.drawable.c));
+        Imgbannerdata.add(new InfoBean(R.drawable.d));
+        Textbannerdata.add(new InfoBean("招商公告"));
+        Textbannerdata.add(new InfoBean("外卖配送"));
+        Textbannerdata.add(new InfoBean("社区管理"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.ditu,"社区服务"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.fuwu,"上门维修"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.shebei,"安装设备"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.weixiu,"设备维修"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.anzhuang,"设备回收"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.xiaoxi,"限时秒杀"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.kehu,"跑腿代购"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.tongji,"商家服务"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.qiyong,"同区信息"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.more,"全部"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.f,"2020-11-13","接孩子","20"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.g,"2020-11-13","接孩子","20"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.h,"2020-11-13","接孩子","20"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.i,"2020-11-13","接孩子","20"));
     }
 }

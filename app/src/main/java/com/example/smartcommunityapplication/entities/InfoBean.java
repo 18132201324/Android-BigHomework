@@ -1,12 +1,12 @@
 package com.example.smartcommunityapplication.entities;
 
-public class infoBean {
+public class InfoBean {
     private int picture;
     private String text;
-    public infoBean(int picture){
+    public InfoBean(int picture){
         this.picture = picture;
     }
-    public infoBean(String text){
+    public InfoBean(String text){
         this.text = text;
     }
     public String getText() {

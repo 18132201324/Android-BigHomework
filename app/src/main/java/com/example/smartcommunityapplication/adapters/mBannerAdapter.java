@@ -11,12 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcommunityapplication.R;
-import com.example.smartcommunityapplication.entities.infoBean;
+import com.example.smartcommunityapplication.entities.InfoBean;
 import com.youth.banner.adapter.BannerAdapter;
 
 import java.util.List;
 
-public class mBannerAdapter extends BannerAdapter<infoBean, mBannerAdapter.mbannerholder> {
+public class mBannerAdapter extends BannerAdapter<InfoBean, mBannerAdapter.mbannerholder> {
     Context context;
 
     /**
@@ -24,7 +24,7 @@ public class mBannerAdapter extends BannerAdapter<infoBean, mBannerAdapter.mbann
      * @param context  上下文对象
      * @param datas    传入数据
      */
-    public mBannerAdapter(Context context, List<infoBean> datas) {
+    public mBannerAdapter(Context context, List<InfoBean> datas) {
         super(datas);
         this.context = context;
     }
@@ -35,7 +35,7 @@ public class mBannerAdapter extends BannerAdapter<infoBean, mBannerAdapter.mbann
     }
 
     @Override
-    public void onBindView(mbannerholder holder, infoBean data, final int position, int size) {
+    public void onBindView(mbannerholder holder, InfoBean data, final int position, int size) {
         holder.imageView.setImageResource(data.getPicture());
 //设置监听
         holder.itemView.setOnClickListener(new View.OnClickListener() {

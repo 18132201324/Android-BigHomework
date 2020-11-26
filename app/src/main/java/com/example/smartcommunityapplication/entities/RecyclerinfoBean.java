@@ -1,9 +1,9 @@
 package com.example.smartcommunityapplication.entities;
 
-public class recyclerinfoBean {
+public class RecyclerinfoBean {
     private int picture;
     private String title;
-    public recyclerinfoBean(int picture, String title){
+    public RecyclerinfoBean(int picture, String title){
         this.picture = picture;
         this.title = title;
     }

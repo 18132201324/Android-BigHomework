@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.smartcommunityapplication.R;
-import com.example.smartcommunityapplication.entities.runorder;
+import com.example.smartcommunityapplication.entities.Runorder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,27 +20,27 @@ public class mRunOrderListAdapter extends BaseAdapter {
     private TextView runOrderContent;
     private TextView runOrderTime;
     private Context mContext;
-    private List<runorder> runorders = new ArrayList<>();
+    private List<Runorder> Runorders = new ArrayList<>();
     private int itemLayoutRes;
 
-    public mRunOrderListAdapter(Context mContext, List<runorder> runorders, int itemLayoutRes) {
+    public mRunOrderListAdapter(Context mContext, List<Runorder> Runorders, int itemLayoutRes) {
         this.mContext = mContext;
-        this.runorders = runorders;
+        this.Runorders = Runorders;
         this.itemLayoutRes = itemLayoutRes;
     }
 
     @Override
     public int getCount() {
-        if (null != runorders){
-            return runorders.size();
+        if (null != Runorders){
+            return Runorders.size();
         }
         return 0;
     }
 
     @Override
     public Object getItem(int position) {
-        if (null != runorders){
-            return runorders.get(position);
+        if (null != Runorders){
+            return Runorders.get(position);
         }
         return null;
     }
@@ -60,9 +60,9 @@ public class mRunOrderListAdapter extends BaseAdapter {
         runOrderContent = convertView.findViewById(R.id.runOrderList_Content);
         runOrderTime = convertView.findViewById(R.id.runOrderList_Time);
 
-        runOrderTheme.setText(runorders.get(position).getTheme());
-        runOrderContent.setText(runorders.get(position).getContent());
-        runOrderTime.setText(runorders.get(position).getTime());
+        runOrderTheme.setText(Runorders.get(position).getTheme());
+        runOrderContent.setText(Runorders.get(position).getContent());
+        runOrderTime.setText(Runorders.get(position).getTime());
         return convertView;
     }
 }
