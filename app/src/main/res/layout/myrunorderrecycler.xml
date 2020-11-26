@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/runorderstyle"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/first_runorderimg"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/h"
+            android:scaleType="fitXY"/>
+        <TextView
+            android:id="@+id/first_runordertime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/first_runordercontent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/first_runorderprice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

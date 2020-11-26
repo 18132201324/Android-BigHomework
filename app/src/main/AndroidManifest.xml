@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".activities.RunOrderListActivity" >
+        </activity>
+        <activity android:name=".activities.RunOrderdetailsActivity" />
         <activity android:name=".activities.OneInformationActivity"/>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
