@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,7 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.smartcommunityapplication.R;
+import com.example.smartcommunityapplication.activities.LocationTagsTableActivity;
 import com.example.smartcommunityapplication.activities.RunOrderListActivity;
+import com.example.smartcommunityapplication.activities.TagTableActivity;
 import com.example.smartcommunityapplication.adapters.mBannerAdapter;
 import com.example.smartcommunityapplication.adapters.mTextBannerAdapter;
 import com.example.smartcommunityapplication.adapters.myAdapter;
@@ -33,6 +36,7 @@ import java.util.List;
 public class HomePageFragment extends Fragment {
     private View view;
     private TextView getMoreOrder;
+    private ImageView getMoreLocation;
     private LinearLayout linearLayoutSearch;
     private RecyclerView mrecycler;
     private RecyclerView mrunoder;
@@ -55,6 +59,7 @@ public class HomePageFragment extends Fragment {
             recyclerdata = new ArrayList<>();
             runorderdata = new ArrayList<>();
             initDate();
+            getMoreLocation = view.findViewById(R.id.first_moreLocation);
             linearLayoutSearch = view.findViewById(R.id.first_search);
             mTextbanner = view.findViewById(R.id.first_textbanner);
             mbanner = view.findViewById(R.id.banner);
@@ -98,7 +103,15 @@ public class HomePageFragment extends Fragment {
             linearLayoutSearch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                        Intent intent = new Intent(getActivity(), TagTableActivity.class);
+                        startActivity(intent);
+                }
+            });
+            getMoreLocation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), LocationTagsTableActivity.class);
+                    startActivity(intent);
                 }
             });
             return view;
