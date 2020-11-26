@@ -17,8 +17,6 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 public class MyApplication extends Application {
     private int i;
     private int num;
-    private String name;
-    private String name11;
     private String des;
 
 
