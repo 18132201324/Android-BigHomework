@@ -20,8 +20,6 @@
         <activity android:name=".activities.TagTableActivity"></activity>
         <activity android:name=".activities.RunOrderListActivity"></activity>
         <activity android:name=".activities.LocationTagsTableActivity"></activity>
-        <activity android:name=".activities.TagTableActivity" />
-        <activity android:name=".activities.RunOrderListActivity" />
         <activity android:name=".activities.RunOrderdetailsActivity" />
         <activity android:name=".activities.OneInformationActivity" />
         <activity android:name=".activities.MainActivity">
