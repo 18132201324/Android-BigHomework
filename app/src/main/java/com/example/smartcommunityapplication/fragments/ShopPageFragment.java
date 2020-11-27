@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +15,9 @@ import androidx.fragment.app.Fragment;
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.UnScrollListView;
 import com.example.smartcommunityapplication.adapters.CommentAdapter;
+import com.example.smartcommunityapplication.adapters.ShopAdapter;
 import com.example.smartcommunityapplication.entities.Comment;
+import com.example.smartcommunityapplication.entities.Second_shop;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
@@ -23,8 +26,10 @@ import java.util.List;
 public class ShopPageFragment extends Fragment {
     private UnScrollListView mListView;
     private Button button;
+    private ListView main_listview;
     private Context context;
     private List<Comment> dataSource1 = new ArrayList<>();
+    private List<Second_shop> shops = new ArrayList<>();
 
     @Nullable
     @Override
@@ -35,8 +40,11 @@ public class ShopPageFragment extends Fragment {
                 container,//根视图对象
                 false);//false表示需要手动调用addView方法将view添加到contain方法
         //true表示不需要手动调用addView方法
-        context=ShopPageFragment.this.getActivity();
-        button=view.findViewById(R.id.btn_oppen);
+        context = ShopPageFragment.this.getActivity();
+        button = view.findViewById(R.id.btn_oppen);
+        main_listview=view.findViewById(R.id.second_iv0);
+        ShopAdapter shopAdapter=new ShopAdapter(ShopPageFragment.this.getActivity(),shops,R.layout.shoppagefragment_item_layout);
+        main_listview.setAdapter(shopAdapter);
         initData();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,13 +72,18 @@ public class ShopPageFragment extends Fragment {
 
         return view;
     }
+
     private void initData() {
         Comment comment = new Comment("123", "456", 5, "55", "333");
         for (int i = 0; i < 10; i++) {
             dataSource1.add(comment);
         }
-    }
+        Second_shop second_shop = new Second_shop("1","2","北国商城","12","13","123","13","66","312","66");
+        for (int i=0;i<10;i++){
+            shops.add(second_shop);
+        }
 
+    }
 
 
 }
