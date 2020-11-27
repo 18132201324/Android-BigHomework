@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,12 +84,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
+
+                android:id="@+id/third_LL_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:gravity="center">
                 <ImageView
+                    android:id="@+id/third_iv_comment"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/comment"
@@ -101,12 +105,14 @@
                     android:textSize="20dp"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/third_LL_transmit"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:gravity="center">
                 <ImageView
+                    android:id="@+id/third_iv_transmit"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/transmit"
@@ -119,12 +125,14 @@
                     android:textSize="20dp"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/third_LL_likes"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:gravity="center">
                 <ImageView
+                    android:id="@+id/third_iv_likes"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/cup"/>

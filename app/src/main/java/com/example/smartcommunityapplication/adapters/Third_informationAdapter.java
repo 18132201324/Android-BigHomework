@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.entities.Third_information;
@@ -51,17 +52,44 @@ public class Third_informationAdapter extends BaseAdapter {
         LayoutInflater inflater =LayoutInflater.from(mcontext);
         convertView=inflater.inflate(itemLayoutResId,null);
 
+        final Holder holder=new Holder();
         //设置视图对象显示的内容
         ImageView third_tx_image=convertView.findViewById(R.id.third_tx_image);
         TextView third_tx_name=convertView.findViewById(R.id.third_tx_name);
 
+        holder.Iv_comment=convertView.findViewById(R.id.third_iv_comment);
+        holder.Iv_transmit=convertView.findViewById(R.id.third_iv_transmit);
+        holder.Iv_likes=convertView.findViewById(R.id.third_iv_likes);
 
-//        String imagePath= ConfigUitl.SERVER_ADDR+"images/"+cakes.get(position).getPhoto();
-//        Glide.with(mcontext)
-//                .load(imagePath)
-//                .into(cakePhoto);
+
+        View.OnClickListener listener=new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                if(v==holder.Iv_comment){
+                    Toast.makeText(mcontext, "评论", Toast.LENGTH_SHORT).show();
+
+                }
+                if(v==holder.Iv_transmit){
+                    Toast.makeText(mcontext, "转发", Toast.LENGTH_SHORT).show();
+
+                }
+                if(v==holder.Iv_likes)
+                    Toast.makeText(mcontext, "点赞", Toast.LENGTH_SHORT).show();
+
+            }
+        };
+
         third_tx_name.setText(informations.get(position).getMain());
 
+        holder.Iv_comment.setOnClickListener(listener);
+        holder.Iv_transmit.setOnClickListener(listener);
+        holder.Iv_likes.setOnClickListener(listener);
         return convertView;
+    }
+    class Holder{
+        public ImageView Iv_comment;
+        public ImageView Iv_transmit;
+        public ImageView Iv_likes;
     }
 }
