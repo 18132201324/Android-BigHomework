@@ -1,10 +1,12 @@
 package com.example.smartcommunityapplication.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -14,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.UnScrollListView;
+import com.example.smartcommunityapplication.activities.BaiduMapActivity;
 import com.example.smartcommunityapplication.adapters.CommentAdapter;
 import com.example.smartcommunityapplication.adapters.ShopAdapter;
 import com.example.smartcommunityapplication.entities.Comment;
@@ -46,6 +49,14 @@ public class ShopPageFragment extends Fragment {
         ShopAdapter shopAdapter=new ShopAdapter(ShopPageFragment.this.getActivity(),shops,R.layout.shoppagefragment_item_layout);
         main_listview.setAdapter(shopAdapter);
         initData();
+//        main_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intent=new Intent(ShopPageFragment.this.getActivity(), BaiduMapActivity.class);
+//                intent.putExtra("shop",shops.get(i));
+//                startActivity(intent);
+//            }
+//        });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,8 +89,8 @@ public class ShopPageFragment extends Fragment {
         for (int i = 0; i < 10; i++) {
             dataSource1.add(comment);
         }
-        Second_shop second_shop = new Second_shop("1","2","北国商城","12","13","123","13","66","312","66");
         for (int i=0;i<10;i++){
+            Second_shop second_shop = new Second_shop(i+"","2","北国商城","12","13","123","13","66","312","66");
             shops.add(second_shop);
         }
 

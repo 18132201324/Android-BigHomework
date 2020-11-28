@@ -1,6 +1,28 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+
+    signingConfigs {
+        mydebug {
+            storeFile file('D:\\key.jks')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
@@ -29,6 +51,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation files('libs\\BaiduLBS_Android.jar')
+
     testImplementation 'junit:junit:4.12'
     //pinyin
     implementation files('libs/pinyin4j-2.5.0.jar')
@@ -51,5 +75,4 @@ dependencies {
 
     //yzc
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'}
+}

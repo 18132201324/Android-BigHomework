@@ -2,7 +2,9 @@ package com.example.smartcommunityapplication.entities;
 
 import android.widget.ImageView;
 
-public class Second_shop {
+import java.io.Serializable;
+
+public class Second_shop implements Serializable {
     private String shopId;//id
     private String shopImage;//店铺头像照片
     private String shopName;//店铺名称
