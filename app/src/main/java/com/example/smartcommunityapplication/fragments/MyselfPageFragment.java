@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.activities.LoginActivity;
+import com.example.smartcommunityapplication.activities.MySheQuFuWuActivity;
 import com.example.smartcommunityapplication.activities.PhotoActivity;
 import com.example.smartcommunityapplication.activities.ReleaseActivity;
 
@@ -24,6 +25,7 @@ public class MyselfPageFragment extends Fragment {
     private TextView textView;
     private TextView login;
     private ImageView imageView;
+    private ImageView mySheQuFuWu;
     private ImageView Issue;
     private final int LOGIN_REQUEST = 100;
     @Nullable
@@ -36,7 +38,7 @@ public class MyselfPageFragment extends Fragment {
                 false);//false表示需要手动调用addView方法将view添加到contain方法
         Issue = view.findViewById(R.id.release);
         imageView = view.findViewById(R.id.touxiang);
-
+        mySheQuFuWu = view.findViewById (R.id.myselfpage_fuwu);
 
         //登录跳转
         login = view.findViewById(R.id.login);
@@ -58,7 +60,14 @@ public class MyselfPageFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        //我的社区服务
+        mySheQuFuWu.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getActivity (), MySheQuFuWuActivity.class);
+                startActivity (intent);
+            }
+        });
 
         //文字平移
         textView = view.findViewById(R.id.wenzi);

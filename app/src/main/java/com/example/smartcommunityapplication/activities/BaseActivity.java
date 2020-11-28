@@ -18,25 +18,25 @@ public class BaseActivity extends Activity {
 
         context = this;
         instans = this;
-        setTranslucentStatus(true);
+//        setTranslucentStatus(true);
     }
 
-    /**
-     * 设置沉浸式状态栏
-     * */
-    public void setTranslucentStatus(boolean b) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            //版本小于4.4
-            return;
-        }
-        Window win = getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bit = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (b) {
-            winParams.flags |= bit;
-        } else {
-            winParams.flags &= ~bit;
-        }
-    }
+//    /**
+//     * 设置沉浸式状态栏
+//     * */
+//    public void setTranslucentStatus(boolean b) {
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+//            //版本小于4.4
+//            return;
+//        }
+//        Window win = getWindow();
+//        WindowManager.LayoutParams winParams = win.getAttributes();
+//        final int bit = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+//        if (b) {
+//            winParams.flags |= bit;
+//        } else {
+//            winParams.flags &= ~bit;
+//        }
+//    }
 
 }

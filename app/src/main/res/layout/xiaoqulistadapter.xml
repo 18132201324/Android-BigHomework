@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:padding="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:elevation="4dp"
+        android:background="@drawable/communitycardstyle">
+        <ImageView
+            android:id="@+id/community_img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/runorderheaderimgstyle"/>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/community_img"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+            <TextView
+                android:id="@+id/community_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="国之花"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack" />
+            <TextView
+                android:id="@+id/community_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="河南洛阳"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

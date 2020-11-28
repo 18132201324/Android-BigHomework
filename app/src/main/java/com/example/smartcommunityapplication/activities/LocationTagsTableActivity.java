@@ -65,13 +65,11 @@ public class LocationTagsTableActivity extends AppCompatActivity {
                     quanZhouMoreLocation.setVisibility (View.GONE);
                     isShowbelow = 0;
                 }else {
-                    Log.e ("123",isShowbelow+"");
                     beiJingMoreLocation.setVisibility (View.VISIBLE);
                     dongGuanMoreLocation.setVisibility (View.GONE);
                     luoYangMoreLocation.setVisibility (View.GONE);
                     quanZhouMoreLocation.setVisibility (View.GONE);
                     isShowbelow = 1;
-                    Log.e ("qwe3",isShowbelow+"");
                 }
                 break;
             case R.id.locationTagTable_dongGuangetMore:
