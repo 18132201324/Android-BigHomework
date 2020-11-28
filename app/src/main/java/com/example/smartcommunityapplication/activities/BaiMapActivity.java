@@ -1,24 +1,18 @@
 package com.example.smartcommunityapplication.activities;
 
-import android.Manifest;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import android.Manifest;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
@@ -31,18 +25,14 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.example.smartcommunityapplication.R;
 
-public class BaiduMapActivity extends AppCompatActivity {
+public class BaiMapActivity extends AppCompatActivity {
     private MapView mapView;
     private LocationClient locationClient;
     private BaiduMap baiduMap;
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_baidumap);
-        //Intent intent=getIntent();
-        //Second_shop shop= (Second_shop)intent.getSerializableExtra("shop");
-        //Log.e("得到的对象是",shop.toString());
+        setContentView(R.layout.activity_bai_map);
         mapView = findViewById(R.id.map_view);
         baiduMap = mapView.getMap();
         //修改比例尺

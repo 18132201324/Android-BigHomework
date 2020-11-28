@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.UnScrollListView;
+import com.example.smartcommunityapplication.activities.BaiMapActivity;
 import com.example.smartcommunityapplication.activities.BaiduMapActivity;
 import com.example.smartcommunityapplication.adapters.CommentAdapter;
 import com.example.smartcommunityapplication.adapters.ShopAdapter;
@@ -49,14 +50,14 @@ public class ShopPageFragment extends Fragment {
         ShopAdapter shopAdapter=new ShopAdapter(ShopPageFragment.this.getActivity(),shops,R.layout.shoppagefragment_item_layout);
         main_listview.setAdapter(shopAdapter);
         initData();
-//        main_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent=new Intent(ShopPageFragment.this.getActivity(), BaiduMapActivity.class);
-//                intent.putExtra("shop",shops.get(i));
-//                startActivity(intent);
-//            }
-//        });
+        main_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent=new Intent(ShopPageFragment.this.getActivity(), BaiMapActivity.class);
+                intent.putExtra("shop",shops.get(i));
+                startActivity(intent);
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

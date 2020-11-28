@@ -28,7 +28,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        SDKInitializer.initialize(getApplicationContext());
+        SDKInitializer.initialize(this);
 
         //程序启动时，首先执行
         //全局方式设置刷新头样式
