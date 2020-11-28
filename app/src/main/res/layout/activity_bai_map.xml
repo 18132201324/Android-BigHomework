@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.baidu.mapapi.map.MapView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/map_view"
-    xmlns:android="http://schemas.android.com/apk/res/android" />
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/cl"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ListView
+        android:id="@+id/second_iv0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+    <com.baidu.mapapi.map.MapView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map_view"
+        xmlns:android="http://schemas.android.com/apk/res/android" />
+</LinearLayout>
+<androidx.core.widget.NestedScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:id="@+id/nestedScrollView"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    app:behavior_skipCollapsed="true"
+    app:behavior_peekHeight="100dp"
+    app:behavior_hideable="false">
+</androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

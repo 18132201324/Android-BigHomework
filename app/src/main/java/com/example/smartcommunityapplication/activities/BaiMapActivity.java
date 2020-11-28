@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
@@ -24,15 +28,28 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.example.smartcommunityapplication.R;
+import com.example.smartcommunityapplication.adapters.CommentAdapter;
+import com.example.smartcommunityapplication.entities.Comment;
+import com.example.smartcommunityapplication.entities.Second_shop;
+import com.example.smartcommunityapplication.fragments.ShopPageFragment;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaiMapActivity extends AppCompatActivity {
     private MapView mapView;
     private LocationClient locationClient;
     private BaiduMap baiduMap;
+    private ListView mListView;
+    private List<Comment> dataSource1 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bai_map);
+        Intent intent=getIntent();
+        Second_shop shop= (Second_shop)intent.getSerializableExtra("shop");
+        Log.e("得到的对象是",shop.toString());
         mapView = findViewById(R.id.map_view);
         baiduMap = mapView.getMap();
         //修改比例尺
@@ -45,6 +62,28 @@ public class BaiMapActivity extends AppCompatActivity {
         locationClient = new LocationClient(getApplicationContext());
         //动态申请权限
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+
+        Comment comment = new Comment("123", "456", 5, "55", "333");
+        for (int i = 0; i < 10; i++) {
+            dataSource1.add(comment);
+        }
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View inflate = View.inflate(this, R.layout.two_fragment, null);
+        View qq = inflate.findViewById(R.id.call);
+        View wx = inflate.findViewById(R.id.message);
+        View sina = inflate.findViewById(R.id.share);
+        mListView = inflate.findViewById(R.id.iv1);
+        mListView.setFocusable(false);
+        CommentAdapter adapter = new CommentAdapter(BaiMapActivity.this, dataSource1, R.layout.listview_comment);
+        mListView.setAdapter(adapter);
+        bottomSheetDialog.setCancelable(false);
+        bottomSheetDialog.setContentView(inflate);
+        if (bottomSheetDialog.isShowing()) {
+            bottomSheetDialog.dismiss();
+        } else {
+            bottomSheetDialog.show();
+            bottomSheetDialog.setCanceledOnTouchOutside(true);
+        }
     }
 
     @Override
