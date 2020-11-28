@@ -11,7 +11,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
@@ -27,11 +29,23 @@ import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.core.SearchResult;
+import com.baidu.mapapi.search.route.BikingRouteResult;
+import com.baidu.mapapi.search.route.DrivingRouteResult;
+import com.baidu.mapapi.search.route.IndoorRouteResult;
+import com.baidu.mapapi.search.route.MassTransitRouteResult;
+import com.baidu.mapapi.search.route.OnGetRoutePlanResultListener;
+import com.baidu.mapapi.search.route.PlanNode;
+import com.baidu.mapapi.search.route.RoutePlanSearch;
+import com.baidu.mapapi.search.route.TransitRouteResult;
+import com.baidu.mapapi.search.route.WalkingRoutePlanOption;
+import com.baidu.mapapi.search.route.WalkingRouteResult;
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.adapters.CommentAdapter;
 import com.example.smartcommunityapplication.entities.Comment;
 import com.example.smartcommunityapplication.entities.Second_shop;
 import com.example.smartcommunityapplication.fragments.ShopPageFragment;
+import com.example.smartcommunityapplication.mapapi.overlayutil.WalkingRouteOverlay;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
@@ -41,6 +55,8 @@ public class BaiMapActivity extends AppCompatActivity {
     private MapView mapView;
     private LocationClient locationClient;
     private BaiduMap baiduMap;
+    private RoutePlanSearch mSearch;
+    private LatLng latLng1;
     private ListView mListView;
     private List<Comment> dataSource1 = new ArrayList<>();
     @Override
@@ -62,7 +78,60 @@ public class BaiMapActivity extends AppCompatActivity {
         locationClient = new LocationClient(getApplicationContext());
         //动态申请权限
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+        mSearch = RoutePlanSearch.newInstance();
 
+        OnGetRoutePlanResultListener listener = new OnGetRoutePlanResultListener() {
+            @Override
+            public void onGetWalkingRouteResult(WalkingRouteResult walkingRouteResult) {
+                //创建WalkingRouteOverlay实例
+                if (walkingRouteResult == null || walkingRouteResult.error != SearchResult.ERRORNO.NO_ERROR) {
+                    Toast.makeText(BaiMapActivity.this, "抱歉，未找到结果"+walkingRouteResult.error, Toast.LENGTH_SHORT).show();
+                }
+                if (walkingRouteResult.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
+                    // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
+                    // result.getSuggestAddrInfo()
+                    return;
+                }
+                if (walkingRouteResult.error == SearchResult.ERRORNO.NO_ERROR) {
+                    WalkingRouteOverlay overlay = new WalkingRouteOverlay(baiduMap);
+                    if (walkingRouteResult.getRouteLines().size() > 0) {
+                        //获取路径规划数据,(以返回的第一条数据为例)
+                        //为WalkingRouteOverlay实例设置路径数据
+                        overlay.setData(walkingRouteResult.getRouteLines().get(0));
+                        //在地图上绘制WalkingRouteOverlay
+                        overlay.addToMap();
+                    }
+                }
+            }
+
+            @Override
+            public void onGetTransitRouteResult(TransitRouteResult transitRouteResult) {
+
+            }
+
+            @Override
+            public void onGetMassTransitRouteResult(MassTransitRouteResult massTransitRouteResult) {
+
+            }
+
+            @Override
+            public void onGetDrivingRouteResult(DrivingRouteResult drivingRouteResult) {
+
+            }
+
+            @Override
+            public void onGetIndoorRouteResult(IndoorRouteResult indoorRouteResult) {
+
+            }
+
+            @Override
+            public void onGetBikingRouteResult(BikingRouteResult bikingRouteResult) {
+
+            }
+
+        };
+
+        mSearch.setOnGetRoutePlanResultListener(listener);
         Comment comment = new Comment("123", "456", 5, "55", "333");
         for (int i = 0; i < 10; i++) {
             dataSource1.add(comment);
@@ -72,6 +141,21 @@ public class BaiMapActivity extends AppCompatActivity {
         View qq = inflate.findViewById(R.id.call);
         View wx = inflate.findViewById(R.id.message);
         View sina = inflate.findViewById(R.id.share);
+        Button btn_Route=inflate.findViewById(R.id.button1);
+        btn_Route.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LatLng latLng2=new LatLng(38.005375, 114.525623);
+                PlanNode stNode = PlanNode.withLocation(latLng1);
+                Log.e("959595959"+latLng1.longitude,"464564"+latLng1.latitude);
+                PlanNode enNode = PlanNode.withLocation(latLng2);
+                mSearch.walkingSearch((new WalkingRoutePlanOption())
+                        .from(stNode)
+                        .to(enNode));
+                bottomSheetDialog.dismiss();
+            }
+        });
+
         mListView = inflate.findViewById(R.id.iv1);
         mListView.setFocusable(false);
         CommentAdapter adapter = new CommentAdapter(BaiMapActivity.this, dataSource1, R.layout.listview_comment);
@@ -109,6 +193,7 @@ public class BaiMapActivity extends AppCompatActivity {
                     //定位成功后自动执行：定位成功后位置信息保存在BDLocation对象中
                     double latitude = bdLocation.getLatitude();//纬度
                     double longitude = bdLocation.getLongitude();//经度
+                    latLng1=new LatLng(latitude,longitude);
                     int code = bdLocation.getLocType();
                     //移动地图界面显示到当前位置
                     LatLng point = new LatLng(latitude, longitude);
