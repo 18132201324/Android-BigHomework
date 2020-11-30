@@ -28,7 +28,7 @@ android {
     defaultConfig {
         applicationId "com.example.smartcommunityapplication"
         minSdkVersion 24
-        targetSdkVersion 29
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.TestDemo.runner.AndroidJUnitRunner"
@@ -40,18 +40,26 @@ android {
         }
     }
 }
-
+repositories {
+    jcenter()
+}
 dependencies {
     //赵志强
     //noinspection GradleCompatible
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.youth.banner:banner:2.1.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation files('libs\\MobCommons-2018.0418.1102.jar')
+    implementation files('libs\\MobTools-2018.0419.1211.jar')
+    implementation files('libs\\SDKWrapper-2018.0201.1609.jar')
+    implementation files('libs\\SMSSDK-3.1.1.jar')
     //SmartRefreshLayout
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-12'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation files('libs\\BaiduLBS_Android.jar')
+
 
     testImplementation 'junit:junit:4.12'
     //pinyin
@@ -75,6 +83,4 @@ dependencies {
 
     //yzc
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 }

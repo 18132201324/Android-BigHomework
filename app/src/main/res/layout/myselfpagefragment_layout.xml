@@ -8,23 +8,20 @@
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:background="@color/colorPrimary"
+        android:padding="30dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/touxiang"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="30dp"
             android:src="@drawable/yuan" />
-
         <TextView
             android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="40dp"
-            android:text="立即登录"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
             android:textColor="@android:color/white"
             android:textSize="25sp" />
     </LinearLayout>

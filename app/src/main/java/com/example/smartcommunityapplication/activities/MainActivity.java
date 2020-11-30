@@ -5,16 +5,22 @@ import androidx.fragment.app.FragmentTabHost;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.example.smartcommunityapplication.R;
+import com.example.smartcommunityapplication.classes.LoginAccountMessage;
+import com.example.smartcommunityapplication.classes.LoginState;
 import com.example.smartcommunityapplication.fragments.HomePageFragment;
 import com.example.smartcommunityapplication.fragments.InformationPageFragment;
 import com.example.smartcommunityapplication.fragments.MyselfPageFragment;
 import com.example.smartcommunityapplication.fragments.NoticePageFragment;
 import com.example.smartcommunityapplication.fragments.ShopPageFragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,14 +28,15 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private Map<String,TextView> textViewMap = new HashMap<>();
-
+    private FragmentTabHost fragmentTabHost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //获取FragmentTabHost的引用
-        FragmentTabHost fragmentTabHost = findViewById(android.R.id.tabhost);
+        fragmentTabHost = findViewById(android.R.id.tabhost);
         //初始化
         fragmentTabHost.setup(this,
                 getSupportFragmentManager(),//管理多个Fragment管理器
@@ -123,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
         //setTextColor不能直接传入color资源的id号
         textViewMap.get("first_tab").setTextColor(getResources().getColor(R.color.colorPrimary));
     }
+
+
 
     public View getTabSpecView(String tag, String title){
         View view = getLayoutInflater().inflate(R.layout.tab_spec_layout,null);
