@@ -9,6 +9,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -139,40 +140,50 @@ public class BaiMapActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             dataSource1.add(comment);
         }
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        View inflate = View.inflate(this, R.layout.two_fragment, null);
-        View qq = inflate.findViewById(R.id.call);
-        View wx = inflate.findViewById(R.id.message);
-        View sina = inflate.findViewById(R.id.share);
-        Button btn_Route=inflate.findViewById(R.id.button1);
-        btn_Route.setOnClickListener(new View.OnClickListener() {
+        Button btnshow=findViewById(R.id.displaydetails);
+        btnshow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LatLng latLng2=new LatLng(38.005375, 114.525623);
-                PlanNode stNode = PlanNode.withLocation(latLng1);
-                PlanNode enNode = PlanNode.withLocation(latLng2);
-                mSearch.walkingSearch((new WalkingRoutePlanOption())
-                        .from(stNode)
-                        .to(enNode));
-                bottomSheetDialog.dismiss();
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(BaiMapActivity.this);
+                View inflate = View.inflate(BaiMapActivity.this, R.layout.two_fragment, null);
+                View qq = inflate.findViewById(R.id.call);
+                View wx = inflate.findViewById(R.id.message);
+                View sina = inflate.findViewById(R.id.share);
+                Button btn_Route=inflate.findViewById(R.id.button1);
+                btn_Route.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        LatLng latLng2=new LatLng(38.005375, 114.525623);
+                        PlanNode stNode = PlanNode.withLocation(latLng1);
+                        PlanNode enNode = PlanNode.withLocation(latLng2);
+                        mSearch.walkingSearch((new WalkingRoutePlanOption())
+                                .from(stNode)
+                                .to(enNode));
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+
+                mListView = inflate.findViewById(R.id.iv1);
+                mListView.setFocusable(false);
+                CommentAdapter adapter = new CommentAdapter(BaiMapActivity.this, dataSource1, R.layout.listview_comment);
+                mListView.setAdapter(adapter);
+                bottomSheetDialog.setCancelable(false);
+                bottomSheetDialog.setContentView(inflate);
+                if (bottomSheetDialog.isShowing()) {
+                    bottomSheetDialog.dismiss();
+                } else {
+                    bottomSheetDialog.show();
+                    bottomSheetDialog.setCanceledOnTouchOutside(true);
+                }
+                BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(nestedScrollView);
+                int peekHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
+                bottomSheetBehavior.setPeekHeight(peekHeight);//设置最小高度
+                bottomSheetBehavior.setHideable(true);//设置是否可隐藏q
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);//设置当前为隐藏状
             }
         });
 
-        mListView = inflate.findViewById(R.id.iv1);
-        mListView.setFocusable(false);
-        CommentAdapter adapter = new CommentAdapter(BaiMapActivity.this, dataSource1, R.layout.listview_comment);
-        mListView.setAdapter(adapter);
-        bottomSheetDialog.setCancelable(false);
-        bottomSheetDialog.setContentView(inflate);
-        if (bottomSheetDialog.isShowing()) {
-            bottomSheetDialog.dismiss();
-        } else {
-            bottomSheetDialog.show();
-            bottomSheetDialog.setCanceledOnTouchOutside(true);
-        }
-        BottomSheetBehavior behavior = BottomSheetBehavior.from(nestedScrollView);
-        behavior.setPeekHeight(50);
-    }
+ }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
