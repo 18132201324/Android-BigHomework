@@ -1,6 +1,28 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+
+    signingConfigs {
+        mydebug {
+            storeFile file('D:\\key.jks')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
@@ -29,23 +51,28 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation files('libs\\BaiduLBS_Android.jar')
+
     testImplementation 'junit:junit:4.12'
     //pinyin
     implementation files('libs/pinyin4j-2.5.0.jar')
 
     //wy框架
-//    implementation project(':pictureLibrary')
-//    implementation 'com.zhy:base-rvadapter:3.0.3'
-//    api 'com.jakewharton:butterknife:10.2.1'
-//    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
-//    implementation 'com.github.bumptech.glide:glide:4.5.0'
-//    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
-//    //气泡弹窗
-//    implementation 'me.kareluo.ui:popmenu:1.1.0'
+    implementation project(':pictureLibrary')
+    implementation 'com.zhy:base-rvadapter:3.0.3'
+    api 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    //气泡弹窗
+    implementation 'me.kareluo.ui:popmenu:1.1.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
 
     //sjy
 
     //yzc
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'}
+}

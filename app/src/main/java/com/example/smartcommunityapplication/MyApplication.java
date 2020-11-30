@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -20,6 +21,8 @@ public class MyApplication extends Application {
     private int id;
     private String name;
     private String name11;
+    private String name;
+    private String name11;
     private String des;
 
 
@@ -28,6 +31,8 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        SDKInitializer.initialize(this);
+
         //程序启动时，首先执行
         //全局方式设置刷新头样式
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {

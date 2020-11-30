@@ -3,6 +3,7 @@ package com.example.smartcommunityapplication.entities;
 public class Comment {
     private String image;
     private String content;
+    private String shopname;
     private int score;
     private String evaluatorName;
     private String time;

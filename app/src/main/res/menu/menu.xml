@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="普通地图"
+    android:id="@+id/normal">
+</item>
+    <item
+        android:title="卫星地图"
+        android:id="@+id/satellite"
+        >
+    </item>
+    <item android:title="空白地图"
+        android:id="@+id/none">
+    </item>
+    <item android:id="@+id/trafic"
+        android:title="交通图层on"/>
+    <item android:id="@+id/heat"
+    android:title="热力图曾on"></item>
+
+
+    <item android:id="@+id/overlay"
+        android:title="添加覆盖物"></item>
+</menu>
