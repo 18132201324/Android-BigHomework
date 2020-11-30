@@ -32,4 +32,9 @@
             android:background="@android:drawable/ic_menu_search"/>
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="功能等待更新..."
+        android:gravity="center"/>
 </LinearLayout>

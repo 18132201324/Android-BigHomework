@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:background="#DADADA"
+        android:visibility="gone"
         android:gravity="center_vertical"
         android:paddingHorizontal="10dp"
         android:text="A"/>
@@ -34,4 +35,8 @@
             android:textSize="17sp"
             android:paddingLeft="10dp"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
 </LinearLayout>

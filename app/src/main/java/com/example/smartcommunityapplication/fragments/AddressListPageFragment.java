@@ -19,10 +19,11 @@ import com.example.smartcommunityapplication.utils.Pinyin4jUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class AddressListPageFragment extends Fragment {
     private RecyclerView mrecycler;
-    private List<AddressPeopleItem> data = new ArrayList<>();
+    private List<AddressPeopleItem> data;
 
     @Nullable
     @Override
@@ -41,8 +42,41 @@ public class AddressListPageFragment extends Fragment {
             lists.add(data.get(i).getName());
         }
         Map<String,Object> addressNameList = Pinyin4jUtil.px(lists);
-        List<AddressPeopleItem> data = new ArrayList<>();
-        mrecycler.setAdapter(new AddressListAdapter(getContext(),addressNameList,data));
+        List<Integer> addressIndexList = new ArrayList<>();
+        List<AddressPeopleItem> datas = new ArrayList<>();
+        for(int i=1;i<=26;i++){
+            String word = String.valueOf((char)(96+i)).toUpperCase();
+            List<String> letter = (List<String>)addressNameList.get(word);
+            if (letter.size()!=0){
+                for(String name : letter){
+                    for(AddressPeopleItem item : data){
+                        if (item.getName().equals(name)){
+                            datas.add(item);
+                        }
+                    }
+                }
+                int num = 0;
+                if (addressIndexList.size()!=0) {
+                    num = addressIndexList.get(addressIndexList.size() - 1);
+                }
+                addressIndexList.add(num+letter.size());
+            }
+        }
+        addressIndexList.remove(addressIndexList.size()-1);
+        addressIndexList.add(0,0);
+        List<String> stringList = new ArrayList<>();
+        for (int i=1;i<=26;i++){
+            String word = String.valueOf((char)(96+i)).toUpperCase();
+            List<String> letter = (List<String>)addressNameList.get(word);
+            if(letter.size()!=0){
+                stringList.add(word);
+            }
+        }
+        Map<Integer,String> addressList = new TreeMap<Integer, String>();
+        for (int i=0;i<stringList.size();i++){
+            addressList.put(addressIndexList.get(i),stringList.get(i));
+        }
+        mrecycler.setAdapter(new AddressListAdapter(getContext(),addressList,datas));
         //设置样式 ,有如下:
         // LinearLayoutManager(Context context, @RecyclerView.Orientation int orientation,boolean reverseLayout)
         //GridLayoutManager(Context context, int spanCount)
@@ -52,9 +86,14 @@ public class AddressListPageFragment extends Fragment {
     }
 
     private void initDate() {
+        data = new ArrayList<>();
         data.add(new AddressPeopleItem("","张三"));
         data.add(new AddressPeopleItem("","李四"));
         data.add(new AddressPeopleItem("","王五"));
         data.add(new AddressPeopleItem("","赵六"));
+        data.add(new AddressPeopleItem("","孙金岩"));
+        data.add(new AddressPeopleItem("","杨志诚"));
+        data.add(new AddressPeopleItem("","赵志强"));
+        data.add(new AddressPeopleItem("","宋凌锐"));
     }
 }

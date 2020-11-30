@@ -1,5 +1,6 @@
 package com.example.smartcommunityapplication.fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +8,7 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartcommunityapplication.R;
+import com.example.smartcommunityapplication.activities.ChattingHomeActivity;
 import com.example.smartcommunityapplication.adapters.ChattingPageListAdapter;
 import com.example.smartcommunityapplication.entities.ChattingPageItem;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -27,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatPageFragment extends Fragment {
-    private List<ChattingPageItem> chattingPageItems = new ArrayList<>();
+    private List<ChattingPageItem> chattingPageItems;
     private ListView chatListView;
     private ChattingPageListAdapter adapter;
     private SmartRefreshLayout refreshLayout;
@@ -50,7 +53,7 @@ public class ChatPageFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //加载内容页面布局（将内容页面的XML布局文件转化成View类型对象）
         View view = inflater.inflate(R.layout.chatpagefragment_layout, //内容页面的布局文件
                 container,//根视图对象
@@ -65,6 +68,16 @@ public class ChatPageFragment extends Fragment {
         adapter = new ChattingPageListAdapter(getContext(),chattingPageItems,R.layout.chatpage_item_layout);
         chatListView.setAdapter(adapter);
 
+        //打开聊天详情
+        chatListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(), ChattingHomeActivity.class);
+                intent.putExtra("name",chattingPageItems.get(position).getName());
+                startActivity(intent);
+            }
+        });
+        
         //获取SmartRefreshLayout的引用
         refreshLayout = view.findViewById(R.id.chat);
         setListener();
@@ -77,6 +90,7 @@ public class ChatPageFragment extends Fragment {
     }
 
     private void initData(){
+        chattingPageItems = new ArrayList<>();
         //准备数据源
         for (int i=0;i<10;i++){
             ChattingPageItem chattingPageItem = new ChattingPageItem("","联系人"+i,"最近聊天内容"+i,"时间"+i);

@@ -29,16 +29,12 @@ import java.util.TreeMap;
 public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.MyViewHolder> {
     private Context context;
     private List<AddressPeopleItem> addressPeopleItems;
-    private Map<String,Object> addressNameList = new TreeMap<String,Object>();
+    private Map<Integer,String> addressList = new TreeMap<Integer, String>();
 
-    public AddressListAdapter(Context context, Map<String,Object> addressNameList,List<AddressPeopleItem> addressPeopleItems){
+    public AddressListAdapter(Context context, Map<Integer,String> addressList,List<AddressPeopleItem> addressPeopleItems){
         this.context = context;
         this.addressPeopleItems = addressPeopleItems;
-        List<String> lists = new ArrayList<>();
-        for (AddressPeopleItem item : addressPeopleItems){
-            lists.add(item.getName());
-        }
-        addressNameList = Pinyin4jUtil.px(lists);
+        this.addressList = addressList;
     }
 
     @NonNull
@@ -52,7 +48,10 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         final AddressPeopleItem bean = addressPeopleItems.get(position);
-
+        if (addressList.containsKey(position)){
+            holder.tvAddressType.setVisibility(View.VISIBLE);
+            holder.tvAddressType.setText(addressList.get(position));
+        }
         holder.name.setText(bean.getName());
 
         //设置item的点击事件

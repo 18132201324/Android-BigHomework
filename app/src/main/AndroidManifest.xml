@@ -25,17 +25,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".activities.ChattingHomeActivity"></activity>
+        <activity android:name=".activities.TagTableActivity" />
+        <activity android:name=".activities.RunOrderListActivity" />
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="jaVUpU1kKA8Vk5GqrNhqDnzml9gcSaPL" />
+            android:value="19Ea5KChStkKeSOdth7MzMIvjx0mpNGO" />
         <activity android:name=".activities.BaiMapActivity">
 
         </activity>
         <activity android:name=".activities.ReleaseActivity"></activity>
         <activity android:name=".activities.PhotoActivity"></activity>
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.TagTableActivity" />
-        <activity android:name=".activities.RunOrderListActivity" />
         <activity android:name=".activities.LocationTagsTableActivity" />
         <activity android:name=".activities.RunOrderdetailsActivity" />
         <activity android:name=".activities.OneInformationActivity" />

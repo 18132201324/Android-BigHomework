@@ -21,8 +21,6 @@ public class MyApplication extends Application {
     private int id;
     private String name;
     private String name11;
-    private String name;
-    private String name11;
     private String des;
 
 
