@@ -28,7 +28,7 @@ import java.util.List;
 
 public class ShopPageFragment extends Fragment {
     private ListView main_listview;
-    private List<Second_shop> shops = new ArrayList<>();
+    private List<Second_shop> shops ;
 
     @Nullable
     @Override
@@ -39,10 +39,12 @@ public class ShopPageFragment extends Fragment {
                 container,//根视图对象
                 false);//false表示需要手动调用addView方法将view添加到contain方法
         //true表示不需要手动调用addView方法
+
+        initData();//获取数据源
         main_listview = view.findViewById(R.id.second_iv0);
         ShopAdapter shopAdapter = new ShopAdapter(ShopPageFragment.this.getActivity(), shops, R.layout.shoppagefragment_item_layout);
         main_listview.setAdapter(shopAdapter);
-        initData();//获取数据源
+
         main_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -51,12 +53,12 @@ public class ShopPageFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
         return view;
     }
     private void initData() {
+        shops= new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Second_shop second_shop = new Second_shop(i + "", "2", "北国商城", "12", "13", "123", "13", "66", "312", "66");
+            Second_shop second_shop = new Second_shop(i + "", "2", "北国商城"+i, "12", "13", "123", "13", "66", "312", "66");
             shops.add(second_shop);
         }
 

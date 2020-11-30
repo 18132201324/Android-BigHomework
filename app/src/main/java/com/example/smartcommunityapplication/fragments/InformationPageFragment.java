@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InformationPageFragment extends Fragment {
-    public List<Third_information> thirdinformations = new ArrayList<>();//一个全局的链表
+    public List<Third_information> thirdinformations;//一个全局的链表
     private UnScrollListView third_informationListView;
     private MyScrollView third_informationScrollView;
     private Third_informationAdapter third_informationAdapter;
@@ -61,6 +61,7 @@ public class InformationPageFragment extends Fragment {
     }
 
     private void initData() {
+        thirdinformations = new ArrayList<>();
         Third_information information=new Third_information();
         for (int i=0;i<10;i++){
             information.setMain("     测试信息:我时常想起过去。独自一人为了梦想拼搏的我，多么想拥有一些陪伴、鼓励和榜样。上篇说了3件法师神话装备得到了很多人的认可，这次把剩余的三件神话也一起说了。");

@@ -14,7 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
@@ -62,28 +64,41 @@ public class BaiMapActivity extends AppCompatActivity {
     private LatLng latLng1;
     private NestedScrollView nestedScrollView;
     private ListView mListView;
+    private TextView minName;
+    private TextView minCategory;
+    private TextView minDistance;
+    private Button minButtonroute;
     private List<Comment> dataSource1 = new ArrayList<>();
+    private BottomSheetDialog bottomSheetDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bai_map);
         Intent intent=getIntent();
         Second_shop shop= (Second_shop)intent.getSerializableExtra("shop");
-        mapView = findViewById(R.id.map_view);
-        baiduMap = mapView.getMap();
-        nestedScrollView=findViewById(R.id.nestedScrollView);
+        //获取视图控件对象
+        findViews();
+        //设置min控件文本信息
+        minName.setText(shop.getShopName());
+        minCategory.setText(shop.getShopCategory());
+        //minDistance.setText(); //获取之间的距离
+        minButtonroute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LatLng latLng2=new LatLng(38.005375, 114.525623);
+                PlanNode stNode = PlanNode.withLocation(latLng1);
+                PlanNode enNode = PlanNode.withLocation(latLng2);
+                mSearch.walkingSearch((new WalkingRoutePlanOption())
+                        .from(stNode)
+                        .to(enNode));
+            }
+        });
         //修改比例尺
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(16.0f);
         baiduMap.setMapStatus(msu);
-        //设置比例尺缩放范围20m ~ 2KM
-        //baiduMap.setMaxAndMinZoomLevel(19, 13);
-        //实现定位功能
-        //创建定位客户端对象：参数要求是应用程序级别的环境上下文对象
         locationClient = new LocationClient(getApplicationContext());
         //动态申请权限
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
-        mSearch = RoutePlanSearch.newInstance();
-
         OnGetRoutePlanResultListener listener = new OnGetRoutePlanResultListener() {
             @Override
             public void onGetWalkingRouteResult(WalkingRouteResult walkingRouteResult) {
@@ -134,17 +149,15 @@ public class BaiMapActivity extends AppCompatActivity {
             }
 
         };
-
         mSearch.setOnGetRoutePlanResultListener(listener);
         Comment comment = new Comment("123", "456", 5, "55", "333");
         for (int i = 0; i < 10; i++) {
             dataSource1.add(comment);
         }
-        Button btnshow=findViewById(R.id.displaydetails);
-        btnshow.setOnClickListener(new View.OnClickListener() {
+        LinearLayout linearLayout=findViewById(R.id.displaydetails);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(BaiMapActivity.this);
                 View inflate = View.inflate(BaiMapActivity.this, R.layout.two_fragment, null);
                 View qq = inflate.findViewById(R.id.call);
                 View wx = inflate.findViewById(R.id.message);
@@ -184,6 +197,18 @@ public class BaiMapActivity extends AppCompatActivity {
         });
 
  }
+
+    private void findViews() {
+        bottomSheetDialog = new BottomSheetDialog(BaiMapActivity.this);
+        mapView = findViewById(R.id.map_view);
+        minName = findViewById(R.id.min_name);
+        minCategory= findViewById(R.id.min_shopCategory);
+        minDistance = findViewById(R.id.min_shopdistance);
+        minButtonroute = findViewById(R.id.min_buttonroute);
+        nestedScrollView=findViewById(R.id.nestedScrollView);
+        baiduMap = mapView.getMap();
+        mSearch = RoutePlanSearch.newInstance();
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
