@@ -3,6 +3,7 @@ package com.example.smartcommunityapplication.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.widget.NestedScrollView;
 
 import android.Manifest;
 import android.content.Intent;
@@ -46,6 +47,7 @@ import com.example.smartcommunityapplication.entities.Comment;
 import com.example.smartcommunityapplication.entities.Second_shop;
 import com.example.smartcommunityapplication.fragments.ShopPageFragment;
 import com.example.smartcommunityapplication.mapapi.overlayutil.WalkingRouteOverlay;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
@@ -57,6 +59,7 @@ public class BaiMapActivity extends AppCompatActivity {
     private BaiduMap baiduMap;
     private RoutePlanSearch mSearch;
     private LatLng latLng1;
+    private NestedScrollView nestedScrollView;
     private ListView mListView;
     private List<Comment> dataSource1 = new ArrayList<>();
     @Override
@@ -65,9 +68,9 @@ public class BaiMapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bai_map);
         Intent intent=getIntent();
         Second_shop shop= (Second_shop)intent.getSerializableExtra("shop");
-        Log.e("得到的对象是",shop.toString());
         mapView = findViewById(R.id.map_view);
         baiduMap = mapView.getMap();
+        nestedScrollView=findViewById(R.id.nestedScrollView);
         //修改比例尺
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(16.0f);
         baiduMap.setMapStatus(msu);
@@ -147,7 +150,6 @@ public class BaiMapActivity extends AppCompatActivity {
             public void onClick(View view) {
                 LatLng latLng2=new LatLng(38.005375, 114.525623);
                 PlanNode stNode = PlanNode.withLocation(latLng1);
-                Log.e("959595959"+latLng1.longitude,"464564"+latLng1.latitude);
                 PlanNode enNode = PlanNode.withLocation(latLng2);
                 mSearch.walkingSearch((new WalkingRoutePlanOption())
                         .from(stNode)
@@ -168,6 +170,8 @@ public class BaiMapActivity extends AppCompatActivity {
             bottomSheetDialog.show();
             bottomSheetDialog.setCanceledOnTouchOutside(true);
         }
+        BottomSheetBehavior behavior = BottomSheetBehavior.from(nestedScrollView);
+        behavior.setPeekHeight(50);
     }
 
     @Override
