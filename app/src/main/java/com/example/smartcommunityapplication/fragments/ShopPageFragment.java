@@ -58,7 +58,7 @@ public class ShopPageFragment extends Fragment {
     private void initData() {
         shops= new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Second_shop second_shop = new Second_shop(i + "", "2", "北国商城"+i, "12", "13", "123", "13", "66", "312", "66");
+            Second_shop second_shop = new Second_shop(i + "", "2", "北国商城"+i, "114.516653", "38.048554", "综合广场", "13", "66", "312", "66");
             shops.add(second_shop);
         }
 

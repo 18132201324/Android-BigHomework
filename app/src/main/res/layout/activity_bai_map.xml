@@ -15,8 +15,29 @@ android:layout_height="match_parent">
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/Secondback"
+        android:background="@color/colo_blue_green">
+        <ImageView
+            android:id="@+id/secondback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地图导航"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
 
     <com.baidu.mapapi.map.MapView
+        android:layout_below="@+id/Secondback"
         android:id="@+id/map_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -34,7 +55,6 @@ android:layout_height="match_parent">
                 android:layout_height="wrap_content">
                 <Button
                     android:background="@color/text_main1"
-
                     android:layout_width="160dp"
                     android:layout_height="5dp"></Button>
             </LinearLayout>
@@ -42,7 +62,9 @@ android:layout_height="match_parent">
                 android:id="@+id/min_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
                 android:text="北国商城"
                 android:textColor="@color/colorBlack"
                 android:textSize="24sp"></TextView>
@@ -72,7 +94,13 @@ android:layout_height="match_parent">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="3.3km"
+                    android:text="3.3"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="km"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"></TextView>
             </LinearLayout>

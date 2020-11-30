@@ -21,6 +21,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/details_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -40,12 +41,26 @@
                         android:text="市场类型 ."
                         android:textColor="@color/colorBlack"
                         android:textSize="16sp"></TextView>
+                    <TextView
+                        android:id="@+id/details_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"></TextView>
 
                     <TextView
+                        android:id="@+id/details_distance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="3.3km"
+                        android:text="3.3"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="km"
                         android:textColor="@color/colorBlack"
                         android:textSize="16sp"></TextView>
                 </LinearLayout>
@@ -159,10 +174,12 @@
                     android:text="地址"
                     android:textSize="18sp"></TextView>
 
-                <EditText
+                <TextView
+                    android:id="@+id/details_address"
+                    android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="河北省石家庄市河北师范大学"></EditText>
+                    android:hint="河北省石家庄市河北师范大学"></TextView>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -171,10 +188,13 @@
                     android:text="电话"
                     android:textSize="18sp"></TextView>
 
-                <EditText
+                <TextView
+                    android:id="@+id/details_tel"
+                    android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="+86 (311)86103609"></EditText>
+                    android:layout_marginBottom="20dp"
+                    android:hint="+86 (311)86103609"></TextView>
             </LinearLayout>
 
             <com.example.smartcommunityapplication.UnScrollListView

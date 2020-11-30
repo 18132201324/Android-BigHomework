@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ import com.baidu.mapapi.search.route.RoutePlanSearch;
 import com.baidu.mapapi.search.route.TransitRouteResult;
 import com.baidu.mapapi.search.route.WalkingRoutePlanOption;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
+import com.baidu.mapapi.utils.DistanceUtil;
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.adapters.CommentAdapter;
 import com.example.smartcommunityapplication.entities.Comment;
@@ -53,6 +55,7 @@ import com.example.smartcommunityapplication.mapapi.overlayutil.WalkingRouteOver
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,26 +71,35 @@ public class BaiMapActivity extends AppCompatActivity {
     private TextView minCategory;
     private TextView minDistance;
     private Button minButtonroute;
+    private ImageView secondButtonBack;
     private List<Comment> dataSource1 = new ArrayList<>();
     private BottomSheetDialog bottomSheetDialog;
+    private double distance;
+    private Second_shop shop;
+    private LatLng latLng2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bai_map);
         Intent intent=getIntent();
-        Second_shop shop= (Second_shop)intent.getSerializableExtra("shop");
+        shop= (Second_shop)intent.getSerializableExtra("shop");
         //获取视图控件对象
         findViews();
         //设置min控件文本信息
         minName.setText(shop.getShopName());
         minCategory.setText(shop.getShopCategory());
-        //minDistance.setText(); //获取之间的距离
+        secondButtonBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                finish();
+            }
+        });
+
         minButtonroute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LatLng latLng2=new LatLng(38.005375, 114.525623);
                 PlanNode stNode = PlanNode.withLocation(latLng1);
                 PlanNode enNode = PlanNode.withLocation(latLng2);
+                Log.e("两点之间的距离是",""+DistanceUtil. getDistance(latLng1, latLng2)/1000);
                 mSearch.walkingSearch((new WalkingRoutePlanOption())
                         .from(stNode)
                         .to(enNode));
@@ -159,6 +171,17 @@ public class BaiMapActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 View inflate = View.inflate(BaiMapActivity.this, R.layout.two_fragment, null);
+                TextView detailsName = inflate.findViewById(R.id.details_name);
+                TextView detailsDistance = inflate.findViewById(R.id.details_distance);
+                TextView detailsCategory = inflate.findViewById(R.id.details_category);
+                TextView detailsAddress = inflate.findViewById(R.id.details_address);
+                TextView detailsTel = inflate.findViewById(R.id.details_tel);
+                detailsName.setText(shop.getShopName());
+                detailsDistance.setText(distance+"");
+                detailsCategory.setText(shop.getShopCategory());
+                detailsAddress.setText(shop.getShopAddress());
+                detailsTel.setText(shop.getShopTel());
+
                 View qq = inflate.findViewById(R.id.call);
                 View wx = inflate.findViewById(R.id.message);
                 View sina = inflate.findViewById(R.id.share);
@@ -166,7 +189,6 @@ public class BaiMapActivity extends AppCompatActivity {
                 btn_Route.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        LatLng latLng2=new LatLng(38.005375, 114.525623);
                         PlanNode stNode = PlanNode.withLocation(latLng1);
                         PlanNode enNode = PlanNode.withLocation(latLng2);
                         mSearch.walkingSearch((new WalkingRoutePlanOption())
@@ -199,6 +221,8 @@ public class BaiMapActivity extends AppCompatActivity {
  }
 
     private void findViews() {
+        Log.e(""+Double.parseDouble(shop.getShopPointy()),""+Double.parseDouble(shop.getShopPointx()));
+        latLng2=new LatLng(Double.parseDouble(shop.getShopPointy()), Double.parseDouble(shop.getShopPointx()));
         bottomSheetDialog = new BottomSheetDialog(BaiMapActivity.this);
         mapView = findViewById(R.id.map_view);
         minName = findViewById(R.id.min_name);
@@ -206,6 +230,7 @@ public class BaiMapActivity extends AppCompatActivity {
         minDistance = findViewById(R.id.min_shopdistance);
         minButtonroute = findViewById(R.id.min_buttonroute);
         nestedScrollView=findViewById(R.id.nestedScrollView);
+        secondButtonBack=findViewById(R.id.secondback);
         baiduMap = mapView.getMap();
         mSearch = RoutePlanSearch.newInstance();
     }
@@ -237,6 +262,10 @@ public class BaiMapActivity extends AppCompatActivity {
                     int code = bdLocation.getLocType();
                     //移动地图界面显示到当前位置
                     LatLng point = new LatLng(latitude, longitude);
+                    Double dtest1=DistanceUtil. getDistance(latLng1, latLng2)/1000;
+                    distance= Double.valueOf(String.format("%.2f", dtest1 ));
+                    minDistance.setText(distance+""); //获取之间的距离
+                    addMarkerOverlay();
                     MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(point);
                     //对地图界面进行移动
                     baiduMap.animateMapStatus(update);
@@ -275,57 +304,16 @@ public class BaiMapActivity extends AppCompatActivity {
         mapView.onPause();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //处理选项菜单的点击事件
-        switch (item.getItemId()) {
-            case R.id.normal:
-                baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-                break;
-            case R.id.satellite:
-                baiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
-                break;
-            case R.id.none:
-                baiduMap.setMapType(BaiduMap.MAP_TYPE_NONE);
-                break;
-            case R.id.trafic:
-                if (baiduMap.isTrafficEnabled()) {
-                    baiduMap.setTrafficEnabled(false);
-                    item.setTitle("交通图层on");
-                } else {
-                    baiduMap.setTrafficEnabled(true);
-                    item.setTitle("交通图层off");
-                }
-
-                break;
-            case R.id.heat:
-                if (baiduMap.isBaiduHeatMapEnabled()) {
-                    baiduMap.setBaiduHeatMapEnabled(false);
-                    item.setTitle("热力图层on");
-                } else {
-                    baiduMap.setBaiduHeatMapEnabled(true);
-                    item.setTitle("热力图层off");
-                }
-                break;
-            case R.id.overlay:
-                //添加覆盖物
-                addMarkerOverlay();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     //添加标注覆盖物
     public void addMarkerOverlay() {
-        BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.fangzi);
-        //1.定义坐标点
-        LatLng point = new LatLng(38.048997, 114.524521);
-        //2.创建OverlayOptions子类对象
+        BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.location);
+
+        //1.创建OverlayOptions子类对象
         MarkerOptions options = new MarkerOptions()
-                .position(point)//位置
+                .position(latLng2)//位置
                 .icon(icon)//指定图标
                 .draggable(true);
-        //3.将覆盖物显示到地图界面
+        //2.将覆盖物显示到地图界面
         Marker marker = (Marker) baiduMap.addOverlay(options);
         Bundle bundle = new Bundle();
         bundle.putString("title", "店铺");

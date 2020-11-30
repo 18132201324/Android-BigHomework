@@ -82,7 +82,7 @@ public class WalkingRouteOverlay extends OverlayManager {
             overlayList.add((new MarkerOptions())
                     .position(mRouteLine.getStarting().getLocation())
                             .icon(getStartMarker() != null ? getStartMarker() :
-                                    BitmapDescriptorFactory.fromResource(R.drawable.fangzi))
+                                    BitmapDescriptorFactory.fromResource(R.drawable.location))
                                    .zIndex(10));
         }
         // terminal
@@ -92,7 +92,7 @@ public class WalkingRouteOverlay extends OverlayManager {
                             .position(mRouteLine.getTerminal().getLocation())
                                     .icon(getTerminalMarker() != null ? getTerminalMarker() :
                                             BitmapDescriptorFactory
-                                                    .fromResource(R.drawable.fangzi))
+                                                    .fromResource(R.drawable.location))
                                                             .zIndex(10));
         }
 
