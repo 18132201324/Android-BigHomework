@@ -89,7 +89,7 @@ public class BaiMapActivity extends AppCompatActivity {
 
 
         mapView.showZoomControls(true);//设置是否显示缩放控件
-        mapView.getChildAt(2).setPadding(0,0,40,1350);//这是控制缩放控件的位置
+        mapView.getChildAt(2).setPadding(0,0,-20,1980);//这是控制缩放控件的位置
 
         minName.setText(shop.getShopName());
         minCategory.setText(shop.getShopCategory());
