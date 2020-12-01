@@ -23,6 +23,7 @@ import com.bumptech.glide.util.Util;
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.classes.LoginAccountMessage;
 import com.example.smartcommunityapplication.classes.LoginState;
+import com.example.smartcommunityapplication.fragments.MyselfPageFragment;
 import com.mob.MobSDK;
 
 
@@ -33,6 +34,7 @@ import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
     private TimeCount mTimeCount;//计时器
     private Tencent mTencent;
     private IUiListener listener;
+    private JSONObject json;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                 Tencent.handleResultData(data, listener);
             }
         }
+        Log.e ("——————————————————————","onActivityResult");
         finish ();
     }
 
@@ -123,16 +127,13 @@ public class LoginActivity extends AppCompatActivity {
         listener = new IUiListener() {
             @Override
             public void onComplete(Object object) {
-
                 Log.e("TAG", "登录成功: " + object.toString() );
-
                 JSONObject jsonObject = (JSONObject) object;
                 try {
                     //得到token、expires、openId等参数
                     String token = jsonObject.getString(Constants.PARAM_ACCESS_TOKEN);
                     String expires = jsonObject.getString(Constants.PARAM_EXPIRES_IN);
                     String openId = jsonObject.getString(Constants.PARAM_OPEN_ID);
-
                     mTencent.setAccessToken(token, expires);
                     mTencent.setOpenId(openId);
                     Log.e("TAG", "token: " + token);
@@ -143,23 +144,18 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (Exception e) {
                 }
             }
-
             @Override
             public void onError(UiError uiError) {
                 //登录失败
                 Log.e("TAG", "登录失败" + uiError.errorDetail);
                 Log.e("TAG", "登录失败" + uiError.errorMessage);
                 Log.e("TAG", "登录失败" + uiError.errorCode + "");
-
             }
-
             @Override
             public void onCancel() {
                 //登录取消
                 Log.e("TAG", "登录取消");
-
             }
-
             @Override
             public void onWarning(int i) {
 
@@ -177,13 +173,23 @@ public class LoginActivity extends AppCompatActivity {
     private void getQQinfo() {
         QQToken qqToken = mTencent.getQQToken();
         UserInfo info = new UserInfo(getApplicationContext(), qqToken);
-
-        //    info.getUserInfo(new BaseUIListener(this,"get_simple_userinfo"));
         info.getUserInfo(new IUiListener() {
             @Override
             public void onComplete(Object obj) {
                 //用户信息获取到了
                 Log.e("----TAG----", "个人信息：" + obj.toString());
+                json = (JSONObject)obj;
+                try {
+                    Log.e ("——————————————————————","执行getQQinfo");
+                    String nickname = json.getString ("nickname");
+                    Log.e ("------",nickname);
+                    LoginAccountMessage.Account = nickname;
+                    LoginAccountMessage.sign = 1;
+                    LoginState.State = 1;
+                    EventBus.getDefault ().post ("refresh");
+                } catch (JSONException e) {
+                    e.printStackTrace ();
+                }
             }
 
             @Override

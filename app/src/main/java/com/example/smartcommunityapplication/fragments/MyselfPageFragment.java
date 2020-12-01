@@ -25,6 +25,9 @@ import com.example.smartcommunityapplication.activities.PhotoActivity;
 import com.example.smartcommunityapplication.classes.LoginAccountMessage;
 import com.example.smartcommunityapplication.classes.LoginState;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 public class MyselfPageFragment extends Fragment {
     private TextView textView;
     private TextView login;
@@ -42,6 +45,7 @@ public class MyselfPageFragment extends Fragment {
         Issue = view.findViewById(R.id.mySelfpage_myRelease);
         touXinag = view.findViewById(R.id.touxiang);
         mySheQuFuWu = view.findViewById (R.id.mySelfpage_fuwu);
+
 
         //登录跳转
         Log.e ("123",LoginState.State+"");
@@ -115,6 +119,27 @@ public class MyselfPageFragment extends Fragment {
             login.setText(num);
         }
 
+    }
+
+    @Subscribe
+    public void dorRefresh(String event){
+        Log.e ("dorRefresh",event);
+        onResume ();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(!EventBus.getDefault().isRegistered(this)){//加上判断
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (EventBus.getDefault().isRegistered(this))//加上判断
+            EventBus.getDefault().unregister(this);
+        super.onDestroy();
     }
 
     @Override

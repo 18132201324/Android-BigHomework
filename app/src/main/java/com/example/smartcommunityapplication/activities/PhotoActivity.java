@@ -38,6 +38,7 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener,
     private LinearLayout llDate;
     private TextView tvDate;
     private TextView tvTime;
+    private TextView back;
     private LinearLayout llTime;
     private int year, month, day, hour, minute;
     Unbinder unbinder;
@@ -45,9 +46,7 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener,
 
     @BindView(R.id.rv_images)
     RecyclerView rvImages;
-
     NineGridAdapter adapter;
-
     List<String> mSelectList;
 
 
@@ -68,6 +67,14 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener,
         tvTime =findViewById(R.id.tv_time);
         tvDate=findViewById(R.id.time_picker);
         initDateTime();
+
+        back = findViewById (R.id.release_back);
+        back.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                finish ();
+            }
+        });
     }
 
     private void initView() {
@@ -113,7 +120,6 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener,
             case R.id.ll_date:
                 showDatePickDlg();
                 break;
-
             case R.id.ll_time:
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
                 builder2.setPositiveButton("设置", new DialogInterface.OnClickListener() {
@@ -175,7 +181,6 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener,
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         unbinder.unbind();
     }
 

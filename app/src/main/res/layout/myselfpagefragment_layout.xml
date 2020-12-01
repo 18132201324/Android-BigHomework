@@ -150,9 +150,9 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/jiazai"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/kache"
                                 android:layout_gravity="center_horizontal"/>
                             <TextView
                                 android:layout_marginTop="5dp"
@@ -170,9 +170,9 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/jiazai"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/shop"
                                 android:layout_gravity="center_horizontal"/>
                             <TextView
                                 android:layout_marginTop="5dp"
@@ -190,9 +190,9 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/jiazai"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/kuaidi"
                                 android:layout_gravity="center_horizontal"/>
                             <TextView
                                 android:layout_marginTop="5dp"
@@ -210,9 +210,9 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/jiazai"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/lihe"
                                 android:layout_gravity="center_horizontal"/>
                             <TextView
                                 android:layout_marginTop="5dp"
@@ -252,8 +252,9 @@
                     android:orientation="horizontal">
                     <ImageView
                         android:id="@+id/fangZi1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/fangzi"/>
                     <TextView
                         android:layout_toRightOf="@+id/fangZi1"
@@ -276,9 +277,10 @@
                     android:orientation="horizontal">
                     <ImageView
                         android:id="@+id/fangZi2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/fangzi"/>
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/tuiguang"/>
                     <TextView
                         android:layout_toRightOf="@+id/fangZi2"
                         android:layout_width="wrap_content"
@@ -300,9 +302,10 @@
                     android:orientation="horizontal">
                     <ImageView
                         android:id="@+id/fangZi3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/fangzi"/>
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/dianpu"/>
                     <TextView
                         android:layout_toRightOf="@+id/fangZi3"
                         android:layout_width="wrap_content"
@@ -325,9 +328,10 @@
                     android:orientation="horizontal">
                     <ImageView
                         android:id="@+id/fangZi4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/fangzi"/>
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/zhifeiji"/>
                     <TextView
                         android:layout_toRightOf="@+id/fangZi4"
                         android:layout_width="wrap_content"

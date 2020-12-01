@@ -13,8 +13,8 @@
         <ImageView
             android:id="@+id/RunOrder_back"
             android:onClick="onClicked"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@drawable/back"/>
         <TextView
             android:id="@+id/mySheQuFuWu_xiaoQuListHeader"
@@ -43,12 +43,17 @@
                 android:layout_height="65dp"/>
         </LinearLayout>
     </RelativeLayout>
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="小区列表"
-        android:textColor="@color/colorBlack"
-        android:textSize="18sp"/>
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小区列表"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"/>
+    </LinearLayout>
     <ListView
         android:padding="10dp"
         android:id="@+id/mySheQuFuWu_communityList"
