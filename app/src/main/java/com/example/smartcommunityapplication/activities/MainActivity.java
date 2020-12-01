@@ -11,16 +11,12 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.example.smartcommunityapplication.R;
-import com.example.smartcommunityapplication.classes.LoginAccountMessage;
-import com.example.smartcommunityapplication.classes.LoginState;
 import com.example.smartcommunityapplication.fragments.HomePageFragment;
 import com.example.smartcommunityapplication.fragments.InformationPageFragment;
 import com.example.smartcommunityapplication.fragments.MyselfPageFragment;
 import com.example.smartcommunityapplication.fragments.NoticePageFragment;
 import com.example.smartcommunityapplication.fragments.ShopPageFragment;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.HashMap;
 import java.util.Map;

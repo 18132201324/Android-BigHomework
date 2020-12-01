@@ -248,7 +248,7 @@ public class BaiMapActivity extends AppCompatActivity {
             //设置坐标系类型
             option.setCoorType("bd09ll");
             //设置定位模式（低功耗定位模式）
-            option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);
+            option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
             //将定位参数应用到定位客户端
             locationClient.setLocOption(option);
             //设置定位成功监听器（实现异步定位操作，定位成功后自动调用接口中的方法）

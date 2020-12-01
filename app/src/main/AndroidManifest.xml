@@ -36,7 +36,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".activities.ChangeMyselfpageActivity" /> <!-- 通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data -->
+        <activity android:name=".activities.ChangeMyselfpageActivity"></activity> <!-- 通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data -->
         <meta-data
             android:name="Mob-AppKey"
             android:value="3196fd5764643" />
@@ -48,15 +48,16 @@
         <activity android:name=".activities.ReleaseActivity" />
         <activity android:name=".activities.PhotoActivity" />
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.ChattingHomeActivity"></activity>
+        <activity android:name=".activities.ChattingHomeActivity" />
         <activity android:name=".activities.TagTableActivity" />
         <activity android:name=".activities.RunOrderListActivity" />
+
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="jaVUpU1kKA8Vk5GqrNhqDnzml9gcSaPL" />
-        <activity android:name=".activities.BaiMapActivity">
+            android:value="f2weGbyAYoQOq4r5Zp9fL2kSGHvXXtMa" />
 
-        </activity>
+        <activity
+            android:name=".activities.BaiMapActivity" /> <!-- 赵志强的密钥： f2weGbyAYoQOq4r5Zp9fL2kSGHvXXtMa -->
         <activity android:name=".activities.LocationTagsTableActivity" />
         <activity android:name=".activities.RunOrderdetailsActivity" />
         <activity android:name=".activities.OneInformationActivity" />
@@ -72,6 +73,12 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-    </application>
 
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
+    </application>
 </manifest>

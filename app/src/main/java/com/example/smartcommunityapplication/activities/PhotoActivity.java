@@ -2,6 +2,8 @@ package com.example.smartcommunityapplication.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,17 +21,14 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class PhotoActivity extends BaseActivity {
-
+    private TextView back;
     private static final int REQUEST_IMAGE = 2;
     private int maxNum = 9;
 
     Unbinder unbinder;
-
     @BindView(R.id.rv_images)
     RecyclerView rvImages;
-
     NineGridAdapter adapter;
-
     List<String> mSelectList;
 
 
@@ -38,9 +37,19 @@ public class PhotoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_release);
         unbinder = ButterKnife.bind(PhotoActivity.this);
-
         mSelectList = new ArrayList<>();
+        getViews();
         initView();
+        back.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                finish ();
+            }
+        });
+    }
+
+    private void getViews() {
+        back = findViewById (R.id.release_back);
     }
 
     private void initView() {
@@ -84,7 +93,6 @@ public class PhotoActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         unbinder.unbind();
     }
 }
