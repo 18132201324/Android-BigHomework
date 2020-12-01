@@ -8,19 +8,20 @@
     <LinearLayout
         android:background="@drawable/shape_corner"
         android:orientation="vertical"
-        android:padding="12dp"
+        android:padding="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:orientation="horizontal">
 
         <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/iv_shop_image"
             android:layout_width="110dp"
-            android:layout_height="65dp"
+            android:layout_height="110dp"
             android:layout_marginRight="10dp"
             android:src="@drawable/beiguo3" />
 
@@ -47,11 +48,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="40dp"
                     android:background="@null"
                     android:hint="店铺风景"
                     android:textColor="#ff6633"
-                    android:textSize="17dp" />
+                    android:textSize="23dp" />
             </LinearLayout>
 
             <RelativeLayout
@@ -59,12 +60,14 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/tv_score"
                     android:background="@drawable/xx"></ImageView>
 
                 <TextView
+                    android:layout_marginTop="20dp"
                     android:id="@+id/tv_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,13 +77,6 @@
                     android:textColor="@color/colorYellow"
                     android:textSize="22sp"></TextView>
 
-                <TextView
-                    android:id="@+id/tv_distance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="36dp"
-                    android:text="距您3.3km"></TextView>
             </RelativeLayout>
 
 
@@ -93,6 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="120dp"
+        android:padding="10dp"
         android:orientation="horizontal">
 
         <ImageView

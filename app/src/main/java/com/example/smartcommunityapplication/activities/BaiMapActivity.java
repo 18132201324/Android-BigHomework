@@ -104,7 +104,6 @@ public class BaiMapActivity extends AppCompatActivity {
             public void onClick(View view) {
                 PlanNode stNode = PlanNode.withLocation(latLng1);
                 PlanNode enNode = PlanNode.withLocation(latLng2);
-                Log.e("两点之间的距离是",""+DistanceUtil. getDistance(latLng1, latLng2)/1000);
                 mSearch.walkingSearch((new WalkingRoutePlanOption())
                         .from(stNode)
                         .to(enNode));
@@ -275,9 +274,9 @@ public class BaiMapActivity extends AppCompatActivity {
                     //对地图界面进行移动
                     baiduMap.animateMapStatus(update);
                     //在当前位置添加标注覆盖物
-                    BitmapDescriptor descriptor = BitmapDescriptorFactory.fromResource(R.drawable.fangzi);
-                    MarkerOptions options = new MarkerOptions().position(point).icon(descriptor);
-                    baiduMap.addOverlay(options);
+//                    BitmapDescriptor descriptor = BitmapDescriptorFactory.fromResource(R.drawable.location);
+//                    MarkerOptions options = new MarkerOptions().position(point).icon(descriptor);
+//                    baiduMap.addOverlay(options);
                     baiduMap.setMyLocationEnabled(true);
                     //配置定位数据
                     MyLocationData data = new MyLocationData.Builder().latitude(latitude).longitude(longitude).build();

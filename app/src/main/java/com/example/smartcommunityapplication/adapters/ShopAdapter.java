@@ -59,7 +59,6 @@ public class ShopAdapter extends BaseAdapter {
             viewHolder.shopScore=convertView.findViewById(R.id.tv_score);
             viewHolder.shopsCenery1=convertView.findViewById(R.id.iv_shopsCenery1);
             viewHolder.shopsCenery2=convertView.findViewById(R.id.iv_shopsCenery2);
-            viewHolder.shopsDistance=convertView.findViewById(R.id.tv_distance);
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ShopAdapter.ViewHolder) convertView.getTag();
