@@ -23,7 +23,6 @@ public class MyApplication extends Application {
     private String name11;
     private String des;
 
-
     private String na;
 
     @Override
