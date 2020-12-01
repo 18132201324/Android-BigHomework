@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,11 +24,14 @@ import java.util.Date;
 import java.util.List;
 
 public class ChattingHomeActivity extends AppCompatActivity {
+
     private RecyclerView mrecycler;
     private List<Chatting> chattingList;
     private TextView tvChattingHomeName;
     private TextView etChattingHomeContent;
+    private Spinner spinner1;
     private RecyclerView.LayoutManager mLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +39,11 @@ public class ChattingHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chatting_home);
         initData();
 
-        mrecycler = findViewById(R.id.chattingHomeRecyclerView);
         mrecycler.setAdapter(new ChattingHomeListAdapter(this,chattingList));
         mrecycler.setLayoutManager(new GridLayoutManager(this,1));
         mrecycler.scrollToPosition(chattingList.size()-1);
     }
+
 
     private void initData() {
         chattingList = new ArrayList<>();
@@ -49,6 +55,7 @@ public class ChattingHomeActivity extends AppCompatActivity {
         tvChattingHomeName = findViewById(R.id.forth_tv_chattingHomeName);
         tvChattingHomeName.setText(intent.getStringExtra("name"));
         etChattingHomeContent = findViewById(R.id.forth_et_chattingHomeContent);
+        mrecycler = findViewById(R.id.chattingHomeRecyclerView);
     }
 
     public void onClicked(View view){
@@ -56,7 +63,7 @@ public class ChattingHomeActivity extends AppCompatActivity {
             case R.id.forth_imgBtn_back:
                 finish();
                 break;
-            case R.id.forth_imgBtn_chattingHomeMore:
+            case R.id.forth_tv_chattingHomeName:
                 break;
             case R.id.forth_btn_chattingHomeSend:
                 if (etChattingHomeContent.getText()!=null&&etChattingHomeContent.getText().toString().length()!=0) {

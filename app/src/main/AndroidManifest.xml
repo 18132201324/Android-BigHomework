@@ -54,7 +54,7 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="f2weGbyAYoQOq4r5Zp9fL2kSGHvXXtMa" />
+            android:value="19Ea5KChStkKeSOdth7MzMIvjx0mpNGO" />
 
         <activity
             android:name=".activities.BaiMapActivity" /> <!-- 赵志强的密钥： f2weGbyAYoQOq4r5Zp9fL2kSGHvXXtMa -->
@@ -68,10 +68,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- 这个必须得加 -->
+
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity
@@ -100,4 +109,5 @@
         </service>
 
     </application>
+
 </manifest>

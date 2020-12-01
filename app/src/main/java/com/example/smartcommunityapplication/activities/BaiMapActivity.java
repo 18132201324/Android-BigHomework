@@ -269,10 +269,10 @@ public class BaiMapActivity extends AppCompatActivity {
                     MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(point);
                     //对地图界面进行移动
                     baiduMap.animateMapStatus(update);
-                    //在当前位置添加标注覆盖物
-                    BitmapDescriptor descriptor = BitmapDescriptorFactory.fromResource(R.drawable.fangzi);
-                    MarkerOptions options = new MarkerOptions().position(point).icon(descriptor);
-                    baiduMap.addOverlay(options);
+//                    //在当前位置添加标注覆盖物
+//                    BitmapDescriptor descriptor = BitmapDescriptorFactory.fromResource(R.drawable.fangzi);
+//                    MarkerOptions options = new MarkerOptions().position(point).icon(descriptor);
+//                    baiduMap.addOverlay(options);
                     baiduMap.setMyLocationEnabled(true);
                     //配置定位数据
                     MyLocationData data = new MyLocationData.Builder().latitude(latitude).longitude(longitude).build();
