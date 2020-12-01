@@ -8,14 +8,13 @@
         android:id="@+id/RunOrder_header"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:alpha="0.6"
         android:padding="10dp"
         android:background="@color/colo_blue_green">
         <ImageView
             android:id="@+id/RunOrder_back"
             android:onClick="onClicked"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/back"/>
         <TextView
             android:id="@+id/mySheQuFuWu_xiaoQuListHeader"
@@ -24,8 +23,7 @@
             android:text="小区列表"
             android:layout_centerHorizontal="true"
             android:textSize="20sp"
-            android:textColor="@color/colorBlack"
-            android:textStyle="bold"/>
+            android:textColor="@color/colorBlack" />
         <LinearLayout
             android:layout_below="@id/mySheQuFuWu_xiaoQuListHeader"
             android:layout_width="400dp"
@@ -53,7 +51,6 @@
         android:textSize="18sp"/>
     <ListView
         android:padding="10dp"
-        android:alpha="0.4"
         android:id="@+id/mySheQuFuWu_communityList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -6,12 +6,11 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +21,16 @@ import com.example.smartcommunityapplication.classes.LoginAccountMessage;
 import com.example.smartcommunityapplication.classes.LoginState;
 import com.mob.MobSDK;
 
-import org.greenrobot.eventbus.EventBus;
+
+import com.tencent.connect.UserInfo;
+import com.tencent.connect.auth.QQToken;
+import com.tencent.connect.common.Constants;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
     private boolean flag=true;
     public EventHandler eh; //事件接收器
     private TimeCount mTimeCount;//计时器
+    private Tencent mTencent;
+    private String openidString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +73,60 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
         SMSSDK.registerEventHandler(eh);
+
+
+        //QQ第三方登录
+        mTencent = Tencent.createInstance("1111183393",getApplicationContext());//将123123123改为自己的AppID
+        ImageView QQlogin = (ImageView) findViewById(R.id.login_qqLogin);
+        QQlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //get_simple_userinfo
+                mTencent.login(LoginActivity.this,"all",new BaseUiListener());
+            }
+        });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Tencent.onActivityResultData(requestCode, resultCode, data, new BaseUiListener());
+        if(requestCode == Constants.REQUEST_API) {
+            if(resultCode == Constants.REQUEST_LOGIN) {
+                Tencent.handleResultData(data, new BaseUiListener());
+            }
+        }
+    }
+
+    private class BaseUiListener implements IUiListener {
+        public void onComplete(Object response) {
+            // TODO Auto-generated method stub
+            finish ();
+            Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onError(UiError uiError) {
+            Toast.makeText(getApplicationContext(), "onError", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel() {
+            Toast.makeText(getApplicationContext(), "onCancel", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onWarning(int i) {
+
+        }
+
+
+    }
+
+
+
+
+
 
     /**
      * 使用Handler来分发Message对象到主线程中，处理事件
@@ -250,5 +313,6 @@ public class LoginActivity extends AppCompatActivity {
             getYanZheng.setClickable (true);
             getYanZheng.setText ("获取验证码");
         }
+
     }
 }

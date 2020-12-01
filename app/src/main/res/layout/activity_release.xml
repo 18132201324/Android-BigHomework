@@ -135,6 +135,8 @@
         android:background="@drawable/shape_white"
         android:orientation="vertical"
         android:padding="10dp"
+        android:divider="@drawable/shape"
+        android:showDividers="middle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -146,18 +148,53 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="5dp">
-
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_money" />
+                android:id="@+id/release_time"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_alarm" />
 
             <TextView
+                android:layout_toRightOf="@+id/release_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:layout_centerVertical="true"
+                android:text="起止时间"
+                android:textColor="@color/text_main"
+                android:textSize="16sp"
+                android:layout_marginLeft="5dp" />
 
-                android:padding="5dp"
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:gravity="end|center_vertical"-->
+<!--                android:text="￥0.00"-->
+<!--                android:textColor="@color/colo_money"-->
+<!--                android:textSize="16sp" />-->
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+            <ImageView
+                android:id="@+id/release_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_money" />
+
+            <TextView
+                android:layout_toRightOf="@+id/release_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_centerVertical="true"
                 android:text="价格"
                 android:textColor="@color/text_main"
                 android:textSize="16sp"
@@ -166,60 +203,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_right_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:gravity="end|center_vertical"
-                android:padding="5dp"
                 android:text="￥0.00"
                 android:textColor="@color/colo_money"
-                android:textSize="16sp"
-                android:drawableRight="@drawable/ic_right_24dp" />
+                android:textSize="16sp" />
         </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/color_link" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/icon_same" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:padding="5dp"
-                android:text="更多信息"
-                android:textColor="@color/text_main"
-                android:textSize="16sp"
-                android:layout_marginLeft="5dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_right_24dp"
-                android:gravity="end|center_vertical"
-                android:padding="5dp"
-                android:text="补充信息将获得更多曝光"
-                android:textColor="@color/text_main1"
-                android:textSize="16sp"
-                android:drawableRight="@drawable/ic_right_24dp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/color_link" />
-
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
