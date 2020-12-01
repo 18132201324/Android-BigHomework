@@ -237,6 +237,14 @@
                 android:padding="10dp"
                 android:background="@drawable/myselfpagefragmentlayoutstyle"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我的功能"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
                 <RelativeLayout
                     android:id="@+id/mySelfpage_fuwu"
                     android:layout_width="match_parent"

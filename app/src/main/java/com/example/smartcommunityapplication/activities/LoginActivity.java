@@ -1,6 +1,9 @@
 package com.example.smartcommunityapplication.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -16,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.util.Util;
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.classes.LoginAccountMessage;
 import com.example.smartcommunityapplication.classes.LoginState;
@@ -32,11 +36,14 @@ import com.tencent.tauth.UiError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
+
+import static com.tencent.connect.common.Constants.PACKAGE_QQ;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText iphone;
@@ -53,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
     public EventHandler eh; //事件接收器
     private TimeCount mTimeCount;//计时器
     private Tencent mTencent;
-    private String openidString;
+    private IUiListener listener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,52 +88,138 @@ public class LoginActivity extends AppCompatActivity {
         QQlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //get_simple_userinfo
-                mTencent.login(LoginActivity.this,"all",new BaseUiListener());
+                //注意：此段非必要，如果手机未安装应用则会跳转网页进行授权
+                if (!hasApp(LoginActivity.this, PACKAGE_QQ)) {
+                    Toast.makeText(LoginActivity.this, "未安装QQ应用",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                //如果session无效，就开始做登录操作
+                if (!mTencent.isSessionValid()) {
+                    loginQQ();
+                }
             }
         });
     }
 
+    /**
+     * 回调必不可少,官方文档未说明
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Tencent.onActivityResultData(requestCode, resultCode, data, new BaseUiListener());
-        if(requestCode == Constants.REQUEST_API) {
-            if(resultCode == Constants.REQUEST_LOGIN) {
-                Tencent.handleResultData(data, new BaseUiListener());
+        //腾讯QQ回调
+        Tencent.onActivityResultData(requestCode, resultCode, data, listener);
+        if (requestCode == Constants.REQUEST_API) {
+            if (resultCode == Constants.REQUEST_LOGIN) {
+                Tencent.handleResultData(data, listener);
             }
         }
-    }
-
-    private class BaseUiListener implements IUiListener {
-        public void onComplete(Object response) {
-            // TODO Auto-generated method stub
-            finish ();
-            Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onError(UiError uiError) {
-            Toast.makeText(getApplicationContext(), "onError", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onCancel() {
-            Toast.makeText(getApplicationContext(), "onCancel", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onWarning(int i) {
-
-        }
-
-
+        finish ();
     }
 
 
+    private void loginQQ() {
+        listener = new IUiListener() {
+            @Override
+            public void onComplete(Object object) {
+
+                Log.e("TAG", "登录成功: " + object.toString() );
+
+                JSONObject jsonObject = (JSONObject) object;
+                try {
+                    //得到token、expires、openId等参数
+                    String token = jsonObject.getString(Constants.PARAM_ACCESS_TOKEN);
+                    String expires = jsonObject.getString(Constants.PARAM_EXPIRES_IN);
+                    String openId = jsonObject.getString(Constants.PARAM_OPEN_ID);
+
+                    mTencent.setAccessToken(token, expires);
+                    mTencent.setOpenId(openId);
+                    Log.e("TAG", "token: " + token);
+                    Log.e("TAG", "expires: " + expires);
+                    Log.e("TAG", "openId: " + openId);
+                    //获取个人信息
+                    getQQinfo();
+                } catch (Exception e) {
+                }
+            }
+
+            @Override
+            public void onError(UiError uiError) {
+                //登录失败
+                Log.e("TAG", "登录失败" + uiError.errorDetail);
+                Log.e("TAG", "登录失败" + uiError.errorMessage);
+                Log.e("TAG", "登录失败" + uiError.errorCode + "");
+
+            }
+
+            @Override
+            public void onCancel() {
+                //登录取消
+                Log.e("TAG", "登录取消");
+
+            }
+
+            @Override
+            public void onWarning(int i) {
+
+            }
+        };
+        //context上下文、第二个参数SCOPO 是一个String类型的字符串，表示一些权限
+        //应用需要获得权限，由“,”分隔。例如：SCOPE = “get_user_info,add_t”；所有权限用“all”
+        //第三个参数事件监听器
+        mTencent.login(this, "all", listener);
+        //注销登录
+        //mTencent.logout(this);
+    }
 
 
+    private void getQQinfo() {
+        QQToken qqToken = mTencent.getQQToken();
+        UserInfo info = new UserInfo(getApplicationContext(), qqToken);
 
+        //    info.getUserInfo(new BaseUIListener(this,"get_simple_userinfo"));
+        info.getUserInfo(new IUiListener() {
+            @Override
+            public void onComplete(Object obj) {
+                //用户信息获取到了
+                Log.e("----TAG----", "个人信息：" + obj.toString());
+            }
+
+            @Override
+            public void onError(UiError uiError) {
+                Log.v("UserInfo","onError");
+            }
+
+            @Override
+            public void onCancel() {
+                Log.v("UserInfo","onCancel");
+            }
+
+            @Override
+            public void onWarning(int i) {
+
+            }
+        });
+    }
+
+
+    /**
+     * true 安装了相应包名的app
+     */
+    private boolean hasApp(Context context, String packName) {
+        boolean is = false;
+        List<PackageInfo> packages = context.getPackageManager()
+                .getInstalledPackages(0);
+        for (int i = 0; i < packages.size(); i++) {
+            PackageInfo packageInfo = packages.get(i);
+            String packageName = packageInfo.packageName;
+            if (packageName.equals(packName)) {
+                is = true;
+            }
+        }
+        return is;
+    }
 
     /**
      * 使用Handler来分发Message对象到主线程中，处理事件
