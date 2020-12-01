@@ -172,7 +172,7 @@
                             <ImageView
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/shop"
+                                android:src="@drawable/shoporder"
                                 android:layout_gravity="center_horizontal"/>
                             <TextView
                                 android:layout_marginTop="5dp"
