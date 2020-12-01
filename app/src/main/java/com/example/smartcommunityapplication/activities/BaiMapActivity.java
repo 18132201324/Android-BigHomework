@@ -86,6 +86,11 @@ public class BaiMapActivity extends AppCompatActivity {
         //获取视图控件对象
         findViews();
         //设置min控件文本信息
+
+
+        mapView.showZoomControls(true);//设置是否显示缩放控件
+        mapView.getChildAt(2).setPadding(0,0,40,1350);//这是控制缩放控件的位置
+
         minName.setText(shop.getShopName());
         minCategory.setText(shop.getShopCategory());
         secondButtonBack.setOnClickListener(new View.OnClickListener() {
@@ -269,10 +274,10 @@ public class BaiMapActivity extends AppCompatActivity {
                     MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(point);
                     //对地图界面进行移动
                     baiduMap.animateMapStatus(update);
-//                    //在当前位置添加标注覆盖物
-//                    BitmapDescriptor descriptor = BitmapDescriptorFactory.fromResource(R.drawable.fangzi);
-//                    MarkerOptions options = new MarkerOptions().position(point).icon(descriptor);
-//                    baiduMap.addOverlay(options);
+                    //在当前位置添加标注覆盖物
+                    BitmapDescriptor descriptor = BitmapDescriptorFactory.fromResource(R.drawable.fangzi);
+                    MarkerOptions options = new MarkerOptions().position(point).icon(descriptor);
+                    baiduMap.addOverlay(options);
                     baiduMap.setMyLocationEnabled(true);
                     //配置定位数据
                     MyLocationData data = new MyLocationData.Builder().latitude(latitude).longitude(longitude).build();
