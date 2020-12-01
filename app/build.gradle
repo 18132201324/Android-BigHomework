@@ -27,7 +27,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.smartcommunityapplication"
-        minSdkVersion 24
+        minSdkVersion 22
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -79,8 +79,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 
-
     //sjy
+    //noinspection GradleDeprecatedConfiguration
+    compile 'com.contrarywind:Android-PickerView:4.1.9'
 
     //yzc
     implementation 'com.google.android.material:material:1.0.0'

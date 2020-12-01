@@ -54,7 +54,7 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="19Ea5KChStkKeSOdth7MzMIvjx0mpNGO" />
+            android:value="CnBVxS2d92fIj6VBk1PqcvU73elQSL6x" />
 
         <activity
             android:name=".activities.BaiMapActivity" /> <!-- 赵志强的密钥： f2weGbyAYoQOq4r5Zp9fL2kSGHvXXtMa -->

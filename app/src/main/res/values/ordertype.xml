@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ordertype">
+        <item>陪同代办</item>
+        <item>家政卫生</item>
+        <item>装饰维修</item>
+        <item>社会保障</item>
+        <item>其他</item>
+    </string-array>
+</resources>
