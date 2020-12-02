@@ -22,6 +22,8 @@
             android:layout_height="wrap_content"
             android:text="小区列表"
             android:layout_centerHorizontal="true"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
             android:textSize="20sp"
             android:textColor="@color/colorBlack" />
         <LinearLayout
