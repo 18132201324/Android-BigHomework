@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,16 +22,18 @@ import com.example.smartcommunityapplication.activities.ChangeMyselfpageActivity
 import com.example.smartcommunityapplication.activities.LoginActivity;
 import com.example.smartcommunityapplication.activities.MySheQuFuWuActivity;
 import com.example.smartcommunityapplication.activities.PhotoActivity;
-import com.example.smartcommunityapplication.activities.ReleaseActivity;
 import com.example.smartcommunityapplication.classes.LoginAccountMessage;
 import com.example.smartcommunityapplication.classes.LoginState;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 public class MyselfPageFragment extends Fragment {
     private TextView textView;
     private TextView login;
     private ImageView touXinag;
-    private ImageView mySheQuFuWu;
-    private ImageView Issue;
+    private RelativeLayout mySheQuFuWu;
+    private RelativeLayout Issue;
     private final int LOGIN_REQUEST = 100;
     @Nullable
     @Override
@@ -39,9 +42,10 @@ public class MyselfPageFragment extends Fragment {
         View view = inflater.inflate(R.layout.myselfpagefragment_layout, //内容页面的布局文件
                 container,//根视图对象
                 false);//false表示需要手动调用addView方法将view添加到contain方法
-        Issue = view.findViewById(R.id.release);
+        Issue = view.findViewById(R.id.mySelfpage_myRelease);
         touXinag = view.findViewById(R.id.touxiang);
-        mySheQuFuWu = view.findViewById (R.id.myselfpage_fuwu);
+        mySheQuFuWu = view.findViewById (R.id.mySelfpage_fuwu);
+
 
         //登录跳转
         Log.e ("123",LoginState.State+"");
@@ -64,7 +68,7 @@ public class MyselfPageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent ();
-                intent.setClass (getActivity (),ChangeMyselfpageActivity.class);
+                intent.setClass (getActivity (), ChangeMyselfpageActivity.class);
                 startActivity (intent);
             }
         });
@@ -115,6 +119,27 @@ public class MyselfPageFragment extends Fragment {
             login.setText(num);
         }
 
+    }
+
+    @Subscribe
+    public void dorRefresh(String event){
+        Log.e ("dorRefresh",event);
+        onResume ();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(!EventBus.getDefault().isRegistered(this)){//加上判断
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (EventBus.getDefault().isRegistered(this))//加上判断
+            EventBus.getDefault().unregister(this);
+        super.onDestroy();
     }
 
     @Override

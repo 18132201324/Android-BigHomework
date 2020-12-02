@@ -6,7 +6,7 @@
     <color name="colorBlack">#000000</color>
     <color name="colorYellow">#FFD700</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorGray">#DDDDDD</color>
+    <color name="colorGray">#EFEFEF</color>
     <color name="text_main">#49496a</color>
     <color name="text_main1">#838895</color>
     <color name="text_black">#4E5157</color>
@@ -18,4 +18,14 @@
     <color name="colo_yellow">#FEC62E</color>
     <color name="colo_red">#E53935</color>
     <color name="colo_blue_green">#26B3A4</color>
+
+
+    <color name="red">#B90008</color>
+    <color name="line_color">#E6E6E6</color>
+
+    <color name="white">#fff</color>
+    <color name="trans_white">#00FFFFFF</color>
+    <color name="black">#000</color>
+    <color name="black1">#33000000</color>
+    <color name="mask">#99000000</color>
 </resources>

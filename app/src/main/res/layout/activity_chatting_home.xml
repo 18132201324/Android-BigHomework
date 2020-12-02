@@ -60,10 +60,10 @@
         android:layout_alignParentBottom="true"
         android:paddingHorizontal="10dp">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/forth_imgBtn_chattingHomeYuyin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:background="#EEEEEE"
             android:src="@drawable/yuyin"
             android:layout_centerVertical="true"
@@ -71,7 +71,7 @@
 
         <EditText
             android:id="@+id/forth_et_chattingHomeContent"
-            android:layout_width="280dp"
+            android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_toRightOf="@+id/forth_imgBtn_chattingHomeYuyin"
             android:background="@color/colorWhite"

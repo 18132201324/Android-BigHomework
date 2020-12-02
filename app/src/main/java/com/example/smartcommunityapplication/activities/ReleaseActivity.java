@@ -26,4 +26,5 @@ public class ReleaseActivity extends AppCompatActivity {
             }
         });
     }
+
 }

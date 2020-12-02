@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colo_bac"
-    tools:context=".activities.ReleaseActivity">
+    tools:context=".activities.ReleaseActivity"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -19,6 +20,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            android:id="@+id/release_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -32,6 +34,8 @@
             android:layout_centerInParent="true"
             android:padding="5dp"
             android:text="发布"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
             android:textColor="@color/text_main"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -63,15 +67,29 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         app:layout_constraintVertical_bias="0.0">
 
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:hint="标题"
-            android:padding="10dp"
-            android:textColor="@color/text_main"
-            android:textColorHint="@color/text_main1"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="标题"
+                android:padding="10dp"
+                android:textColor="@color/text_main"
+                android:textColorHint="@color/text_main1"
+                android:textSize="16sp"
+                android:layout_weight="2"/>
+
+            <Spinner
+                android:textColor="@color/text_main1"
+                android:id="@+id/spinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/ordertype" />
+        </LinearLayout>
+
 
         <EditText
             android:layout_width="match_parent"
@@ -120,6 +138,8 @@
             android:text="添加图片" />
 
 
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,8 +147,49 @@
             android:textSize="16sp"
             android:drawableLeft="@drawable/fahuo"
             android:text="发货地: 天津 津南区" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/time_icon"
+                android:layout_gravity="center"
+                android:layout_marginLeft="3dp"/>
+            <LinearLayout
+                android:id="@+id/ll_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:onClick="onClick">
+                <TextView
+                    android:padding="8dp"
+                    android:textSize="18sp"
+                    android:id="@+id/time_picker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="选择截止日期"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:onClick="onClick">
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:textSize="18sp"
+                    android:text="选择截止时间"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-z's
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -181,47 +242,7 @@ z's
             android:layout_width="match_parent"
             android:layout_height="2px"
             android:background="@color/color_link" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/icon_same" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:padding="5dp"
-                android:text="更多信息"
-                android:textColor="@color/text_main"
-                android:textSize="16sp"
-                android:layout_marginLeft="5dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_right_24dp"
-                android:gravity="end|center_vertical"
-                android:padding="5dp"
-                android:text="补充信息将获得更多曝光"
-                android:textColor="@color/text_main1"
-                android:textSize="16sp"
-                android:drawableRight="@drawable/ic_right_24dp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/color_link" />
-
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

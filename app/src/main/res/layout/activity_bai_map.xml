@@ -15,12 +15,19 @@ android:layout_height="match_parent">
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>
-
     <com.baidu.mapapi.map.MapView
+        android:layout_below="@+id/second_iv0"
         android:id="@+id/map_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <ImageView
+        android:id="@+id/secondback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:src="@drawable/back1"/>
         <LinearLayout
+            android:id="@+id/displaydetails"
             android:background="@color/colorWhite"
             android:alpha="0.9"
             android:layout_alignParentBottom="true"
@@ -33,14 +40,16 @@ android:layout_height="match_parent">
                 android:layout_height="wrap_content">
                 <Button
                     android:background="@color/text_main1"
-                    android:id="@+id/displaydetails"
                     android:layout_width="160dp"
-                    android:layout_height="4dp"></Button>
+                    android:layout_height="5dp"></Button>
             </LinearLayout>
             <TextView
+                android:id="@+id/min_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
                 android:text="北国商城"
                 android:textColor="@color/colorBlack"
                 android:textSize="24sp"></TextView>
@@ -57,17 +66,31 @@ android:layout_height="match_parent">
                     android:text="市场类型 ."
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"></TextView>
+                <TextView
+                    android:id="@+id/min_shopCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"></TextView>
 
                 <TextView
+                    android:id="@+id/min_shopdistance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="3.3km"
+                    android:text="3.3"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="km"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"></TextView>
             </LinearLayout>
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/min_buttonroute"
                 android:layout_width="260dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
