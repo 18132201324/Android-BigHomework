@@ -207,7 +207,15 @@ public class BaiMapActivity extends AppCompatActivity {
                         startActivity(intent0);
                     }
                 });
-                View sina = inflate.findViewById(R.id.share);
+                Button share = inflate.findViewById(R.id.share);
+                share.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent0 = new Intent();
+                        intent0.setClass(BaiMapActivity.this,MyElemeActivity.class);
+                        startActivity(intent0);
+                    }
+                });
                 Button btn_Route=inflate.findViewById(R.id.button1);
                 btn_Route.setOnClickListener(new View.OnClickListener() {
                     @Override

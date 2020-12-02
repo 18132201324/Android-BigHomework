@@ -158,7 +158,7 @@
                     android:background="@drawable/btn_bottom_call"
                     android:drawableTop="@drawable/share"
                     android:padding="9dp"
-                    android:text="分享" />
+                    android:text="进入商城" />
             </LinearLayout>
 
             <LinearLayout

@@ -61,6 +61,8 @@
         <activity android:name=".activities.LocationTagsTableActivity" />
         <activity android:name=".activities.RunOrderdetailsActivity" />
         <activity android:name=".activities.OneInformationActivity" />
+        <activity android:name=".activities.MyElemeActivity">
+        </activity>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
