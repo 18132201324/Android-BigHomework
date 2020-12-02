@@ -7,6 +7,7 @@ import androidx.core.widget.NestedScrollView;
 
 import android.Manifest;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
@@ -186,8 +187,26 @@ public class BaiMapActivity extends AppCompatActivity {
                 detailsAddress.setText(shop.getShopAddress());
                 detailsTel.setText(shop.getShopTel());
 
-                View qq = inflate.findViewById(R.id.call);
-                View wx = inflate.findViewById(R.id.message);
+                Button call = inflate.findViewById(R.id.call);
+                call.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent=new Intent();
+                        intent.setAction(Intent.ACTION_DIAL);   //android.intent.action.DIAL
+                        intent.setData(Uri.parse("tel:"+shop.getShopTel()));
+                        startActivity(intent);
+                    }
+                });
+                Button message = inflate.findViewById(R.id.message);
+                message.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent0 = new Intent();
+                        intent0.setAction(Intent.ACTION_SENDTO);
+                        intent0.setData(Uri.parse("smsto:"+shop.getShopTel()));
+                        startActivity(intent0);
+                    }
+                });
                 View sina = inflate.findViewById(R.id.share);
                 Button btn_Route=inflate.findViewById(R.id.button1);
                 btn_Route.setOnClickListener(new View.OnClickListener() {
