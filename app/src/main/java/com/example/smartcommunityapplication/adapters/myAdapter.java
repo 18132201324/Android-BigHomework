@@ -1,6 +1,7 @@
 package com.example.smartcommunityapplication.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.entities.RecyclerinfoBean;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +52,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,bean.getTitle(), Toast.LENGTH_LONG).show();
+                EventBus.getDefault().post(bean.getTitle());
             }
         });
     }

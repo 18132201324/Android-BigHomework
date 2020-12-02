@@ -18,8 +18,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.activities.LocationTagsTableActivity;
+import com.example.smartcommunityapplication.activities.LuckyActivity;
 import com.example.smartcommunityapplication.activities.RunOrderListActivity;
+import com.example.smartcommunityapplication.activities.ServiceActivity;
 import com.example.smartcommunityapplication.activities.TagTableActivity;
+import com.example.smartcommunityapplication.activities.TimeActivity;
 import com.example.smartcommunityapplication.adapters.mBannerAdapter;
 import com.example.smartcommunityapplication.adapters.mTextBannerAdapter;
 import com.example.smartcommunityapplication.adapters.myAdapter;
@@ -29,6 +32,9 @@ import com.example.smartcommunityapplication.entities.RecyclerinfoBean;
 import com.example.smartcommunityapplication.entities.RunorderinfoBean;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,9 +120,39 @@ public class HomePageFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-            return view;
+            EventBus.getDefault().register(this);
+
+        return view;
+
+    }
 
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void handleEvent(String event){
+        String GongNeng = event;
+        switch (GongNeng){
+            case "限时兑换":
+                Intent intent2 = new Intent();
+                intent2.setClass(getActivity(), TimeActivity.class);
+                startActivity(intent2);
+                break;
+            case "积分抽奖":
+                Intent intent1 = new Intent();
+                intent1.setClass(getActivity(), LuckyActivity.class);
+                startActivity(intent1);
+                break;
+            case "设备维修":
+                Intent intent = new Intent();
+                intent.setClass(getActivity(),ServiceActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
     private void initDate() {
         Imgbannerdata.add(new InfoBean(R.drawable.a));
@@ -128,10 +164,10 @@ public class HomePageFragment extends Fragment {
         Textbannerdata.add(new InfoBean("社区管理"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.ditu,"社区服务"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.fuwu,"上门维修"));
-        recyclerdata.add(new RecyclerinfoBean(R.drawable.shebei,"安装设备"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.shebei,"积分抽奖"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.weixiu,"设备维修"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.anzhuang,"设备回收"));
-        recyclerdata.add(new RecyclerinfoBean(R.drawable.xiaoxi,"限时秒杀"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.xiaoxi,"限时兑换"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.kehu,"跑腿代购"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.tongji,"商家服务"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.qiyong,"同区信息"));
