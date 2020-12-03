@@ -120,7 +120,7 @@ public class HomePageFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-            EventBus.getDefault().register(this);
+            //EventBus.getDefault().register(this);
 
         return view;
 
@@ -128,9 +128,18 @@ public class HomePageFragment extends Fragment {
 
 
     @Override
+    public void onStart() {
+        super.onStart();
+        if(!EventBus.getDefault().isRegistered(this)){//加上判断
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
     public void onDestroy() {
+        if (EventBus.getDefault().isRegistered(this))//加上判断
+            EventBus.getDefault().unregister(this);
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 
     @Subscribe

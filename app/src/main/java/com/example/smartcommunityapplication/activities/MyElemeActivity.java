@@ -163,7 +163,6 @@ public class MyElemeActivity extends AppCompatActivity {
             public void onPageScrolled(int i, float v, int i1) {
 
             }
-
             @Override
             public void onPageSelected(int i) {
                 int visi = i == 0 ? View.VISIBLE : View.GONE;
@@ -172,7 +171,6 @@ public class MyElemeActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int i) {
-
             }
         });
     }
