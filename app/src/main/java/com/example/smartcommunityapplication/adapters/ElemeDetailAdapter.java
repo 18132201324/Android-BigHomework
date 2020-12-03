@@ -15,12 +15,6 @@ import static com.example.smartcommunityapplication.entities.ElmeDetailBean.PUBL
 import static com.example.smartcommunityapplication.entities.ElmeDetailBean.TITLE;
 import static com.example.smartcommunityapplication.entities.ElmeDetailBean.VIP;
 
-
-/**
- * @author: pengguanming
- * @data: 2020-01-19
- * @function:
- */
 public class ElemeDetailAdapter extends BaseMultiItemQuickAdapter<ElmeDetailBean, BaseViewHolder> {
 
     public ElemeDetailAdapter() {
@@ -38,9 +32,9 @@ public class ElemeDetailAdapter extends BaseMultiItemQuickAdapter<ElmeDetailBean
         list.add(new ElmeDetailBean("特价","特价商品15.5元起"));
         list.add(new ElmeDetailBean("会员","超级会员领7元无门槛红包"));
         list.add(new ElmeDetailBean("折扣","折扣商品55着起"));
-        list.add(new ElmeDetailBean("限时","限时秒杀甜品饮料商品"));
+        list.add(new ElmeDetailBean("限时","你就是个猪"));
         list.add(new ElmeDetailBean(TITLE,"公告"));
-        list.add(new ElmeDetailBean("春节不打烊，金喜送到家。新品金凤来福鸡排堡、金尊肉酱厚牛堡上线，配上扭扭薯条，等您品尝！"));
+        list.add(new ElmeDetailBean("春节不打烊，金喜送到家北国商城欢迎您来"));
         list.add(new ElmeDetailBean(TITLE,"店铺会员卡"));
         list.add(new ElmeDetailBean(VIP));
         return list;

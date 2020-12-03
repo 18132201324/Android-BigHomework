@@ -40,7 +40,6 @@ public class MyElemeActivity extends AppCompatActivity {
     private View mVMask;
     private ImageView mIvClose;
     private ImageView mIvExpand;
-
     private ElemeDetailAdapter mAdapter;
     private final String[] mTitles = {
             "点餐", "评价", "商家"

@@ -77,6 +77,7 @@ public class BaiMapActivity extends AppCompatActivity {
     private BottomSheetDialog bottomSheetDialog;
     private double distance;
     private Second_shop shop;
+    private int position;
     private LatLng latLng2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,7 @@ public class BaiMapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bai_map);
         Intent intent=getIntent();
         shop= (Second_shop)intent.getSerializableExtra("shop");
+        position= (int) intent.getSerializableExtra("position");
         //获取视图控件对象
         findViews();
         //设置min控件文本信息
@@ -181,11 +183,29 @@ public class BaiMapActivity extends AppCompatActivity {
                 TextView detailsCategory = inflate.findViewById(R.id.details_category);
                 TextView detailsAddress = inflate.findViewById(R.id.details_address);
                 TextView detailsTel = inflate.findViewById(R.id.details_tel);
+                ImageView shopsCenery1 = inflate.findViewById(R.id.shopscenery1);
+                ImageView shopsCenery2 = inflate.findViewById(R.id.shopscenery2);
                 detailsName.setText(shop.getShopName());
                 detailsDistance.setText(distance+"");
                 detailsCategory.setText(shop.getShopCategory());
                 detailsAddress.setText(shop.getShopAddress());
                 detailsTel.setText(shop.getShopTel());
+                if(position==0) {
+                    shopsCenery1.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.beiguo2));
+                    shopsCenery2.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.beiguo3));
+                }else if (position==1){
+                    shopsCenery1.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.wanda2));
+                    shopsCenery2.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.wanda3));
+                }else if(position==2){
+                    shopsCenery1.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.huaite2));
+                    shopsCenery2.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.huaite3));
+                }
+
+
+
+
+
+
 
                 Button call = inflate.findViewById(R.id.call);
                 call.setOnClickListener(new View.OnClickListener() {

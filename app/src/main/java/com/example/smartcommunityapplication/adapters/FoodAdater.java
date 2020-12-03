@@ -9,11 +9,7 @@ import com.example.smartcommunityapplication.R;
 
 import java.util.List;
 
-/**
- * @author: pengguanming
- * @data: 2019-11-24
- * @function:
- */
+
 public class FoodAdater extends BaseQuickAdapter<Integer, BaseViewHolder> {
 
     public FoodAdater(@Nullable List<Integer> data) {

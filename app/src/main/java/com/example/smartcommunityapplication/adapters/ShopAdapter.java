@@ -64,8 +64,19 @@ public class ShopAdapter extends BaseAdapter {
             viewHolder = (ShopAdapter.ViewHolder) convertView.getTag();
         }
         viewHolder.shopName.setText(shops.get(position).getShopName());
-        //viewHolder.shopScore.setText();
-        //viewHolder.shopsDistance.setText(shops.get(position).ge);
+        if(position==0) {
+            viewHolder.shopPhoto.setImageDrawable(context.getDrawable(R.drawable.beiguo1));
+            viewHolder.shopsCenery1.setImageDrawable(context.getDrawable(R.drawable.beiguo2));
+            viewHolder.shopsCenery2.setImageDrawable(context.getDrawable(R.drawable.beiguo3));
+        }else if (position==1){
+            viewHolder.shopPhoto.setImageDrawable(context.getDrawable(R.drawable.wanda1));
+            viewHolder.shopsCenery1.setImageDrawable(context.getDrawable(R.drawable.wanda2));
+            viewHolder.shopsCenery2.setImageDrawable(context.getDrawable(R.drawable.wanda3));
+        }else if(position==2){
+        viewHolder.shopPhoto.setImageDrawable(context.getDrawable(R.drawable.huaite1));
+        viewHolder.shopsCenery1.setImageDrawable(context.getDrawable(R.drawable.huaite2));
+        viewHolder.shopsCenery2.setImageDrawable(context.getDrawable(R.drawable.huaite3));
+    }
         return convertView;
     }
 
@@ -76,6 +87,5 @@ public class ShopAdapter extends BaseAdapter {
         TextView shopScore;
         ImageView shopsCenery1;
         ImageView shopsCenery2;
-        TextView shopsDistance;
     }
 }

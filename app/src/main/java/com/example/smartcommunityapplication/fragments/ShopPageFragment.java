@@ -50,6 +50,7 @@ public class ShopPageFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ShopPageFragment.this.getActivity(), BaiMapActivity.class);
                 intent.putExtra("shop", shops.get(i));
+                intent.putExtra("position", i);
                 startActivity(intent);
             }
         });
@@ -57,10 +58,14 @@ public class ShopPageFragment extends Fragment {
     }
     private void initData() {
         shops= new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Second_shop second_shop = new Second_shop(i + "", "2", "北国商城"+i, "114.516653", "38.048554", "综合广场", "13", "66", "312", "66");
-            shops.add(second_shop);
-        }
+
+        Second_shop second_shop = new Second_shop(  "1", "beiguo1.jpg", "北国商城", "114.516653", "38.048554", "综合广场", "15203023480", "中国河北省石家庄市桥西区中山东路188号", "beiguo2.jpg", "beiguo3.jpg");
+        Second_shop second_shop1 = new Second_shop(  "2", "wanda1.jpg", "万达广场", "114.545285", "38.024235", "综合商业圈", "15303023488", "中国河北省石家庄市裕华区建华南大街136号万达广场", "wanda2.jpg", "wanda3.jpg");
+        Second_shop second_shop2 = new Second_shop(  "2", "huaite1.jpg", "怀特广场", "114.525996", "38.022734", "综合商业圈", "15303023488", "中国河北省石家庄市裕华区槐安东路105号", "huaite2.jpg", "huaite3.jpg");
+        shops.add(second_shop);
+        shops.add(second_shop1);
+        shops.add(second_shop2);
+
 
     }
 
