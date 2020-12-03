@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -36,10 +37,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".activities.WaiMaiOrderActivity" />
+        <activity android:name=".activities.PaoTuiOrderActivity" />
+        <activity android:name=".activities.TuanGouOrderActivity" />
+        <activity android:name=".activities.ShangchengOrderActivity" />
+        <activity android:name=".activities.MerchantLoginActivity" />
+        <activity android:name=".activities.ChangeMyselfpageActivity" /> <!-- 通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data -->
         <activity android:name=".activities.TimeActivity"></activity>
         <activity android:name=".activities.LuckyActivity" />
-        <activity android:name=".activities.ServiceActivity" />
-        <activity android:name=".activities.ChangeMyselfpageActivity" /> <!-- 通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data -->
+        <activity android:name=".activities.ServiceActivity" /> <!-- 通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data -->
         <activity android:name=".activities.MyElemeActivity"></activity> <!-- 通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data -->
         <meta-data
             android:name="Mob-AppKey"
@@ -57,9 +63,9 @@
         <activity android:name=".activities.RunOrderListActivity" />
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="jaVUpU1kKA8Vk5GqrNhqDnzml9gcSaPL" />
+            android:value="f2weGbyAYoQOq4r5Zp9fL2kSGHvXXtMa" />
         <activity android:name=".activities.BaiMapActivity">
-
+            <!-- 赵志强的密钥： f2weGbyAYoQOq4r5Zp9fL2kSGHvXXtMa -->
         </activity>
         <activity android:name=".activities.LocationTagsTableActivity" />
         <activity android:name=".activities.RunOrderdetailsActivity" />
@@ -76,6 +82,29 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1111183393" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
     </application>
 
 </manifest>

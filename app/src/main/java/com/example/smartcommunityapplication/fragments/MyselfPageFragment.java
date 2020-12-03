@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,8 +21,13 @@ import androidx.fragment.app.Fragment;
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.activities.ChangeMyselfpageActivity;
 import com.example.smartcommunityapplication.activities.LoginActivity;
+import com.example.smartcommunityapplication.activities.MerchantLoginActivity;
 import com.example.smartcommunityapplication.activities.MySheQuFuWuActivity;
+import com.example.smartcommunityapplication.activities.PaoTuiOrderActivity;
 import com.example.smartcommunityapplication.activities.PhotoActivity;
+import com.example.smartcommunityapplication.activities.ShangchengOrderActivity;
+import com.example.smartcommunityapplication.activities.TuanGouOrderActivity;
+import com.example.smartcommunityapplication.activities.WaiMaiOrderActivity;
 import com.example.smartcommunityapplication.classes.LoginAccountMessage;
 import com.example.smartcommunityapplication.classes.LoginState;
 
@@ -34,6 +40,11 @@ public class MyselfPageFragment extends Fragment {
     private ImageView touXinag;
     private RelativeLayout mySheQuFuWu;
     private RelativeLayout Issue;
+    private RelativeLayout merchantCenter;
+    private LinearLayout commodity;
+    private LinearLayout tuangou;
+    private LinearLayout paotui;
+    private LinearLayout waimai;
     private final int LOGIN_REQUEST = 100;
     @Nullable
     @Override
@@ -45,7 +56,11 @@ public class MyselfPageFragment extends Fragment {
         Issue = view.findViewById(R.id.mySelfpage_myRelease);
         touXinag = view.findViewById(R.id.touxiang);
         mySheQuFuWu = view.findViewById (R.id.mySelfpage_fuwu);
-
+        merchantCenter = view.findViewById (R.id.merchantCenter);
+        commodity = view.findViewById (R.id.mySelfpage_commodity);
+        tuangou = view.findViewById (R.id.mySelfpage_tuangou);
+        paotui = view.findViewById (R.id.mySelfpage_paoTui);
+        waimai = view.findViewById (R.id.mySelfpage_waimai);
 
         //登录跳转
         Log.e ("123",LoginState.State+"");
@@ -90,7 +105,46 @@ public class MyselfPageFragment extends Fragment {
                 startActivity (intent);
             }
         });
-
+        //商家中心
+        merchantCenter.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getActivity (), MerchantLoginActivity.class);
+                startActivity (intent);
+            }
+        });
+        //商品订单
+        commodity.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getActivity (), ShangchengOrderActivity.class);
+                startActivity (intent);
+            }
+        });
+        //团购订单
+        tuangou.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getActivity (), TuanGouOrderActivity.class);
+                startActivity (intent);
+            }
+        });
+        //跑腿订单
+        paotui.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getActivity (), PaoTuiOrderActivity.class);
+                startActivity (intent);
+            }
+        });
+        //外卖订单
+        waimai.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getActivity (), WaiMaiOrderActivity.class);
+                startActivity (intent);
+            }
+        });
         //文字平移
         textView = view.findViewById(R.id.wenzi);
         String html = "据中国日报，当地时间6月23日，加拿大不列颠哥伦比亚省高等法院和<a href = 'https://baike.baidu.com/item/%E5%AD%9F%E6%99%9A%E8%88%9F/131792?fr=aladdin'>孟晚舟</a>引渡案的控、辩双方达成共识，对引渡案的全部日程进行确认，同意于8月17日恢复引渡听证会，对加拿大和美国当局提供的信息的证据可采纳性进行讨论；而关于美加是否滥用司法程序的辩论将于2021年2月16日开始。";

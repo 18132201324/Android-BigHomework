@@ -121,8 +121,6 @@ public class LoginActivity extends AppCompatActivity {
         Log.e ("——————————————————————","onActivityResult");
         finish ();
     }
-
-
     private void loginQQ() {
         listener = new IUiListener() {
             @Override
@@ -208,7 +206,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 
     /**
      * true 安装了相应包名的app

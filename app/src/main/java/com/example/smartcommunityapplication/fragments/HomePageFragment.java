@@ -120,7 +120,7 @@ public class HomePageFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-            //EventBus.getDefault().register(this);
+
 
         return view;
 

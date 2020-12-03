@@ -59,57 +59,65 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
 
-                    <TextView
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="- -"
-                        android:textSize="30sp" />
-
-                    <TextView
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="- -"
+                            android:textSize="30sp" />
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="余额"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="103dp"
-                        android:text="- -"
-                        android:textSize="30sp" />
-
-                    <TextView
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="- -"
+                            android:textSize="30sp" />
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="积分"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="110dp"
-                        android:text="- -"
-                        android:textSize="30sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="余额"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="96dp"
-                        android:text="积分"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="98dp"
-                        android:text="信誉度"
-                        android:textSize="15sp" />
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="- -"
+                            android:textSize="30sp" />
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="信誉度"
+                            android:textSize="15sp" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
@@ -145,6 +153,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/mySelfpage_commodity"
                             android:layout_columnWeight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -165,6 +174,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/mySelfpage_tuangou"
                             android:layout_columnWeight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -185,6 +195,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/mySelfpage_paoTui"
                             android:layout_columnWeight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -205,6 +216,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/mySelfpage_waimai"
                             android:layout_columnWeight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -297,6 +309,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/merchantCenter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
