@@ -57,7 +57,7 @@
         <activity android:name=".activities.RunOrderListActivity" />
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="xQltRtXkzuGGF1FRlKwyYx65kMyjbf3f" />
+            android:value="jaVUpU1kKA8Vk5GqrNhqDnzml9gcSaPL" />
         <activity android:name=".activities.BaiMapActivity">
 
         </activity>
