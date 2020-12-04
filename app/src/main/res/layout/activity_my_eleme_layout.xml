@@ -34,11 +34,12 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
+                    android:scaleType="fitXY"
                     android:id="@+id/iv_logo"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/logo"
+                    android:src="@drawable/mdl1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -72,7 +73,7 @@
                     android:gravity="center"
                     android:maxEms="10"
                     android:singleLine="true"
-                    android:text="麦当劳麦乐送（广州花城大道第四分店）"
+                    android:text="麦当劳(石家庄新火车站餐厅)"
                     android:textColor="#333"
                     android:textSize="20sp"
                     android:textStyle="bold"

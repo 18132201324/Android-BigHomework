@@ -2,12 +2,18 @@ package com.example.smartcommunityapplication.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +26,8 @@ import com.example.smartcommunityapplication.activities.MainActivity;
 import com.example.smartcommunityapplication.activities.OneInformationActivity;
 import com.example.smartcommunityapplication.adapters.Third_informationAdapter;
 import com.example.smartcommunityapplication.entities.Third_information;
+import com.zaaach.toprightmenu.MenuItem;
+import com.zaaach.toprightmenu.TopRightMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +37,9 @@ public class InformationPageFragment extends Fragment {
     private UnScrollListView third_informationListView;
     private MyScrollView third_informationScrollView;
     private Third_informationAdapter third_informationAdapter;
+    private ImageView iv_moreIcon;
+    private TextView Text1;
+    private LinearLayout third_ll_information1;
 
     @Nullable
     @Override
@@ -43,6 +54,26 @@ public class InformationPageFragment extends Fragment {
 
         third_informationListView=view.findViewById(R.id.third_lv_information);
         third_informationScrollView=view.findViewById(R.id.third_sv_information);
+        iv_moreIcon=view.findViewById(R.id.third_iv_moreIcon);
+        Text1=view.findViewById(R.id.third_tv_text1);
+        third_ll_information1=view.findViewById(R.id.third_ll_information1);
+        third_ll_information1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),
+                        OneInformationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        iv_moreIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toprightmenu();
+            }
+        });
+
+
 
         third_informationAdapter=new Third_informationAdapter(view.getContext(),thirdinformations,R.layout.informationpage_item);
         third_informationListView.setAdapter(third_informationAdapter);
@@ -69,6 +100,29 @@ public class InformationPageFragment extends Fragment {
             thirdinformations.add(information);
         }
 
+    }
+    private void toprightmenu(){
+        TopRightMenu topRightMenu = new TopRightMenu(getActivity());
+
+        topRightMenu
+                .setHeight(630)     //默认高度480
+                .setWidth(500)      //默认宽度wrap_content
+                .showIcon(true)     //显示菜单图标，默认为true
+                .dimBackground(true)        //背景变暗，默认为true
+                .needAnimationStyle(true)   //显示动画，默认为true
+                .setAnimationStyle(R.style.TRM_ANIM_STYLE)
+                .addMenuItem(new MenuItem(R.drawable.dianzan, "我的点赞"))
+                .addMenuItem(new MenuItem(R.drawable.pinglun, "我的评论"))
+                .addMenuItem(new MenuItem(R.drawable.zhuanfa, "我的转发"))
+                .addMenuItem(new MenuItem(R.drawable.gerenzhongxin2, "个人中心"))
+//                        .addMenuItem(new MenuItem(R.mipmap.coach_icon, "面对面建群"))
+                .setOnMenuItemClickListener(new TopRightMenu.OnMenuItemClickListener() {
+                    @Override
+                    public void onMenuItemClick(int position) {
+                        Toast.makeText(getActivity(), "点击菜单:" + position, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .showAsDropDown(iv_moreIcon, -225, 0);    //带偏移量
     }
 
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.UnScrollListView;
 import com.example.smartcommunityapplication.activities.BaiMapActivity;
+import com.example.smartcommunityapplication.activities.TagTableActivity;
 import com.example.smartcommunityapplication.adapters.CommentAdapter;
 import com.example.smartcommunityapplication.adapters.ShopAdapter;
 import com.example.smartcommunityapplication.entities.Comment;
@@ -29,6 +31,7 @@ import java.util.List;
 public class ShopPageFragment extends Fragment {
     private ListView main_listview;
     private List<Second_shop> shops ;
+    private EditText et_search;
 
     @Nullable
     @Override
@@ -54,12 +57,21 @@ public class ShopPageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        et_search = view.findViewById(R.id.et_search);
+        et_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), TagTableActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
     private void initData() {
         shops= new ArrayList<>();
 
-        Second_shop second_shop = new Second_shop(  "1", "beiguo1.jpg", "北国商城", "114.516653", "38.048554", "综合广场", "15203023480", "中国河北省石家庄市桥西区中山东路188号", "beiguo2.jpg", "beiguo3.jpg");
+        Second_shop second_shop = new Second_shop(  "1", "mdl1.jpg", "麦当劳(石家庄新火车站餐厅)", "114.488668", "38.017435", "餐饮商城", "(0311)69005056", "中华大街石家庄新火车站站内西北二层", "mdl2.jpg", "mdl3.jpg");
         Second_shop second_shop1 = new Second_shop(  "2", "wanda1.jpg", "万达广场", "114.545285", "38.024235", "综合商业圈", "15303023488", "中国河北省石家庄市裕华区建华南大街136号万达广场", "wanda2.jpg", "wanda3.jpg");
         Second_shop second_shop2 = new Second_shop(  "2", "huaite1.jpg", "怀特广场", "114.525996", "38.022734", "综合商业圈", "15303023488", "中国河北省石家庄市裕华区槐安东路105号", "huaite2.jpg", "huaite3.jpg");
         shops.add(second_shop);

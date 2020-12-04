@@ -20,7 +20,7 @@
         <ImageView
             android:scaleType="fitXY"
             android:id="@+id/iv_shop_image"
-            android:layout_width="110dp"
+            android:layout_width="150dp"
             android:layout_height="110dp"
             android:layout_marginRight="10dp"
             android:src="@drawable/beiguo3" />
@@ -36,12 +36,15 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:paddingTop="15dp"
                     android:id="@+id/tv_shopname"
+                    android:maxEms="3"
+                    android:singleLine="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="店铺名称"
                     android:layout_marginBottom="10dp"
-                    android:textSize="20sp" />
+                    android:text="店铺名称"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/comment_content"
@@ -51,8 +54,7 @@
                     android:layout_marginTop="40dp"
                     android:background="@null"
                     android:hint="店铺风景"
-                    android:textColor="#ff6633"
-                    android:textSize="23dp" />
+                    android:textColor="#ff6633" />
             </LinearLayout>
 
             <RelativeLayout
@@ -73,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:padding="3dp"
-                    android:text="3.3"
+                    android:text="4.8"
                     android:textColor="@color/colorYellow"
                     android:textSize="22sp"></TextView>
 
@@ -88,24 +90,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="100dp"
         android:padding="10dp"
         android:orientation="horizontal">
 
         <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/iv_shopsCenery1"
             android:background="@drawable/beiguo2"
-            android:layout_width="30dp"
+            android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="1">
 
         </ImageView>
 
         <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/iv_shopsCenery2"
             android:background="@drawable/beiguo1"
             android:layout_marginLeft="30dp"
-            android:layout_width="30dp"
+            android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="1">
         </ImageView>

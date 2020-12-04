@@ -69,6 +69,11 @@ dependencies {
     implementation files('libs\\open_sdk_3.5.1.152_rd6ba70e_lite.jar')
     implementation 'androidx.viewpager:viewpager:1.0.0'
     testImplementation 'junit:junit:4.12'
+    //Okhttp3
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.6.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
     //pinyin
     implementation files('libs/pinyin4j-2.5.0.jar')
     //wy框架
@@ -83,6 +88,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+
+
     //wy2.0
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -92,6 +99,8 @@ dependencies {
     //sjy
     //noinspection GradleDeprecatedConfiguration
     compile 'com.contrarywind:Android-PickerView:4.1.9'
+    //QQ右上角气泡
+    compile 'com.zaaach:toprightmenu:1.0'
 
     //yzc
     implementation 'com.google.android.material:material:1.0.0'

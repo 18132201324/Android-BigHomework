@@ -23,6 +23,7 @@ import com.bumptech.glide.util.Util;
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.classes.LoginAccountMessage;
 import com.example.smartcommunityapplication.classes.LoginState;
+import com.example.smartcommunityapplication.entities.User;
 import com.example.smartcommunityapplication.fragments.MyselfPageFragment;
 import com.mob.MobSDK;
 
@@ -44,6 +45,7 @@ import java.util.regex.Pattern;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
+import okhttp3.OkHttpClient;
 
 import static com.tencent.connect.common.Constants.PACKAGE_QQ;
 
@@ -181,10 +183,9 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e ("——————————————————————","执行getQQinfo");
                     String nickname = json.getString ("nickname");
                     Log.e ("------",nickname);
-                    LoginAccountMessage.Account = nickname;
-                    LoginAccountMessage.sign = 1;
-                    LoginState.State = 1;
-                    EventBus.getDefault ().post ("refresh");
+                    LoginAccountMessage.user = new User();
+                    LoginAccountMessage.user.setNick_name(nickname);
+                    EventBus.getDefault ().post ("");
                 } catch (JSONException e) {
                     e.printStackTrace ();
                 }
@@ -206,6 +207,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
     /**
      * true 安装了相应包名的app
@@ -240,9 +242,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
                     Toast.makeText(getApplicationContext(), "验证码输入正确",
                             Toast.LENGTH_LONG).show();
-                    LoginAccountMessage.Account = iphone.getText ().toString ();
-                    LoginAccountMessage.sign = 1;
-                    LoginState.State = 1;
+                    LoginAccountMessage.user = new User();
+                    LoginAccountMessage.user.setPhone_number(iphone.getText ().toString ());
+                    LoginAccountMessage.user.setNick_name(iphone.getText ().toString ());
+                    EventBus.getDefault ().post ("");
                     finish ();
                 }
             }

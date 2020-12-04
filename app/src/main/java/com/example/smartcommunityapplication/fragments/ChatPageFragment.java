@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +27,8 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.zaaach.toprightmenu.MenuItem;
+import com.zaaach.toprightmenu.TopRightMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +37,7 @@ public class ChatPageFragment extends Fragment {
     private List<ChattingPageItem> chattingPageItems;
     private ListView chatListView;
     private ChattingPageListAdapter adapter;
+    private ImageButton forth_btn_extend;
     private SmartRefreshLayout refreshLayout;
     private final int REFRESH = 100;
     private Handler myHandler = new Handler(){
@@ -68,6 +73,13 @@ public class ChatPageFragment extends Fragment {
         adapter = new ChattingPageListAdapter(getContext(),chattingPageItems,R.layout.chatpage_item_layout);
         chatListView.setAdapter(adapter);
 
+        forth_btn_extend=view.findViewById(R.id.forth_btn_extend);
+        forth_btn_extend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toprightmenu();
+            }
+        });
         //打开聊天详情
         chatListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -154,5 +166,29 @@ public class ChatPageFragment extends Fragment {
             refreshLayout.finishLoadMore();
             super.onPostExecute(o);
         }
+    }
+    private void toprightmenu(){
+        TopRightMenu topRightMenu = new TopRightMenu(getActivity());
+
+        topRightMenu
+                .setHeight(800)     //默认高度480
+                .setWidth(500)      //默认宽度wrap_content
+                .showIcon(true)     //显示菜单图标，默认为true
+                .dimBackground(true)        //背景变暗，默认为true
+                .needAnimationStyle(true)   //显示动画，默认为true
+                .setAnimationStyle(R.style.TRM_ANIM_STYLE)
+                .addMenuItem(new MenuItem(R.drawable.chuangjianqunzu1, "创建群聊"))
+                .addMenuItem(new MenuItem(R.drawable.saoyisao1, "扫一扫"))
+                .addMenuItem(new MenuItem(R.drawable.tianjiahaoyou1, "加好友/群"))
+                .addMenuItem(new MenuItem(R.drawable.erweima, "我的二维码"))
+                .addMenuItem(new MenuItem(R.drawable.shoufukuan1, "收付款"))
+//                        .addMenuItem(new MenuItem(R.mipmap.coach_icon, "面对面建群"))
+                .setOnMenuItemClickListener(new TopRightMenu.OnMenuItemClickListener() {
+                    @Override
+                    public void onMenuItemClick(int position) {
+                        Toast.makeText(getActivity(), "点击菜单:" + position, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .showAsDropDown(forth_btn_extend, -225, 0);    //带偏移量
     }
 }

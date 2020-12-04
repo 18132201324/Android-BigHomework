@@ -65,9 +65,9 @@ public class ShopAdapter extends BaseAdapter {
         }
         viewHolder.shopName.setText(shops.get(position).getShopName());
         if(position==0) {
-            viewHolder.shopPhoto.setImageDrawable(context.getDrawable(R.drawable.beiguo1));
-            viewHolder.shopsCenery1.setImageDrawable(context.getDrawable(R.drawable.beiguo2));
-            viewHolder.shopsCenery2.setImageDrawable(context.getDrawable(R.drawable.beiguo3));
+            viewHolder.shopPhoto.setImageDrawable(context.getDrawable(R.drawable.mdl1));
+            viewHolder.shopsCenery1.setImageDrawable(context.getDrawable(R.drawable.mdl2));
+            viewHolder.shopsCenery2.setImageDrawable(context.getDrawable(R.drawable.mdl3));
         }else if (position==1){
             viewHolder.shopPhoto.setImageDrawable(context.getDrawable(R.drawable.wanda1));
             viewHolder.shopsCenery1.setImageDrawable(context.getDrawable(R.drawable.wanda2));

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
             <ImageView
+                android:id="@+id/third_iv_moreIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/more_icon"
@@ -93,8 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="更多>>"
-                        android:layout_marginRight="10dp
-"/>
+                        android:layout_marginRight="10dp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -105,28 +106,32 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="205dp"
+                    android:id="@+id/third_ll_information1"
+                    android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/rounded_edittext"
                     android:layout_marginRight="5dp"
-                    android:orientation="vertical">
+                    android:layout_weight="1"
+
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
 
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="5dp"
-                            android:src="@color/colorPrimary" />
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/cat_touxiang"/>
 
                         <TextView
+                            android:textColor="@color/colo_blue_green"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:gravity="center"
-                            android:text="这里是标题"
-                            android:textSize="25dp" />
+                            android:text="做好消防和燃气安全安全"
+                            android:textSize="20dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -134,28 +139,37 @@
                         android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/third_tv_text1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="  这里是详细内容" />
+                            android:layout_marginTop="5dp"
+                            android:textSize="17dp"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="italic"
+                            android:text="       为了确保辖区消防和燃气安全，近日，第一社区加大宣传工作力度，结合辖区实际，多措并举保障宣传工作的顺利开展。" />
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="205dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="1dp">
 
                     <LinearLayout
                         android:layout_width="205dp"
-                        android:layout_height="100dp"
+                        android:layout_height="98dp"
                         android:layout_marginBottom="2dp"
-                        android:background="#FFFFFF"
-                        android:orientation="vertical">
+                        android:background="@drawable/rounded_edittext"
+                        android:orientation="vertical"
+                        android:padding="10dp">
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp">
@@ -163,63 +177,49 @@
                                 <ImageView
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
-                                    android:src="@drawable/ring" />
+                                    android:src="@drawable/cat_touxiang"/>
 
                                 <TextView
+                                    android:textColor="@color/colo_blue_green"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:gravity="center"
-                                    android:text="这里是标题"
-                                    android:textSize="25dp" />
+                                    android:paddingLeft="5dp"
+                                    android:text="新型文明学校“智汇七彩”"
+                                    android:textSize="20dp" />
                             </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="  这里是详细内容" />
-                            </LinearLayout>
                         </LinearLayout>
 
 
                     </LinearLayout>
                     <LinearLayout
                         android:layout_marginTop="2dp"
+                        android:layout_weight="1"
                         android:layout_width="205dp"
-                        android:layout_height="100dp"
-                        android:orientation="vertical"
-                        android:background="#FFFFFF">
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:orientation="vertical">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="50dp">
+                            android:layout_height="96dp"
+                            android:orientation="horizontal"
+                            android:background="@drawable/rounded_edittext"
+                            android:padding="10dp">
 
                                 <ImageView
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
-                                    android:src="@drawable/ring" />
+                                    android:src="@drawable/cat_touxiang"/>
 
                                 <TextView
+                                    android:textColor="@color/colo_blue_green"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:gravity="center"
-                                    android:text="这里是标题"
-                                    android:textSize="25dp" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                    android:paddingLeft="5dp"
+                                    android:text="“桶前值守”活动岗前动员"
+                                    android:textSize="20dp" />
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="  这里是详细内容" />
-                            </LinearLayout>
                         </LinearLayout>
 
                     </LinearLayout>

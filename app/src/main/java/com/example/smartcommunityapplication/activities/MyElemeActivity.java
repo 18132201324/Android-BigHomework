@@ -29,6 +29,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class MyElemeActivity extends AppCompatActivity {
+    private ImageView ivBack;
     private RecyclerView mRecyclerView;
     private SlidingTabLayout mSl;
     private ViewPager mViewPager;
@@ -194,6 +195,13 @@ public class MyElemeActivity extends AppCompatActivity {
 
         mIvClose = findViewById(R.id.iv_small_close);
         mIvExpand = findViewById(R.id.iv_food_expand);
+        ivBack = findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void showFoodLayout(){

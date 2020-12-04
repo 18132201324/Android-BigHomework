@@ -248,6 +248,8 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
             <Button
+                android:id="@+id/btn_logOut"
+                android:onClick="onClicked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="退出登录"

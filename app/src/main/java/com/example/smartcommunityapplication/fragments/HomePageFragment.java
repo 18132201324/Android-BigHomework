@@ -74,7 +74,9 @@ public class HomePageFragment extends Fragment {
             mTextbanner.setAdapter(new mTextBannerAdapter(getActivity(),Textbannerdata));
             //是否允许自动轮播
             mbanner.isAutoLoop(true);
+            mbanner.setLoopTime(4000);
             mTextbanner.isAutoLoop(true);
+            mTextbanner.setLoopTime(6000);
             //设置指示器， CircleIndicator为已经定义好的类，直接用就好
             mbanner.setIndicator(new CircleIndicator(getContext()));
 //            mbanner.setBannerGalleryEffect(20,20,10);
@@ -181,9 +183,9 @@ public class HomePageFragment extends Fragment {
         recyclerdata.add(new RecyclerinfoBean(R.drawable.tongji,"商家服务"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.qiyong,"同区信息"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.more,"全部"));
-        runorderdata.add(new RunorderinfoBean(R.drawable.f,"2020-11-13","接孩子","20"));
-        runorderdata.add(new RunorderinfoBean(R.drawable.g,"2020-11-13","接孩子","20"));
-        runorderdata.add(new RunorderinfoBean(R.drawable.h,"2020-11-13","接孩子","20"));
-        runorderdata.add(new RunorderinfoBean(R.drawable.i,"2020-11-13","接孩子","20"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.f,"2020-11-23","帮忙接孩子","薪酬：20￥"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.g,"2020-11-13","寻找家教","薪酬：20￥（可面谈）"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.h,"2020-11-13","寻找球友","薪酬：0￥"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.i,"2020-11-13","待跑腿","薪酬：20￥"));
     }
 }

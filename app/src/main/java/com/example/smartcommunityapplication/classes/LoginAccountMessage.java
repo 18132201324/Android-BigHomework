@@ -1,6 +1,7 @@
 package com.example.smartcommunityapplication.classes;
 
+import com.example.smartcommunityapplication.entities.User;
+
 public class LoginAccountMessage {
-    public static String Account = null;
-    public static int sign = 0;
+    public static User user = new User();
 }

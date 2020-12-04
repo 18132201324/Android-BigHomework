@@ -191,8 +191,8 @@ public class BaiMapActivity extends AppCompatActivity {
                 detailsAddress.setText(shop.getShopAddress());
                 detailsTel.setText(shop.getShopTel());
                 if(position==0) {
-                    shopsCenery1.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.beiguo2));
-                    shopsCenery2.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.beiguo3));
+                    shopsCenery1.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.mdl2));
+                    shopsCenery2.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.mdl3));
                 }else if (position==1){
                     shopsCenery1.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.wanda2));
                     shopsCenery2.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.wanda3));

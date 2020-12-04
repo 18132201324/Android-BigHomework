@@ -28,7 +28,7 @@
                     android:id="@+id/first_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="洛阳"
+                    android:text="石家庄"
                     android:layout_centerVertical="true"
                     android:textStyle="bold"
                     android:textSize="18sp"
@@ -82,6 +82,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingRight="5dp"
                 android:src="@drawable/laba"
                 android:layout_gravity="center_vertical"/>
             <com.youth.banner.Banner
@@ -105,16 +106,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="推荐"
-                android:textSize="20sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="20sp"/>
             <TextView
                 android:id="@+id/first_getMoreOrder"
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="更多"
-                android:textSize="20sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="20sp"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"

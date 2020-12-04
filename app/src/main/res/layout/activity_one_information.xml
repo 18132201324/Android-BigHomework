@@ -15,6 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/third_iv_return_icon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_margin="2dp"
@@ -55,23 +56,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true">
                         <ImageView
                             android:id="@+id/third_tx_image"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_marginTop="20dp"
                             android:layout_marginLeft="10dp"
-                            android:background="@color/colorAccent"
+                            android:src="@drawable/cat_touxiang"
                             android:scaleType="fitCenter" />
+
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:focusableInTouchMode="true"
-                            android:focusable="true"
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
                             android:layout_margin="20dp"
-                            android:textSize="18dp"
-                            android:text="社区资讯标题" />
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:textColor="@color/colorBlack"
+                            android:text="做好消防和燃气安全安全工作"
+                            android:textSize="18dp" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -95,18 +100,18 @@
                     android:orientation="vertical">
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp">
+                        android:layout_height="190dp">
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_height="190dp"
+                            android:layout_marginTop="5dp"
                             android:padding="10dp"
                             android:textColor="#000000"
-                            android:text="      测试信息:我时常想起过去。独自一人为了梦想拼搏的我，多么想拥有一些陪伴、鼓励和榜样。上篇说了3件法师神话装备得到了很多人的认可，这次把剩余的三件神话也一起说了。"/>
+                            android:text="        为了确保辖区消防和燃气安全，近日，第一社区加大宣传工作力度，结合辖区实际，多措并举保障宣传工作的顺利开展。一是线上宣传。在社区党员、楼门长和志愿者微信群里上传相关安全链接，大范围、多途径地助力居委会做好安全宣传工作；二是线下宣传。由社区文明劝导队在辖区公园、主要道路等人员密集地点进行讲解一些消防和燃气安全相关知识和注意事项；三是张贴宣传材料。分别在辖区宣传栏内和各单元门口张贴《强化安全意识消除安全隐患共筑平安幸福》和《致社区燃气用户的一封信》的宣传材料，营造良好的氛围，力争做到宣传工作无死角。（隗合旭）" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         >
                         <ImageView
@@ -115,13 +120,13 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:layout_marginRight="1dp"
-                            android:src="@drawable/test_picture"/>
+                            android:src="@drawable/test_picture1"/>
                         <ImageView
                             android:id="@+id/third_iv_bigPicture2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@drawable/test_picture"
+                            android:src="@drawable/test_picture2"
                             android:layout_marginLeft="1dp"/>
                         <ImageView
                             android:id="@+id/third_iv_bigPicture3"
@@ -129,7 +134,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:layout_marginLeft="2dp"
-                            android:src="@drawable/test_picture"/>
+                            android:src="@drawable/test_picture3"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -207,32 +212,35 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp">
+                android:layout_height="30dp"
+                android:background="#FFFFFF">
                 <EditText
+                    android:paddingLeft="10dp"
+                    android:id="@+id/third_et_comment"
                     android:layout_width="200dp"
                     android:layout_height="30dp"
                     android:hint="我也来说两句"
                     android:textSize="15dp"
                     android:layout_marginLeft="10dp"
                     android:background="#F0ECE8"/>
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/comment"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginLeft="40dp"/>
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginLeft="30dp"/>
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/transmit"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginLeft="40dp"/>
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginLeft="30dp"/>
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/cup"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginLeft="40dp"/>
+                    android:background="#FFFFFF"
+                    android:layout_marginLeft="30dp"/>
             </LinearLayout>
 
         </LinearLayout>

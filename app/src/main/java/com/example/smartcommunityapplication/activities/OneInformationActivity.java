@@ -11,9 +11,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,6 +37,8 @@ public class OneInformationActivity extends Activity {
     private Third_informationCommentAdapter third_informationCommentAdapter;
 
     private String phoneNumber;
+    private ImageView ivreturn_icon;
+    private EditText third_et_comment;
     private ImageView image1;
     private ImageView image2;
     private ImageView image3;
@@ -77,6 +81,14 @@ public class OneInformationActivity extends Activity {
         msg.what=1;
         myHandler.sendMessage(msg);
 
+        ivreturn_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        third_et_comment.setBackground(getResources().getDrawable(R.drawable.btn_bottom_call));
         third_informationCommentAdapter=new Third_informationCommentAdapter(getBaseContext(),thirdInformationComments,R.layout.informationcomment_item);
         third_informationCommentListView.setAdapter(third_informationCommentAdapter);
         //处理ListView每一项的点击事件
@@ -100,6 +112,8 @@ public class OneInformationActivity extends Activity {
         image1 = findViewById(R.id.third_iv_bigPicture1);
         image2 = findViewById(R.id.third_iv_bigPicture2);
         image3 = findViewById(R.id.third_iv_bigPicture3);
+        third_et_comment=findViewById(R.id.third_et_comment);
+        ivreturn_icon=findViewById(R.id.third_iv_return_icon);
         third_informationCommentListView=findViewById(R.id.third_lv_OneInformation);
         third_informationCommentScrollView=findViewById(R.id.third_sv_OneInformation);
     }

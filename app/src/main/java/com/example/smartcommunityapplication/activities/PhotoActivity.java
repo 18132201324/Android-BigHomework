@@ -6,11 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -43,6 +41,8 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener,
     private int year, month, day, hour, minute;
     Unbinder unbinder;
     private StringBuffer date, time;
+    private TextView tvprice;
+    private RadioButton radioButton;
 
     @BindView(R.id.rv_images)
     RecyclerView rvImages;
@@ -62,10 +62,13 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener,
 
 
 
+
         mSelectList = new ArrayList<>();
         initView();
         tvTime =findViewById(R.id.tv_time);
         tvDate=findViewById(R.id.time_picker);
+        tvprice=findViewById(R.id.fifth_tv_price);
+
         initDateTime();
 
         back = findViewById (R.id.release_back);
@@ -86,6 +89,12 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener,
             @Override
             public void onAdd() {
                 pickImage();
+            }
+        });
+        radioButton = findViewById(R.id.radiobutton1);
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
     }
@@ -149,6 +158,18 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener,
                 dialog2.setView(dialogView2);
                 dialog2.show();
                 break;
+            case R.id.fifth_tv_price:
+
+//                AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
+//
+//                AlertDialog dialog3 =builder3.create();
+//                View myKeyBoardView=View.inflate(context,R.layout.keyboarddialog,null);
+//                dialog3.setView(myKeyBoardView);
+//                dialog3.show();
+
+
+
+                break;
         }
     }
 
@@ -197,4 +218,6 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener,
         this.hour = hourOfDay;
         this.minute = minute;
     }
+
+
 }
