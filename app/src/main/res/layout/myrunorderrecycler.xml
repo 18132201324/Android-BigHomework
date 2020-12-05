@@ -12,20 +12,28 @@
         <ImageView
             android:id="@+id/first_runorderimg"
             android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/h"
+            android:layout_height="150dp"
             android:scaleType="fitXY"/>
         <TextView
+            android:gravity="center_horizontal"
             android:id="@+id/first_runordertime"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/colorBlack"/>
         <TextView
+            android:gravity="center_horizontal"
             android:id="@+id/first_runordercontent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/colorBlack" />
         <TextView
+            android:gravity="center_horizontal"
             android:id="@+id/first_runorderprice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/colo_red" />
     </LinearLayout>
 </LinearLayout>

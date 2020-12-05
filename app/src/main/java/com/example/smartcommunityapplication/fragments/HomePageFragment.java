@@ -48,6 +48,7 @@ public class HomePageFragment extends Fragment {
     private RecyclerView mrunoder;
     private Banner mbanner;
     private Banner mTextbanner;
+    private TextView tvFirst_location;
     private List<InfoBean> Imgbannerdata = new ArrayList<>();
     private List<InfoBean> Textbannerdata = new ArrayList<>();
     private List<RecyclerinfoBean> recyclerdata = new ArrayList<>();
@@ -69,12 +70,13 @@ public class HomePageFragment extends Fragment {
             linearLayoutSearch = view.findViewById(R.id.first_search);
             mTextbanner = view.findViewById(R.id.first_textbanner);
             mbanner = view.findViewById(R.id.banner);
+            tvFirst_location = view.findViewById(R.id.first_location);
             //设置mbanner设配器
             mbanner.setAdapter(new mBannerAdapter(getActivity(),Imgbannerdata));
             mTextbanner.setAdapter(new mTextBannerAdapter(getActivity(),Textbannerdata));
             //是否允许自动轮播
             mbanner.isAutoLoop(true);
-            mbanner.setLoopTime(4000);
+            mbanner.setLoopTime(3000);
             mTextbanner.isAutoLoop(true);
             mTextbanner.setLoopTime(6000);
             //设置指示器， CircleIndicator为已经定义好的类，直接用就好
@@ -122,8 +124,6 @@ public class HomePageFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-
-
         return view;
 
     }
@@ -163,6 +163,9 @@ public class HomePageFragment extends Fragment {
                 intent.setClass(getActivity(),ServiceActivity.class);
                 startActivity(intent);
                 break;
+            case "东城区":
+                tvFirst_location.setText("东城区");
+                break;
         }
     }
     private void initDate() {
@@ -183,9 +186,9 @@ public class HomePageFragment extends Fragment {
         recyclerdata.add(new RecyclerinfoBean(R.drawable.tongji,"商家服务"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.qiyong,"同区信息"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.more,"全部"));
-        runorderdata.add(new RunorderinfoBean(R.drawable.f,"2020-11-23","帮忙接孩子","薪酬：20￥"));
-        runorderdata.add(new RunorderinfoBean(R.drawable.g,"2020-11-13","寻找家教","薪酬：20￥（可面谈）"));
-        runorderdata.add(new RunorderinfoBean(R.drawable.h,"2020-11-13","寻找球友","薪酬：0￥"));
-        runorderdata.add(new RunorderinfoBean(R.drawable.i,"2020-11-13","待跑腿","薪酬：20￥"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.f,"2020-11-15 12:00","有偿接孩子放学","10"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.g,"2020-11-13 15:00","有偿批改作业","20"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.shequrun,"2020-11-10 6:00","兴趣社区约跑","0"));
+        runorderdata.add(new RunorderinfoBean(R.drawable.shequread,"2020-11-9 15:00","社区兴趣读书","0"));
     }
 }

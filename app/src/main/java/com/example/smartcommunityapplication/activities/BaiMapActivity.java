@@ -90,7 +90,6 @@ public class BaiMapActivity extends AppCompatActivity {
         findViews();
         //设置min控件文本信息
 
-
         mapView.showZoomControls(true);//设置是否显示缩放控件
         mapView.getChildAt(2).setPadding(0,0,-20,1980);//这是控制缩放控件的位置
 
@@ -191,8 +190,8 @@ public class BaiMapActivity extends AppCompatActivity {
                 detailsAddress.setText(shop.getShopAddress());
                 detailsTel.setText(shop.getShopTel());
                 if(position==0) {
-                    shopsCenery1.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.mdl2));
-                    shopsCenery2.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.mdl3));
+                    shopsCenery1.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.beiguo2));
+                    shopsCenery2.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.beiguo3));
                 }else if (position==1){
                     shopsCenery1.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.wanda2));
                     shopsCenery2.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.wanda3));
@@ -200,12 +199,6 @@ public class BaiMapActivity extends AppCompatActivity {
                     shopsCenery1.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.huaite2));
                     shopsCenery2.setImageDrawable(BaiMapActivity.this.getDrawable(R.drawable.huaite3));
                 }
-
-
-
-
-
-
 
                 Button call = inflate.findViewById(R.id.call);
                 call.setOnClickListener(new View.OnClickListener() {

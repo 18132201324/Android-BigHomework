@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.smartcommunityapplication.R;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class LocationTagsTableActivity extends AppCompatActivity {
     private TextView getMoreLocation;
@@ -21,6 +24,7 @@ public class LocationTagsTableActivity extends AppCompatActivity {
     private LinearLayout luoYangMoreLocation;
     private LinearLayout quanZhougetMore;
     private LinearLayout quanZhouMoreLocation;
+    private Button btndongchengqu;
     private int isShowHeader = 0;
     private int isShowbelow = 0;
     @Override
@@ -41,6 +45,14 @@ public class LocationTagsTableActivity extends AppCompatActivity {
         luoYangMoreLocation = findViewById (R.id.locationTagTable_luoYangMoreLocation);
         quanZhougetMore = findViewById (R.id.locationTagTable_quanZhougetMore);
         quanZhouMoreLocation = findViewById (R.id.locationTagTable_quanZhouMoreLocation);
+        btndongchengqu = findViewById(R.id.dongchengqu);
+        btndongchengqu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post("东城区");
+                finish();
+            }
+        });
     }
 
     public void onClicked(View view) {

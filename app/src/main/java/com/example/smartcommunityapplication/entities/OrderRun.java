@@ -1,6 +1,8 @@
 package com.example.smartcommunityapplication.entities;
 
-public class OrderRun {
+import java.io.Serializable;
+
+public class OrderRun implements Serializable {
     private String id;
     private String user_id;
     private String type;

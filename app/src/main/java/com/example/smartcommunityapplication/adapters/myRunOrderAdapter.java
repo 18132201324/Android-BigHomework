@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.activities.RunOrderdetailsActivity;
+import com.example.smartcommunityapplication.entities.OrderRun;
 import com.example.smartcommunityapplication.entities.RunorderinfoBean;
 
 import java.util.ArrayList;
@@ -38,19 +39,23 @@ public class myRunOrderAdapter extends RecyclerView.Adapter<myRunOrderAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        RunorderinfoBean bean = data.get(position);
+        final RunorderinfoBean bean = data.get(position);
         holder.imageView.setImageResource(bean.getPicture());
         holder.time.setText(bean.getTime());
         holder.content.setText(bean.getContent());
-        holder.price.setText(bean.getPrice());
+        holder.price.setText("价格：￥"+bean.getPrice());
 
         //设置item的点击事件
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                OrderRun orderRun = new OrderRun ();
+                orderRun.setTitle (bean.getContent());
+                orderRun.setTime_stop (bean.getTime());
+                orderRun.setMoney (Float.parseFloat (bean.getPrice ()));
                 Intent intent=new Intent(view.getContext(), RunOrderdetailsActivity.class);
+                intent.putExtra ("runOrder",orderRun);
                 view.getContext().startActivity(intent);
-
             }
         });
     }
@@ -59,7 +64,6 @@ public class myRunOrderAdapter extends RecyclerView.Adapter<myRunOrderAdapter.My
     public int getItemCount() {
         return data.size();
     }
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;
         private TextView time;
