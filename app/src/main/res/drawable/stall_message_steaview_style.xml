@@ -8,5 +8,4 @@
     <!-- 设置填充颜色 -->
     <solid android:color="@color/colorGray" />
     <!-- 设置边框颜色 -->
-    <stroke android:width="2dp" android:color="@color/colorWhite"/>
 </shape>

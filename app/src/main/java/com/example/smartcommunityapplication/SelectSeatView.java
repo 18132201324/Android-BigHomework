@@ -26,6 +26,7 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -194,6 +195,8 @@ public class SelectSeatView extends View {
     private Bitmap mBitmap;
 
     private Paint paintBorder;
+
+    private int SelectState = 0;
 
     @SuppressLint("HandlerLeak")
     Handler mHandler = new Handler() {
@@ -718,7 +721,6 @@ public class SelectSeatView extends View {
         return false;
     }
 
-
     private void drawSeatView(Canvas canvas) {
         //绘制多少排座位
         for (int i = 0; i < seatList.length; i++) {
@@ -758,17 +760,17 @@ public class SelectSeatView extends View {
                         selectRectBean.setRealRow(i + 1);
 //                        canvas.drawRect(rect, paintSeat);
                         @SuppressLint("ResourceType")
-                        InputStream is2 = getResources().openRawResource(R.drawable.icon_car);
-                        BitmapDrawable bd2 = new BitmapDrawable(is2);
-                        Bitmap bp2 = bd2.getBitmap();
-                        canvas.drawBitmap (bp2,left + margiHorizontal, top + margiVertical,paintSeat);
+                        InputStream is1 = getResources().openRawResource(R.drawable.icon_car);
+                        BitmapDrawable bd1 = new BitmapDrawable(is1);
+                        Bitmap bp1 = bd1.getBitmap();
+                        canvas.drawBitmap (bp1,left + margiHorizontal, top + margiVertical,paintSeat);
                         break;
                     case SELL_SEAT:
                         @SuppressLint("ResourceType")
-                        InputStream is = getResources().openRawResource(R.drawable.icon_redcar);
-                        BitmapDrawable bd = new BitmapDrawable(is);
-                        Bitmap bp = bd.getBitmap();
-                        canvas.drawBitmap (bp,left + margiHorizontal, top + margiVertical,paintSeat);
+                        InputStream is2 = getResources().openRawResource(R.drawable.icon_redcar);
+                        BitmapDrawable bd2 = new BitmapDrawable(is2);
+                        Bitmap bp2 = bd2.getBitmap();
+                        canvas.drawBitmap (bp2,left + margiHorizontal, top + margiVertical,paintSeat);
                         break;
                     case SELECT_SEAT:
 //                        paintSeat.setColor(Color.GREEN);
@@ -776,25 +778,30 @@ public class SelectSeatView extends View {
                         selectRectBean.setRow(i + 1);
                         selectRectBean.setRealColumn(x + 1);
                         selectRectBean.setRealRow(i + 1);
-                        canvas.drawRect (rect,paintSeat);
-                        break;
-                    default:
                         @SuppressLint("ResourceType")
-                        InputStream is3 = getResources().openRawResource(R.drawable.icon_car);
+                        InputStream is3 = getResources().openRawResource(R.drawable.icon_greencar);
                         BitmapDrawable bd3 = new BitmapDrawable(is3);
                         Bitmap bp3 = bd3.getBitmap();
                         canvas.drawBitmap (bp3,left + margiHorizontal, top + margiVertical,paintSeat);
+                        break;
+                    default:
+                        @SuppressLint("ResourceType")
+                        InputStream is4 = getResources().openRawResource(R.drawable.icon_car);
+                        BitmapDrawable bd4 = new BitmapDrawable(is4);
+                        Bitmap bp4 = bd4.getBitmap();
+                        canvas.drawBitmap (bp4,left + margiHorizontal, top + margiVertical,paintSeat);
                         paintSeat.setColor(Color.TRANSPARENT);
-//                        canvas.drawRect(rect, paintSeat);
+                        canvas.drawRect(rect, paintSeat);
                         break;
                 }
                 boolean isSelect = seatType(i, x);
                 if (isSelect) {
-                    @SuppressLint("ResourceType")
-                    InputStream is = getResources().openRawResource(R.drawable.icon_greencar);
-                    BitmapDrawable bd = new BitmapDrawable(is);
-                    Bitmap bp = bd.getBitmap();
-                    canvas.drawBitmap (bp,left + margiHorizontal, top + margiVertical,paintSeat);
+                       @SuppressLint("ResourceType")
+                       InputStream is = getResources().openRawResource(R.drawable.icon_greencar);
+                       BitmapDrawable bd = new BitmapDrawable(is);
+                       Bitmap bp = bd.getBitmap();
+                       canvas.drawBitmap (bp,left + margiHorizontal, top + margiVertical,paintSeat);
+                       SelectState = 1;
                 }
                 //收集所有的位置信息
                 mRectList.add(selectRectBean);

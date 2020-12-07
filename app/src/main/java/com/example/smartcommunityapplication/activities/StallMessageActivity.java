@@ -11,9 +11,6 @@ import com.example.smartcommunityapplication.listener.ChildSelectListener;
 import android.widget.TextView;
 import java.util.List;
 public class StallMessageActivity extends AppCompatActivity {
-    private String[] textDefault = {"标签", "标签", "标签", "标签", "标签", "标签", "标签", "标签", "标签", "撒上", "撒上"
-            , "我是", "标签", "标签", "标签", "标签"};
-
     private int[][] seatList;
     private SelectSeatView searchSeat;
     private TextView tvResult;
@@ -43,7 +40,6 @@ public class StallMessageActivity extends AppCompatActivity {
             @Override
             public void onChildSelect(List<SelectRectBean> stringList) {
                 StringBuffer stringBuffer = new StringBuffer();
-
                 for (int i = 0; i < stringList.size(); i++) {
                     SelectRectBean selectRectBean = stringList.get(i);
                     stringBuffer.append(selectRectBean.getRow() + "排 ");

@@ -25,6 +25,7 @@ public class SelectRectBean {
      */
     private int realColumn;
 
+
     public int getRealRow() {
         return realRow;
     }
