@@ -1,27 +1,48 @@
 package com.example.smartcommunityapplication.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.SelectSeatView;
 import com.example.smartcommunityapplication.entities.SelectRectBean;
 import com.example.smartcommunityapplication.listener.ChildSelectListener;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import java.util.List;
 public class StallMessageActivity extends AppCompatActivity {
     private int[][] seatList;
     private SelectSeatView searchSeat;
     private TextView tvResult;
-
+    private Button Zhan;
+    private SelectRectBean selectRectBean;
+    private SmartRefreshLayout refreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stall_message);
         searchSeat = findViewById(R.id.search_seat);
         tvResult = findViewById(R.id.tv_result);
+        Zhan = findViewById (R.id.stallMessage_zhan);
+        refreshLayout = findViewById (R.id.srl);
 
+
+        refreshLayout.setOnRefreshListener (new OnRefreshListener () {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                //下拉刷新
+                //结束刷新动画
+                refreshLayout.finishRefresh ();
+            }
+        });
 //外层数组，这里是，默认座位状态。0等于空白位置；1等于未选择座位；2等于已经选择座位
         seatList = new int[9][];
         for (int i = 0; i <9; i++) {
@@ -41,15 +62,20 @@ public class StallMessageActivity extends AppCompatActivity {
             public void onChildSelect(List<SelectRectBean> stringList) {
                 StringBuffer stringBuffer = new StringBuffer();
                 for (int i = 0; i < stringList.size(); i++) {
-                    SelectRectBean selectRectBean = stringList.get(i);
+                    selectRectBean = stringList.get(i);
                     stringBuffer.append(selectRectBean.getRow() + "排 ");
                     stringBuffer.append(selectRectBean.getColumn() + "列\n");
+                    seatList[selectRectBean.getRow ()-1][selectRectBean.getColumn ()-1] = 2;
                 }
                 tvResult.setText(stringBuffer.toString());
             }
-
-
         });
 
+        Zhan.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

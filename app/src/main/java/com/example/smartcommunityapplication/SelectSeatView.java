@@ -796,12 +796,13 @@ public class SelectSeatView extends View {
                 }
                 boolean isSelect = seatType(i, x);
                 if (isSelect) {
-                       @SuppressLint("ResourceType")
-                       InputStream is = getResources().openRawResource(R.drawable.icon_greencar);
-                       BitmapDrawable bd = new BitmapDrawable(is);
-                       Bitmap bp = bd.getBitmap();
-                       canvas.drawBitmap (bp,left + margiHorizontal, top + margiVertical,paintSeat);
-                       SelectState = 1;
+
+                  @SuppressLint("ResourceType")
+                  InputStream is = getResources().openRawResource(R.drawable.icon_greencar);
+                  BitmapDrawable bd = new BitmapDrawable(is);
+                  Bitmap bp = bd.getBitmap();
+                  canvas.drawBitmap (bp,left + margiHorizontal, top + margiVertical,paintSeat);
+
                 }
                 //收集所有的位置信息
                 mRectList.add(selectRectBean);
@@ -963,8 +964,12 @@ public class SelectSeatView extends View {
                     //点击到了某一个
                     if (selectList.contains(selectRectBean)) {
                         selectList.remove(selectRectBean);
-                    } else {
+                        SelectState = 0;
+                    } else if(SelectState==0){
                         selectList.add(selectRectBean);
+                        SelectState = 1;
+                    } else if(SelectState ==1){
+                        Toast.makeText (getContext (),"您只可以选择一个车位",Toast.LENGTH_SHORT).show ();
                     }
                     //更新界面
                     invalidate();
