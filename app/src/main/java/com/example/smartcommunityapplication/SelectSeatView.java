@@ -19,6 +19,7 @@ import android.os.Message;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -773,7 +774,6 @@ public class SelectSeatView extends View {
                         canvas.drawBitmap (bp2,left + margiHorizontal, top + margiVertical,paintSeat);
                         break;
                     case SELECT_SEAT:
-//                        paintSeat.setColor(Color.GREEN);
                         selectRectBean.setColumn(x + 1 - emptyCount);
                         selectRectBean.setRow(i + 1);
                         selectRectBean.setRealColumn(x + 1);
@@ -796,13 +796,11 @@ public class SelectSeatView extends View {
                 }
                 boolean isSelect = seatType(i, x);
                 if (isSelect) {
-
-                  @SuppressLint("ResourceType")
-                  InputStream is = getResources().openRawResource(R.drawable.icon_greencar);
-                  BitmapDrawable bd = new BitmapDrawable(is);
-                  Bitmap bp = bd.getBitmap();
-                  canvas.drawBitmap (bp,left + margiHorizontal, top + margiVertical,paintSeat);
-
+                    @SuppressLint("ResourceType")
+                    InputStream is = getResources().openRawResource(R.drawable.icon_greencar);
+                    BitmapDrawable bd = new BitmapDrawable(is);
+                    Bitmap bp = bd.getBitmap();
+                    canvas.drawBitmap (bp,left + margiHorizontal, top + margiVertical,paintSeat);
                 }
                 //收集所有的位置信息
                 mRectList.add(selectRectBean);

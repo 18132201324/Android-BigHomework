@@ -3,7 +3,6 @@ package com.example.smartcommunityapplication.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.smartcommunityapplication.R;
@@ -17,6 +16,8 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.List;
 public class StallMessageActivity extends AppCompatActivity {
     private int[][] seatList;
@@ -49,8 +50,12 @@ public class StallMessageActivity extends AppCompatActivity {
             int[] indes = new int[14];
             for (int x = 0; x < 14; x++) {
                if (i==1||i==4||i==7){
-                   continue;
-               } else {
+                   indes[x] = 1;
+               }else if (i==2&&x==3){
+                   indes[x] = 2;
+               }else if (i==3&&x==6){
+                   indes[x] = 2;
+               }else {
                     indes[x] = 1;
                 }
             }
@@ -65,7 +70,6 @@ public class StallMessageActivity extends AppCompatActivity {
                     selectRectBean = stringList.get(i);
                     stringBuffer.append(selectRectBean.getRow() + "排 ");
                     stringBuffer.append(selectRectBean.getColumn() + "列\n");
-                    seatList[selectRectBean.getRow ()-1][selectRectBean.getColumn ()-1] = 2;
                 }
                 tvResult.setText(stringBuffer.toString());
             }
@@ -74,7 +78,10 @@ public class StallMessageActivity extends AppCompatActivity {
         Zhan.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText (StallMessageActivity.this,"您已成功占到车位!",Toast.LENGTH_SHORT).show ();
+                seatList[selectRectBean.getRow ()-1][selectRectBean.getColumn ()-1] = 2;
+                searchSeat.setSeatList(seatList);
+                onRestart ();
             }
         });
     }

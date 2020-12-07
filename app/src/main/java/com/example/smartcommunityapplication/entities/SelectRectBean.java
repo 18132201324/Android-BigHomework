@@ -15,7 +15,6 @@ public class SelectRectBean {
      * 座位的状态
      */
     private int seatState;
-
     /**
      * 真实排
      */
