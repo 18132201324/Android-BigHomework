@@ -19,14 +19,13 @@
     <color name="colo_red">#E53935</color>
     <color name="colo_blue_green">#26B3A4</color>
     <color name="colo_Orange">#FFA303</color>
-
-
     <color name="red">#B90008</color>
     <color name="line_color">#E6E6E6</color>
-
     <color name="white">#fff</color>
     <color name="trans_white">#00FFFFFF</color>
     <color name="black">#000</color>
     <color name="black1">#33000000</color>
     <color name="mask">#99000000</color>
+    <color name="green_deep_color">#22dddd</color>
+    <color name="black_deep">#999999</color>
 </resources>

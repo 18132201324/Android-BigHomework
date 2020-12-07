@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:background="@drawable/myselfpagefragmentlayoutstyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <ImageView
+            android:id="@+id/comment_headImg"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/beiguo1"
+            android:scaleType="fitXY"/>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/comment_headImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/comment_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="宋凌锐"
+                android:textColor="@color/colorBlack" />
+            <TextView
+                android:id="@+id/comment_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="好的，没问题"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/comment_time"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11月30日 21:46"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+</LinearLayout>

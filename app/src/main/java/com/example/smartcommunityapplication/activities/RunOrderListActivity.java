@@ -34,6 +34,7 @@ public class RunOrderListActivity extends AppCompatActivity {
         mRunOrderListAdapter mRunOrderListAdapter = new mRunOrderListAdapter(RunOrderListActivity.this, Runorders, R.layout.mrunorderlist_adapter);
         RunOrderList.setAdapter(mRunOrderListAdapter);
 
+        
         RunOrderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

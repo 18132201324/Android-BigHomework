@@ -19,8 +19,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.activities.LocationTagsTableActivity;
 import com.example.smartcommunityapplication.activities.LuckyActivity;
+import com.example.smartcommunityapplication.activities.MessageListActivity;
 import com.example.smartcommunityapplication.activities.RunOrderListActivity;
 import com.example.smartcommunityapplication.activities.ServiceActivity;
+import com.example.smartcommunityapplication.activities.StallMessageActivity;
 import com.example.smartcommunityapplication.activities.TagTableActivity;
 import com.example.smartcommunityapplication.activities.TimeActivity;
 import com.example.smartcommunityapplication.adapters.mBannerAdapter;
@@ -124,6 +126,8 @@ public class HomePageFragment extends Fragment {
                     startActivity(intent);
                 }
             });
+
+
         return view;
 
     }
@@ -148,10 +152,12 @@ public class HomePageFragment extends Fragment {
     public void handleEvent(String event){
         String GongNeng = event;
         switch (GongNeng){
+            case "消息发布":
+                startActivity (new Intent (getActivity (), MessageListActivity.class));
             case "限时兑换":
-                Intent intent2 = new Intent();
-                intent2.setClass(getActivity(), TimeActivity.class);
-                startActivity(intent2);
+//                Intent intent2 = new Intent();
+//                intent2.setClass(getActivity(), TimeActivity.class);
+//                startActivity(intent2);
                 break;
             case "积分抽奖":
                 Intent intent1 = new Intent();
@@ -163,9 +169,8 @@ public class HomePageFragment extends Fragment {
                 intent.setClass(getActivity(),ServiceActivity.class);
                 startActivity(intent);
                 break;
-            case "东城区":
-                tvFirst_location.setText("东城区");
-                break;
+            case "车位管理":
+                startActivity (new Intent (getActivity (), StallMessageActivity.class));
         }
     }
     private void initDate() {
@@ -176,8 +181,8 @@ public class HomePageFragment extends Fragment {
         Textbannerdata.add(new InfoBean("招商公告"));
         Textbannerdata.add(new InfoBean("外卖配送"));
         Textbannerdata.add(new InfoBean("社区管理"));
-        recyclerdata.add(new RecyclerinfoBean(R.drawable.ditu,"社区服务"));
-        recyclerdata.add(new RecyclerinfoBean(R.drawable.fuwu,"上门维修"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.ditu,"消息发布"));
+        recyclerdata.add(new RecyclerinfoBean(R.drawable.fuwu,"车位管理"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.shebei,"积分抽奖"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.weixiu,"设备维修"));
         recyclerdata.add(new RecyclerinfoBean(R.drawable.anzhuang,"设备回收"));
