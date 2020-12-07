@@ -81,7 +81,7 @@ public class StallMessageActivity extends AppCompatActivity {
                 Toast.makeText (StallMessageActivity.this,"您已成功占到车位!",Toast.LENGTH_SHORT).show ();
                 seatList[selectRectBean.getRow ()-1][selectRectBean.getColumn ()-1] = 2;
                 searchSeat.setSeatList(seatList);
-                onRestart ();
+                searchSeat.invalidate ();
             }
         });
     }
