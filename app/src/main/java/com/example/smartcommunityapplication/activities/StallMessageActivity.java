@@ -50,7 +50,7 @@ public class StallMessageActivity extends AppCompatActivity {
             int[] indes = new int[14];
             for (int x = 0; x < 14; x++) {
                if (i==1||i==4||i==7){
-                   indes[x] = 1;
+                   continue;
                }else if (i==2&&x==3){
                    indes[x] = 2;
                }else if (i==3&&x==6){
@@ -71,7 +71,7 @@ public class StallMessageActivity extends AppCompatActivity {
                     stringBuffer.append(selectRectBean.getRow() + "排 ");
                     stringBuffer.append(selectRectBean.getColumn() + "列\n");
                 }
-                tvResult.setText(stringBuffer.toString());
+                tvResult.setText("您所选择的车位为:"+stringBuffer.toString());
             }
         });
 
@@ -79,9 +79,6 @@ public class StallMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText (StallMessageActivity.this,"您已成功占到车位!",Toast.LENGTH_SHORT).show ();
-                seatList[selectRectBean.getRow ()-1][selectRectBean.getColumn ()-1] = 2;
-                searchSeat.setSeatList(seatList);
-                searchSeat.invalidate ();
             }
         });
     }
