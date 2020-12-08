@@ -94,7 +94,7 @@ public class SelectSeatView extends View {
     /**
      * 座位宽度
      */
-    private int seatWidth = 60;
+    private int seatWidth = 100;
     /**
      * 默认的行间距
      */

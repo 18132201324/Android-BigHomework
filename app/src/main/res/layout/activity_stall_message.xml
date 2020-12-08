@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp">
                 <com.example.smartcommunityapplication.SelectSeatView
-                    android:layout_height="300dp"
+                    android:layout_height="450dp"
                     android:layout_width="match_parent"
                     android:id="@+id/search_seat"
                     android:background="@drawable/stall_message_steaview_style"/>
@@ -94,7 +94,7 @@
                 android:background="@drawable/datacardbuttonstyle"
                 android:id="@+id/stallMessage_zhan"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_height="50dp"
                 android:text="占车位"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp"
