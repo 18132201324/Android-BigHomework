@@ -98,7 +98,7 @@ public class SelectSeatView extends View {
     /**
      * 默认的行间距
      */
-    private int margiVertical = 20;
+    private int margiVertical = 30;
     /**
      * 排号距离左边距离
      */
@@ -943,13 +943,16 @@ public class SelectSeatView extends View {
         return true;
     }
 
+    public void getRed( SelectRectBean selectRectBean) {
+        selectList.remove(selectRectBean);
+        SelectState = 1;
+    }
 
     private void clickSeat(Point currentPoint) {
         for (int i = 0; i < mRectList.size(); i++) {
             Rect rect = mRectList.get(i).getRect();
             SelectRectBean selectRectBean = mRectList.get(i);
             if (selectRectBean.getSeatState() == SELL_SEAT ||
-                    selectRectBean.getSeatState() == EMPTY_SEAT ||
                     selectRectBean.getSeatState() == EMPTY_SEAT) {
                 continue;
             }

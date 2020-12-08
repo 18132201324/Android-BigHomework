@@ -77,7 +77,7 @@
                     <TextView
                         android:layout_height="20dp"
                         android:layout_width="20dp"
-                        android:background="@android:color/holo_green_light"
+                        android:background="@color/green_car"
                         android:layout_marginLeft="20dp"/>
                     <TextView
                         android:layout_height="wrap_content"
@@ -86,10 +86,12 @@
                 </LinearLayout>
             </LinearLayout>
             <TextView
+                android:layout_margin="20dp"
                 android:layout_height="20dp"
-                android:layout_width="100dp"
-                android:text="123"
-                ga
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp"
                 android:id="@+id/tv_result"/>
             <Button
                 android:background="@drawable/datacardbuttonstyle"

@@ -68,8 +68,19 @@ public class StallMessageActivity extends AppCompatActivity {
                 StringBuffer stringBuffer = new StringBuffer();
                 for (int i = 0; i < stringList.size(); i++) {
                     selectRectBean = stringList.get(i);
-                    stringBuffer.append(selectRectBean.getRow() + "排 ");
-                    stringBuffer.append(selectRectBean.getColumn() + "列\n");
+                    if (selectRectBean.getRow()==1){
+                        stringBuffer.append(selectRectBean.getRow() + "排 ");
+                        stringBuffer.append(selectRectBean.getColumn() + "列");
+                    }else if (selectRectBean.getRow()>1&&selectRectBean.getRow()<=4){
+                        stringBuffer.append(selectRectBean.getRow()-1 + "排 ");
+                        stringBuffer.append(selectRectBean.getColumn() + "列");
+                    }else if (selectRectBean.getRow()>=6&&selectRectBean.getRow()<=7){
+                        stringBuffer.append(selectRectBean.getRow()-2 + "排 ");
+                        stringBuffer.append(selectRectBean.getColumn() + "列");
+                    }else if (selectRectBean.getRow()==9){
+                        stringBuffer.append(selectRectBean.getRow()-3 + "排 ");
+                        stringBuffer.append(selectRectBean.getColumn() + "列");
+                    }
                 }
                 tvResult.setText("您所选择的车位为:"+stringBuffer.toString());
             }
@@ -79,6 +90,10 @@ public class StallMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText (StallMessageActivity.this,"您已成功占到车位!",Toast.LENGTH_SHORT).show ();
+                seatList[selectRectBean.getRow ()-1][selectRectBean.getColumn ()-1] = 2;
+                searchSeat.setSeatList (seatList);
+                searchSeat.invalidate ();
+                searchSeat.getRed (selectRectBean);
             }
         });
     }
