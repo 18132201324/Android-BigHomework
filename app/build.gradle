@@ -46,6 +46,7 @@ repositories {
 }
 dependencies {
     //赵志强
+    compile 'com.cncoderx.wheelview:library:1.2.5'
     //noinspection GradleCompatible
     implementation 'com.android.support:design:27.1.1'
     //noinspection GradleCompatible

@@ -786,13 +786,13 @@ public class SelectSeatView extends View {
                         canvas.drawBitmap (bp3,left + margiHorizontal, top + margiVertical,paintSeat);
                         break;
                     default:
-                        @SuppressLint("ResourceType")
-                        InputStream is4 = getResources().openRawResource(R.drawable.icon_car);
-                        BitmapDrawable bd4 = new BitmapDrawable(is4);
-                        Bitmap bp4 = bd4.getBitmap();
-                        canvas.drawBitmap (bp4,left + margiHorizontal, top + margiVertical,paintSeat);
-                        paintSeat.setColor(Color.TRANSPARENT);
-                        canvas.drawRect(rect, paintSeat);
+//                        @SuppressLint("ResourceType")
+//                        InputStream is4 = getResources().openRawResource(R.drawable.icon_car);
+//                        BitmapDrawable bd4 = new BitmapDrawable(is4);
+//                        Bitmap bp4 = bd4.getBitmap();
+//                        canvas.drawBitmap (bp4,left + margiHorizontal, top + margiVertical,paintSeat);
+//                        paintSeat.setColor(Color.TRANSPARENT);
+//                        canvas.drawRect(rect, paintSeat);
                         break;
                 }
                 boolean isSelect = seatType(i, x);

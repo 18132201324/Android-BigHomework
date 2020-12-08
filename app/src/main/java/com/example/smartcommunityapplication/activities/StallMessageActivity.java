@@ -25,6 +25,7 @@ public class StallMessageActivity extends AppCompatActivity {
     private int[][] seatList;
     private SelectSeatView searchSeat;
     private TextView tvResult;
+    private ImageView back;
     private Button Zhan;
     private ImageView ParkButtonBack;
     private SelectRectBean selectRectBean;
@@ -37,7 +38,7 @@ public class StallMessageActivity extends AppCompatActivity {
         tvResult = findViewById(R.id.tv_result);
         Zhan = findViewById (R.id.stallMessage_zhan);
         refreshLayout = findViewById (R.id.srl);
-        ParkButtonBack = findViewById (R.id.noticeDetails_back1);
+        ParkButtonBack = findViewById (R.id.stallMessage_back);
         ParkButtonBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 finish();
