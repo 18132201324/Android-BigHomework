@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
             double latitude = location.getLatitude();    //获取纬度信息
             double longitude = location.getLongitude();    //获取经度信息
             float radius = location.getRadius();    //获取定位精度，默认值为0.0f
-            Log.e("这个经度是", "" + longitude);
-            Log.e("这个维度是", "" + latitude);
+            //Log.e("这个经度是", "" + longitude);
+            //Log.e("这个维度是", "" + latitude);
             String coorType = location.getCoorType();
             //获取经纬度坐标类型，以LocationClientOption中设置过的坐标类型为准
 

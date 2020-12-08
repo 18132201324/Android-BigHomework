@@ -116,6 +116,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.cncoderx.wheelview:library:1.2.5'
 
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
     implementation 'com.jaeger.statusbarutil:library:1.5.1'

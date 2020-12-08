@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,4 +24,11 @@
             android:textColor="@android:color/black"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
+    <Button
+        android:id="@+id/btn_occer"
+        android:textSize="20sp"
+        android:text="点我出现弹框"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+    </Button>
 </LinearLayout>

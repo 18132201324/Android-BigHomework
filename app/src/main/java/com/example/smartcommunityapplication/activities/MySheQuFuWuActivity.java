@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.smartcommunityapplication.BottomDialog;
 import com.example.smartcommunityapplication.CustomPopupWindow;
 import com.example.smartcommunityapplication.R;
 import com.example.smartcommunityapplication.adapters.CommunityListAdapter;
@@ -55,7 +56,8 @@ public class MySheQuFuWuActivity extends AppCompatActivity implements CustomPopu
                 mPop.dismiss ();
             break;
             case R.id.yonghu:
-                startActivity (new Intent (MySheQuFuWuActivity.this,LoginActivity.class));
+                BottomDialog bottomDialogFr = new BottomDialog();
+                bottomDialogFr.show(getSupportFragmentManager(), "DF");
                 mPop.backgroundAlpha (MySheQuFuWuActivity.this,1f);
                 mPop.dismiss ();
             break;
