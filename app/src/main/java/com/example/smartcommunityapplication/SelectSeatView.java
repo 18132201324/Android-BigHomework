@@ -236,6 +236,7 @@ public class SelectSeatView extends View {
         }
     }
 
+
     public void setSeatList(int[][] seatList) {
         if (seatList.length == 0 || seatList[0].length == 0) {
             return;
@@ -942,11 +943,12 @@ public class SelectSeatView extends View {
         }
         return true;
     }
-
     public void getRed( SelectRectBean selectRectBean) {
         selectList.remove(selectRectBean);
         SelectState = 1;
     }
+
+
 
     private void clickSeat(Point currentPoint) {
         for (int i = 0; i < mRectList.size(); i++) {

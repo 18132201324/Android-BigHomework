@@ -10,7 +10,7 @@
         android:layout_height="50dp"
         android:background="@color/colo_blue_green">
         <ImageView
-            android:id="@+id/noticeDetails_back"
+            android:id="@+id/noticeDetails_back1"
             android:layout_centerVertical="true"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -77,7 +77,7 @@
                     <TextView
                         android:layout_height="20dp"
                         android:layout_width="20dp"
-                        android:background="@color/green_car"
+                        android:background="@android:color/holo_green_light"
                         android:layout_marginLeft="20dp"/>
                     <TextView
                         android:layout_height="wrap_content"
@@ -86,12 +86,9 @@
                 </LinearLayout>
             </LinearLayout>
             <TextView
-                android:layout_margin="20dp"
                 android:layout_height="20dp"
-                android:layout_width="match_parent"
-                android:gravity="center_horizontal"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp"
+                android:layout_width="100dp"
+                android:text="123"
                 android:id="@+id/tv_result"/>
             <Button
                 android:background="@drawable/datacardbuttonstyle"

@@ -3,6 +3,7 @@ package com.example.smartcommunityapplication.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.example.smartcommunityapplication.R;
@@ -15,6 +16,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ public class StallMessageActivity extends AppCompatActivity {
     private SelectSeatView searchSeat;
     private TextView tvResult;
     private Button Zhan;
+    private ImageView ParkButtonBack;
     private SelectRectBean selectRectBean;
     private SmartRefreshLayout refreshLayout;
     @Override
@@ -34,6 +37,12 @@ public class StallMessageActivity extends AppCompatActivity {
         tvResult = findViewById(R.id.tv_result);
         Zhan = findViewById (R.id.stallMessage_zhan);
         refreshLayout = findViewById (R.id.srl);
+        ParkButtonBack = findViewById (R.id.noticeDetails_back1);
+        ParkButtonBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                finish();
+            }
+        });
 
 
         refreshLayout.setOnRefreshListener (new OnRefreshListener () {
@@ -68,23 +77,15 @@ public class StallMessageActivity extends AppCompatActivity {
                 StringBuffer stringBuffer = new StringBuffer();
                 for (int i = 0; i < stringList.size(); i++) {
                     selectRectBean = stringList.get(i);
-                    if (selectRectBean.getRow()==1){
-                        stringBuffer.append(selectRectBean.getRow() + "排 ");
-                        stringBuffer.append(selectRectBean.getColumn() + "列");
-                    }else if (selectRectBean.getRow()>1&&selectRectBean.getRow()<=4){
-                        stringBuffer.append(selectRectBean.getRow()-1 + "排 ");
-                        stringBuffer.append(selectRectBean.getColumn() + "列");
-                    }else if (selectRectBean.getRow()>=6&&selectRectBean.getRow()<=7){
-                        stringBuffer.append(selectRectBean.getRow()-2 + "排 ");
-                        stringBuffer.append(selectRectBean.getColumn() + "列");
-                    }else if (selectRectBean.getRow()==9){
-                        stringBuffer.append(selectRectBean.getRow()-3 + "排 ");
-                        stringBuffer.append(selectRectBean.getColumn() + "列");
-                    }
+                    stringBuffer.append(selectRectBean.getRow() + "排 ");
+                    stringBuffer.append(selectRectBean.getColumn() + "列\n");
                 }
                 tvResult.setText("您所选择的车位为:"+stringBuffer.toString());
             }
         });
+
+
+
 
         Zhan.setOnClickListener (new View.OnClickListener () {
             @Override
@@ -92,8 +93,8 @@ public class StallMessageActivity extends AppCompatActivity {
                 Toast.makeText (StallMessageActivity.this,"您已成功占到车位!",Toast.LENGTH_SHORT).show ();
                 seatList[selectRectBean.getRow ()-1][selectRectBean.getColumn ()-1] = 2;
                 searchSeat.setSeatList (seatList);
-                searchSeat.invalidate ();
-                searchSeat.getRed (selectRectBean);
+                searchSeat.getRed(selectRectBean);
+                seatList[selectRectBean.getRow ()-1][selectRectBean.getColumn ()-1] = 2;
             }
         });
     }
