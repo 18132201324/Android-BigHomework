@@ -168,10 +168,9 @@ public class BaiMapActivity extends AppCompatActivity {
 
         };
         mSearch.setOnGetRoutePlanResultListener(listener);
-        Comment comment = new Comment("123", "456", 5, "55", "333");
-        for (int i = 0; i < 10; i++) {
-            dataSource1.add(comment);
-        }
+        Comment comment = new Comment("123", "大力推荐非常好的一个地方，很适合放松心情陶冶情操", 5, "赵志强", "12月9日 20：26");
+        dataSource1.add(comment);
+
         LinearLayout linearLayout=findViewById(R.id.displaydetails);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -84,10 +84,6 @@ public class StallMessageActivity extends AppCompatActivity {
                 tvResult.setText("您所选择的车位为:"+stringBuffer.toString());
             }
         });
-
-
-
-
         Zhan.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {

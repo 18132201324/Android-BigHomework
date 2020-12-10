@@ -9,8 +9,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
+            android:padding="@dimen/dp_10"
             android:id="@+id/comment_image"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/tx1"
             android:layout_width="80dp"
             android:layout_height="80dp" />
         <LinearLayout
@@ -19,11 +20,12 @@
             android:orientation="vertical">
 
             <TextView
+                android:textColor="@color/colorYellow"
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="评价内容"
-                android:textSize="20sp" />
+                android:text="我的评价"
+                android:textSize="18sp" />
 
             <EditText
                 android:layout_margin="5dp"
@@ -48,34 +50,34 @@
                     android:textColor="@color/colorYellow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22sp"
+                    android:textSize="16sp"
                     android:text="3.3"></TextView>
                 <TextView
                     android:padding="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22sp"
+                    android:textSize="16sp"
                     android:text="人名"></TextView>
                 <TextView
                     android:id="@+id/comment_name"
                     android:padding="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22sp"
+                    android:textSize="16sp"
                     android:text="   "></TextView>
                 <TextView
 
                     android:padding="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22sp"
+                    android:textSize="16sp"
                     android:text="时间"></TextView>
                 <TextView
                     android:id="@+id/comment_time"
                     android:padding="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="22sp"
+                    android:textSize="16sp"
                     android:text="         "></TextView>
             </LinearLayout>
         </LinearLayout>

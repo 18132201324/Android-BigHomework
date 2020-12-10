@@ -1,9 +1,11 @@
 package com.example.smartcommunityapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentTabHost;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -60,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+
         mLocationClient = new LocationClient(getApplicationContext());
         //声明LocationClient类
         mLocationClient.registerLocationListener(myListener);

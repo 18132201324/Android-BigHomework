@@ -9,7 +9,7 @@
         android:background="@drawable/shape_corner"
         android:orientation="vertical"
         android:padding="2dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,8 +20,8 @@
         <ImageView
             android:scaleType="fitXY"
             android:id="@+id/iv_shop_image"
-            android:layout_width="150dp"
-            android:layout_height="110dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_marginRight="10dp"
             android:src="@drawable/beiguo3" />
 
@@ -31,57 +31,106 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
-                    android:paddingTop="15dp"
                     android:id="@+id/tv_shopname"
-                    android:maxEms="3"
                     android:singleLine="true"
+                    android:textColor="@color/colorBlack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:text="店铺名称"
                     android:textSize="18sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/pjxx"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/xx"></ImageView>
+                    <ImageView
+                        android:id="@+id/pjxx1"
+                        android:layout_toRightOf="@+id/pjxx"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/xx"></ImageView>
+                    <ImageView
+                        android:id="@+id/pjxx2"
+                        android:layout_toRightOf="@+id/pjxx1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/xx"></ImageView>
+                    <ImageView
+                        android:id="@+id/pjxx3"
+                        android:layout_toRightOf="@+id/pjxx2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/xx"></ImageView>
+                    <ImageView
+                        android:id="@+id/pjxx4"
+                        android:layout_toRightOf="@+id/pjxx3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/xx"></ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:textSize="10sp"
+                        android:text="4.7"
+                        android:textColor="#FFD700" />
 
-                <TextView
-                    android:id="@+id/comment_content"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@null"
-                    android:hint="店铺风景"
-                    android:textColor="#ff6633" />
+
+
+                    <TextView
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/comment_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:textSize="10sp"
+                        android:hint="月售过w+"
+                        android:textColor="#ff6633" />
+                    <ImageView
+                        android:layout_marginLeft="100dp"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/peisong"></ImageView>
+                    <TextView
+                        android:gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:textSize="10sp"
+                        android:text="强强转送"
+                        android:textColor="#2196F3" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                   <ImageView
+                       android:layout_marginTop="4dp"
+                       android:saveEnabled="true"
+                       android:src="@drawable/cx"
+                       android:layout_width="20dp"
+                       android:layout_height="15dp">
+                   </ImageView>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                       android:textSize="10sp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="购买促销产品可免费领取购物袋">
+                   </TextView>
+                </LinearLayout>
+
+                
             </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_marginTop="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/tv_score"
-                    android:background="@drawable/xx"></ImageView>
-
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:id="@+id/tv_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:padding="3dp"
-                    android:text="4.8"
-                    android:textColor="@color/colorYellow"
-                    android:textSize="22sp"></TextView>
-
-            </RelativeLayout>
-
-
         </LinearLayout>
 
 
@@ -89,8 +138,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
+        android:layout_height="90dp"
         android:padding="10dp"
         android:orientation="horizontal">
 
@@ -98,9 +146,10 @@
             android:scaleType="fitXY"
             android:id="@+id/iv_shopsCenery1"
             android:background="@drawable/beiguo2"
-            android:layout_width="80dp"
+            android:layout_width="120dp"
             android:layout_height="80dp"
-            android:layout_weight="1">
+            android:layout_marginLeft="50dp"
+            >
 
         </ImageView>
 
@@ -108,10 +157,10 @@
             android:scaleType="fitXY"
             android:id="@+id/iv_shopsCenery2"
             android:background="@drawable/beiguo1"
-            android:layout_marginLeft="30dp"
-            android:layout_width="80dp"
+            android:layout_marginLeft="40dp"
+            android:layout_width="120dp"
             android:layout_height="80dp"
-            android:layout_weight="1">
+            >
         </ImageView>
     </LinearLayout>
 
